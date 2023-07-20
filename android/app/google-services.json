@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "371273133115",
+    "project_id": "tawfeer-8fca0",
+    "storage_bucket": "tawfeer-8fca0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371273133115:android:b8bb402b1d9557c23b401e",
+        "android_client_info": {
+          "package_name": "com.gatetechs.kishk.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371273133115-a8d6lc90r8hv3kmrfdgp3m30ggfme0bp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClHnawIUBSkSd0_pAHN5iC1nwlpJ9Pwe0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371273133115-a8d6lc90r8hv3kmrfdgp3m30ggfme0bp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "371273133115-7187d4arjf62j531ivuinve0evq2psfq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gatetechs.kishk.driver"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
