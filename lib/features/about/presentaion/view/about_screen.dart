@@ -54,7 +54,7 @@ class AboutScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Image.asset(
-                        "assets/images/about_image.png",
+                        "assets/logo.png",
                         height: 200,
                       ),
                       const SizedBox(height: 30),

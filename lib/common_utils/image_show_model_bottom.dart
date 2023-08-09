@@ -23,7 +23,7 @@ class ImageSourceBottomSheet extends StatelessWidget {
                 children: [
                   const Icon(
                     Icons.camera,
-                    size: 24,
+                    size: 42,
                   ),
                   Text(
                     'camera'.tr,
@@ -48,7 +48,7 @@ class ImageSourceBottomSheet extends StatelessWidget {
                 children: [
                   const Icon(
                     Icons.image,
-                    size: 24,
+                    size: 42,
                   ),
                   Text(
                     'gallery'.tr,

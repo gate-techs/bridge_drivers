@@ -4,11 +4,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kishk_driver/common_utils/common_utils.dart';
 import 'package:kishk_driver/common_utils/log_utils.dart';
 import 'package:kishk_driver/features/auth/profile/data/profile_entity.dart';
+import 'package:kishk_driver/res/m_colors.dart';
 
 import '../../data/my_profile_response.dart';
 import '../../domain/edit_profile_repository.dart';
@@ -49,7 +51,12 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
   Future<void> updateProfileData() async {
     try {
-      await EasyLoading.show(status: 'loading'.tr);
+      await EasyLoading.show(
+          status: 'loading'.tr,
+          indicator: SpinKitFadingGrid(
+            color: MColors.colorPrimary,
+            size: 50,
+          ));
       FormData mFormData = FormData.fromMap({
         if (driverImage != null)
           'image': await MultipartFile.fromFile(driverImage!.path),

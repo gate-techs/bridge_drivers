@@ -1,10 +1,9 @@
 import 'package:flutter/foundation.dart';
-
-class Apis {
+ class Apis {
   static const String urlScheme = 'https';
 
-  static const String releaseTest = "mazadak.net";
-  static const String releaseLive = "mazadak.net";
+  static const String releaseTest = "bridgeskw.com";
+  static const String releaseLive = "bridgeskw.com";
 
   static const String baseUrl =
       "$urlScheme://${kDebugMode ? releaseTest : releaseLive}/api/v1/";

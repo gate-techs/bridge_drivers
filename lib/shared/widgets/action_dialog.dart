@@ -77,7 +77,8 @@ class ActionDialog extends StatelessWidget {
                   ),
                   const SizedBox(height: 15),
                   Center(
-                    child: SizedBox(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
                       child: gradientButton('ok', context, () {
                         Get.back(result: {'refresh': true});
                         Get.back(result: {'refresh': true});
