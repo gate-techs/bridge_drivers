@@ -18,7 +18,6 @@ import 'language/app_language.dart';
 import 'res/app_config.dart';
 import 'res/bloc_observer/bloc_observer.dart';
 import 'res/theme_controller.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -47,8 +46,6 @@ NotificationsHelper mNotificationSettings = NotificationsHelper();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
@@ -82,7 +79,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    FlutterNativeSplash.remove();
+
     mNotificationSettings.registerNotification(context);
     super.initState();
   }

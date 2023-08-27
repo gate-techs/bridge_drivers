@@ -197,7 +197,7 @@ class OrderDetailsScreen extends StatelessWidget {
                                                 '',
                                             width: 150,
                                             height: 120,
-                                            fit: BoxFit.cover),
+                                            fit: BoxFit.fill),
                                   ),
                                 ),
                                 Expanded(

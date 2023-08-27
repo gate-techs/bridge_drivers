@@ -1,307 +1,253 @@
+import 'dart:convert';
+
 class ProductDetailsResponse {
-  ProductDetailsData? data;
+  final Data? data;
 
-  ProductDetailsResponse({this.data});
+  ProductDetailsResponse({
+    this.data,
+  });
 
-  ProductDetailsResponse.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? ProductDetailsData.fromJson(json['data']) : null;
-  }
+  factory ProductDetailsResponse.fromRawJson(String str) => ProductDetailsResponse.fromJson(json.decode(str));
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    return data;
-  }
+  String toRawJson() => json.encode(toJson());
+
+  factory ProductDetailsResponse.fromJson(Map<String, dynamic> json) => ProductDetailsResponse(
+    data: json["data"] == null ? null : Data.fromJson(json["data"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "data": data?.toJson(),
+  };
 }
 
-class ProductDetailsData {
-  bool? status;
-  String? message;
-  ProductDetailsDataRows? rows;
+class Data {
+  final bool? status;
+  final String? message;
+  final ProductDetailsDataRows? rows;
 
-  ProductDetailsData({this.status, this.message, this.rows});
+  Data({
+    this.status,
+    this.message,
+    this.rows,
+  });
 
-  ProductDetailsData.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    message = json['message'];
-    rows = json['rows'] != null ? ProductDetailsDataRows.fromJson(json['rows']) : null;
-  }
+  factory Data.fromRawJson(String str) => Data.fromJson(json.decode(str));
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['status'] = status;
-    data['message'] = message;
-    if (rows != null) {
-      data['rows'] = rows!.toJson();
-    }
-    return data;
-  }
+  String toRawJson() => json.encode(toJson());
+
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+    status: json["status"],
+    message: json["message"],
+    rows: json["rows"] == null ? null : ProductDetailsDataRows.fromJson(json["rows"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "status": status,
+    "message": message,
+    "rows": rows?.toJson(),
+  };
 }
 
 class ProductDetailsDataRows {
-  int? id;
-  String? image;
-  List<Galleries>? galleries;
-  int? categoryId;
-  String? categoryName;
-  String? title;
-  String? body;
-  String? discount;
-  int? qty;
-  String? originalPrice;
-  double? price;
-  Attributes? attributes;
-  int? avgRating;
-  // List<Null>? relatedProduct;
-  List<Ratings>? ratings;
-  bool? isRating;
-  bool? isWishlist;
-  bool? isCart;
+  final int? id;
+  final String? image;
+  final List<Galleries>? galleries;
+  final int? categoryId;
+  final String? categoryName;
+  final int? brandId;
+  final String? brandName;
+  final String? title;
+  final String? body;
+  final String? discount;
+  final int? qty;
+  final String? originalPrice;
+  final int? price;
+  final Attributes? attributes;
+  final int? avgRating;
+  final List<dynamic>? relatedProduct;
+  final List<dynamic>? ratings;
+  final bool? isRating;
+  final bool? isWishlist;
+  final bool? isCart;
 
-  ProductDetailsDataRows(
-      {this.id,
-      this.image,
-      this.galleries,
-      this.categoryId,
-      this.categoryName,
-      this.title,
-      this.body,
-      this.discount,
-      this.qty,
-      this.originalPrice,
-      this.price,
-      this.attributes,
-      this.avgRating,
-      // this.relatedProduct,
-      this.ratings,
-      this.isRating,
-      this.isWishlist,
-      this.isCart});
+  ProductDetailsDataRows({
+    this.id,
+    this.image,
+    this.galleries,
+    this.categoryId,
+    this.categoryName,
+    this.brandId,
+    this.brandName,
+    this.title,
+    this.body,
+    this.discount,
+    this.qty,
+    this.originalPrice,
+    this.price,
+    this.attributes,
+    this.avgRating,
+    this.relatedProduct,
+    this.ratings,
+    this.isRating,
+    this.isWishlist,
+    this.isCart,
+  });
 
-  ProductDetailsDataRows.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    image = json['image'];
-    if (json['galleries'] != null) {
-      galleries = <Galleries>[];
-      json['galleries'].forEach((v) {
-        galleries!.add(Galleries.fromJson(v));
-      });
-    }
-    categoryId = json['category_id'];
-    categoryName = json['category_name'];
-    title = json['title'];
-    body = json['body'];
-    discount = json['discount'];
-    qty = json['qty'];
-    originalPrice = json['original_price'];
-    price = json['price'];
-    attributes = json['attributes'] != null
-        ? Attributes.fromJson(json['attributes'])
-        : null;
-    avgRating = json['avgRating'];
-    // if (json['relatedProduct'] != null) {
-    //   relatedProduct = <Null>[];
-    //   json['relatedProduct'].forEach((v) {
-    //     relatedProduct!.add(Null.fromJson(v));
-    //   });
-    // }
-    if (json['ratings'] != null) {
-      ratings = <Ratings>[];
-      json['ratings'].forEach((v) {
-        ratings!.add(Ratings.fromJson(v));
-      });
-    }
-    isRating = json['isRating'];
-    isWishlist = json['isWishlist'];
-    isCart = json['isCart'];
-  }
+  factory ProductDetailsDataRows.fromRawJson(String str) => ProductDetailsDataRows.fromJson(json.decode(str));
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['image'] = image;
-    if (galleries != null) {
-      data['galleries'] = galleries!.map((v) => v.toJson()).toList();
-    }
-    data['category_id'] = categoryId;
-    data['category_name'] = categoryName;
-    data['title'] = title;
-    data['body'] = body;
-    data['discount'] = discount;
-    data['qty'] = qty;
-    data['original_price'] = originalPrice;
-    data['price'] = price;
-    if (attributes != null) {
-      data['attributes'] = attributes!.toJson();
-    }
-    data['avgRating'] = avgRating;
-    // if (relatedProduct != null) {
-    //   data['relatedProduct'] = relatedProduct!.map((v) => v.toJson()).toList();
-    // }
-    if (ratings != null) {
-      data['ratings'] = ratings!.map((v) => v.toJson()).toList();
-    }
-    data['isRating'] = isRating;
-    data['isWishlist'] = isWishlist;
-    data['isCart'] = isCart;
-    return data;
-  }
-}
+  String toRawJson() => json.encode(toJson());
 
-class Galleries {
-  String? image;
+  factory ProductDetailsDataRows.fromJson(Map<String, dynamic> json) => ProductDetailsDataRows(
+    id: json["id"],
+    image: json["image"],
+    galleries: json["galleries"] == null ? [] : List<Galleries>.from(json["galleries"]!.map((x) => Galleries.fromJson(x))),
+    categoryId: json["category_id"],
+    categoryName: json["category_name"],
+    brandId: json["brand_id"],
+    brandName: json["brand_name"],
+    title: json["title"],
+    body: json["body"],
+    discount: json["discount"],
+    qty: json["qty"],
+    originalPrice: json["original_price"],
+    price: json["price"],
+    attributes: json["attributes"] == null ? null : Attributes.fromJson(json["attributes"]),
+    avgRating: json["avgRating"],
+    relatedProduct: json["relatedProduct"] == null ? [] : List<dynamic>.from(json["relatedProduct"]!.map((x) => x)),
+    ratings: json["ratings"] == null ? [] : List<dynamic>.from(json["ratings"]!.map((x) => x)),
+    isRating: json["isRating"],
+    isWishlist: json["isWishlist"],
+    isCart: json["isCart"],
+  );
 
-  Galleries({this.image});
-
-  Galleries.fromJson(Map<String, dynamic> json) {
-    image = json['image'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['image'] = image;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "image": image,
+    "galleries": galleries == null ? [] : List<dynamic>.from(galleries!.map((x) => x.toJson())),
+    "category_id": categoryId,
+    "category_name": categoryName,
+    "brand_id": brandId,
+    "brand_name": brandName,
+    "title": title,
+    "body": body,
+    "discount": discount,
+    "qty": qty,
+    "original_price": originalPrice,
+    "price": price,
+    "attributes": attributes?.toJson(),
+    "avgRating": avgRating,
+    "relatedProduct": relatedProduct == null ? [] : List<dynamic>.from(relatedProduct!.map((x) => x)),
+    "ratings": ratings == null ? [] : List<dynamic>.from(ratings!.map((x) => x)),
+    "isRating": isRating,
+    "isWishlist": isWishlist,
+    "isCart": isCart,
+  };
 }
 
 class Attributes {
-  List<ColorsAttributes>? colors;
-  List<Sizes>? sizes;
-  List<Brand>? brand;
+  final List<Color>? colors;
+  final List<Size>? sizes;
+  final List<dynamic>? specs;
 
-  Attributes({this.colors, this.sizes, this.brand});
+  Attributes({
+    this.colors,
+    this.sizes,
+    this.specs,
+  });
 
-  Attributes.fromJson(Map<String, dynamic> json) {
-    if (json['colors'] != null) {
-      colors = <ColorsAttributes>[];
-      json['colors'].forEach((v) {
-        colors!.add(ColorsAttributes.fromJson(v));
-      });
-    }
-    if (json['sizes'] != null) {
-      sizes = <Sizes>[];
-      json['sizes'].forEach((v) {
-        sizes!.add(Sizes.fromJson(v));
-      });
-    }
-    if (json['brand'] != null) {
-      brand = <Brand>[];
-      json['brand'].forEach((v) {
-        brand!.add(Brand.fromJson(v));
-      });
-    }
-  }
+  factory Attributes.fromRawJson(String str) => Attributes.fromJson(json.decode(str));
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (colors != null) {
-      data['colors'] = colors!.map((v) => v.toJson()).toList();
-    }
-    if (sizes != null) {
-      data['sizes'] = sizes!.map((v) => v.toJson()).toList();
-    }
-    if (brand != null) {
-      data['brand'] = brand!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
+  String toRawJson() => json.encode(toJson());
+
+  factory Attributes.fromJson(Map<String, dynamic> json) => Attributes(
+    colors: json["colors"] == null ? [] : List<Color>.from(json["colors"]!.map((x) => Color.fromJson(x))),
+    sizes: json["sizes"] == null ? [] : List<Size>.from(json["sizes"]!.map((x) => Size.fromJson(x))),
+    specs: json["specs"] == null ? [] : List<dynamic>.from(json["specs"]!.map((x) => x)),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "colors": colors == null ? [] : List<dynamic>.from(colors!.map((x) => x.toJson())),
+    "sizes": sizes == null ? [] : List<dynamic>.from(sizes!.map((x) => x.toJson())),
+    "specs": specs == null ? [] : List<dynamic>.from(specs!.map((x) => x)),
+  };
 }
 
-class ColorsAttributes {
-  int? id;
-  String? attribute;
-  String? hex;
+class Color {
+  final int? id;
+  final String? attribute;
+  final String? hex;
 
-  ColorsAttributes({this.id, this.attribute, this.hex});
+  Color({
+    this.id,
+    this.attribute,
+    this.hex,
+  });
 
-  ColorsAttributes.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    attribute = json['attribute'];
-    hex = json['hex'];
-  }
+  factory Color.fromRawJson(String str) => Color.fromJson(json.decode(str));
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['attribute'] = attribute;
-    data['hex'] = hex;
-    return data;
-  }
+  String toRawJson() => json.encode(toJson());
+
+  factory Color.fromJson(Map<String, dynamic> json) => Color(
+    id: json["id"],
+    attribute: json["attribute"],
+    hex: json["hex"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "attribute": attribute,
+    "hex": hex,
+  };
 }
 
-class Sizes {
-  int? id;
-  String? attribute;
+class Size {
+  final int? id;
+  final String? attribute;
+  final int? countChilds;
+  final List<dynamic>? childs;
 
-  Sizes({this.id, this.attribute});
+  Size({
+    this.id,
+    this.attribute,
+    this.countChilds,
+    this.childs,
+  });
 
-  Sizes.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    attribute = json['attribute'];
-  }
+  factory Size.fromRawJson(String str) => Size.fromJson(json.decode(str));
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['attribute'] = attribute;
-    return data;
-  }
+  String toRawJson() => json.encode(toJson());
+
+  factory Size.fromJson(Map<String, dynamic> json) => Size(
+    id: json["id"],
+    attribute: json["attribute"],
+    countChilds: json["countChilds"],
+    childs: json["childs"] == null ? [] : List<dynamic>.from(json["childs"]!.map((x) => x)),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "attribute": attribute,
+    "countChilds": countChilds,
+    "childs": childs == null ? [] : List<dynamic>.from(childs!.map((x) => x)),
+  };
 }
 
-class Ratings {
-  int? id;
-  String? avatar;
-  String? name;
-  int? rating;
-  String? review;
-  String? dateForHumans;
+class Galleries {
+  final String? image;
 
-  Ratings(
-      {this.id,
-      this.avatar,
-      this.name,
-      this.rating,
-      this.review,
-      this.dateForHumans});
+  Galleries({
+    this.image,
+  });
 
-  Ratings.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    avatar = json['avatar'];
-    name = json['name'];
-    rating = json['rating'];
-    review = json['review'];
-    dateForHumans = json['dateForHumans'];
-  }
+  factory Galleries.fromRawJson(String str) => Galleries.fromJson(json.decode(str));
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['avatar'] = avatar;
-    data['name'] = name;
-    data['rating'] = rating;
-    data['review'] = review;
-    data['dateForHumans'] = dateForHumans;
-    return data;
-  }
-}
+  String toRawJson() => json.encode(toJson());
 
-class Brand {
-  int? id;
-  String? attribute;
+  factory Galleries.fromJson(Map<String, dynamic> json) => Galleries(
+    image: json["image"],
+  );
 
-  Brand({this.id, this.attribute});
-
-  Brand.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    attribute = json['attribute'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['attribute'] = attribute;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    "image": image,
+  };
 }

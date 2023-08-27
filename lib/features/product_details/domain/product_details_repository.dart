@@ -23,8 +23,7 @@ class ProductDetailsRepository {
             HttpHeaders.authorizationHeader:
                 'Bearer ${HiveHelper.getUserToken()}'
           }));
-      ProductDetailsResponse mProductDetailsResponse =
-          ProductDetailsResponse.fromJson(jsonDecode(response.data));
+      ProductDetailsResponse mProductDetailsResponse = ProductDetailsResponse.fromJson(jsonDecode(response.data));
       if (response.statusCode == 200 && mProductDetailsResponse.data != null) {
         return Right(mProductDetailsResponse.data!.rows!);
       } else {
