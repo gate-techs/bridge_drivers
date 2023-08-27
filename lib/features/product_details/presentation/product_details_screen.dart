@@ -104,7 +104,7 @@ class ProductDetailsScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             vertical: 4.0, horizontal: 14),
                         child: Text(
-                          '${"price".tr} ${state.data.originalPrice.toString()} ${"kwd".tr} ',
+                          '${"price".tr} ${state.data.price.toString()} ${"kwd".tr} ',
                           style: const TextStyle(
                               color: MColors.moveColor,
                               fontWeight: FontWeight.bold,
@@ -220,7 +220,9 @@ class ProductDetailsScreen extends StatelessWidget {
                   ),
                 );
               } else if (state is ProductDetailsError) {
-                return const EmptyDataWidget();
+                return  EmptyDataWidget(onRefreshClicked: (){
+                  mProductDetailsCubit.getProductDetailsData(id);
+                },);
               } else {
                 return const AppLoadingWidget();
               }

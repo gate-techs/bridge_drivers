@@ -23,9 +23,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   Future<void> getProductDetailsData(int id) async {
     try {
       emit(ProductDetailsLoading());
-
-      final mResponse =
-          await mProductDetailsRepository.getProductDetailsData(id);
+      final mResponse = await mProductDetailsRepository.getProductDetailsData(id);
       mResponse.fold((left) async {
         await EasyLoading.dismiss();
         CommonUtils.showToastMessage(left);
@@ -38,12 +36,10 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
         data = right;
         emit(ProductDetailsLoaded(right));
       });
-    } catch (e) {
+    } catch (e,s) {
       await EasyLoading.dismiss();
-
       emit(ProductDetailsError("empty_data".tr));
-
-      Log.e(e.toString());
+      Log.e(s.toString());
     }
   }
 

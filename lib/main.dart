@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +11,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kishk_driver/common_utils/log_utils.dart';
 import 'package:kishk_driver/features/splash/splach_screen.dart';
 import 'package:kishk_driver/helpers/notifications_helper/notification_helper.dart';
-
 import 'di/injection.dart';
 import 'helpers/hive_helper.dart';
 import 'helpers/notifications_helper/firebase_options.dart';
@@ -20,6 +18,7 @@ import 'language/app_language.dart';
 import 'res/app_config.dart';
 import 'res/bloc_observer/bloc_observer.dart';
 import 'res/theme_controller.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -48,6 +47,8 @@ NotificationsHelper mNotificationSettings = NotificationsHelper();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
@@ -70,6 +71,7 @@ void main() async {
   runApp(const MyApp());
 }
 
+
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -80,6 +82,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
+    FlutterNativeSplash.remove();
     mNotificationSettings.registerNotification(context);
     super.initState();
   }
