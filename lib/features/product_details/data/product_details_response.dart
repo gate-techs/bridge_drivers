@@ -61,7 +61,7 @@ class ProductDetailsDataRows {
   final String? discount;
   final int? qty;
   final String? originalPrice;
-  final int? price;
+  final dynamic price;
   final Attributes? attributes;
   final int? avgRating;
   final List<dynamic>? relatedProduct;
