@@ -3,13 +3,17 @@ import 'package:get/get.dart';
 import 'package:kishk_driver/common_utils/common_utils.dart';
 import 'package:kishk_driver/res/m_colors.dart';
 
+import '../../../../common_utils/log_utils.dart';
+
 class ChangeStatusDialog extends StatelessWidget {
   final Function(OrdersStatus) onItemClickedCallBack;
+  final String status;
 
-  const ChangeStatusDialog({super.key, required this.onItemClickedCallBack});
+  const ChangeStatusDialog({super.key, required this.onItemClickedCallBack, required this.status});
 
   @override
   Widget build(BuildContext context) {
+    Log.e(status);
     return Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
@@ -62,27 +66,28 @@ class ChangeStatusDialog extends StatelessWidget {
                           itemCount: mOrdersStatusList.length,
                           itemBuilder: (context, index) => InkWell(
                                 onTap: () {
-                                  Navigator.pop(context);
-                                  onItemClickedCallBack
-                                      .call(mOrdersStatusList[index]);
+                                  if(mOrdersStatusList[index].name.tr!=status) {
+                                    Navigator.pop(context);
+                                    onItemClickedCallBack.call(mOrdersStatusList[index]);
+                                  }
                                 },
                                 child: Container(
                                   padding: const EdgeInsets.all(6),
                                   margin: const EdgeInsets.all(6),
                                   decoration: BoxDecoration(
+                                    color: mOrdersStatusList[index].name.tr!=status?Colors.white:MColors.colorPrimary,
                                       borderRadius: BorderRadius.circular(12),
-                                      border:
-                                          Border.all(color: Colors.black38)),
+                                      border: Border.all(color: Colors.black38)),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Center(
                                         child: Text(
                                             mOrdersStatusList[index].name.tr,
-                                            style: const TextStyle(
+                                            style: TextStyle(
                                                 height: 2,
                                                 fontWeight: FontWeight.w600,
-                                                color: MColors.colorPrimary),
+                                              color: mOrdersStatusList[index].name.tr!=status?MColors.colorPrimary:Colors.white,),
                                             textAlign: TextAlign.center),
                                       ),
                                     ],

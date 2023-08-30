@@ -184,8 +184,8 @@ enum OrdersStatus {
 }
 
 List<OrdersStatus> mOrdersStatusList = [
-  OrdersStatus.news,
-  OrdersStatus.pending,
+  // OrdersStatus.news,
+  // OrdersStatus.pending,
   OrdersStatus.shipping,
   OrdersStatus.completed,
   OrdersStatus.rejected,

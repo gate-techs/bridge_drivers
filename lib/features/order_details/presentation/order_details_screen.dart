@@ -44,22 +44,23 @@ class OrderDetailsScreen extends StatelessWidget {
                       color: MColors.colorPrimary,
                     )),
                 actions: [
+                  state.data.row?.statusName?.toLowerCase().tr != 'completed'.tr ? state.data.row?.statusName?.toLowerCase().tr != 'rejected'.tr?
                   InkWell(
                       onTap: () {
                         showDialog(
                             context: context,
                             builder: (ctx) => ChangeStatusDialog(
-                                  onItemClickedCallBack: (OrdersStatus status) {
-                                    mOrderDetailsCubit.updateOrderStatus(
-                                        id, status);
-                                  },
-                                ));
+                              onItemClickedCallBack: (OrdersStatus status) {
+                                mOrderDetailsCubit.updateOrderStatus(id, status);
+                              },
+                               status: state.data.row?.statusName?.toLowerCase().tr??'',
+                            ));
                       },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: Icon(Icons.delivery_dining_outlined,
                             size: 36, color: MColors.colorPrimary),
-                      )),
+                      )): Container(): Container()  ,
                 ],
               ),
               body: Column(
@@ -78,8 +79,8 @@ class OrderDetailsScreen extends StatelessWidget {
                         ),
                         Text(
                           ' : ${state.data.row?.statusName?.toLowerCase().tr ?? ''}',
-                          style:  TextStyle(
-                            color:CommonUtils.getStatusColorFromId(state.data.row?.statusId ?? '0'),
+                          style:  const TextStyle(
+                            color:Colors.red,
                             fontWeight: FontWeight.normal,
                             fontSize: 16,
                           ),

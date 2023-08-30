@@ -131,7 +131,7 @@ Map<String, String> ar = {
   "news": "جديد",
   "pending": "قيد الانتظار",
   "rejected": "لم يتم التوصيل",
-  "shipping": "جاي التوصيل",
+  "shipping": "جاري التوصيل",
   "completed": "تم التوصيل",
   "results": "من النتائج",
   "status": "الحالة",
