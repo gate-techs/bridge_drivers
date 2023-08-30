@@ -130,34 +130,31 @@ class ProductDetailsScreen extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 30,
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount:
                                     state.data.attributes?.colors?.length,
                                 itemBuilder: (context, index) => Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 8.0),
-                                  child: Text(
-                                    state.data.attributes?.colors?[index]
-                                            .attribute
-                                            ?.toUpperCase() ??
-                                        '',
-                                    style: TextStyle(
-                                        color: (state.data.attributes
-                                                        ?.colors?[index].hex !=
-                                                    "#ffffff" &&
-                                                state.data.attributes
-                                                        ?.colors?[index].hex !=
-                                                    "#FFFFFF")
+                                      horizontal: 2.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color:  CommonUtils.getColorFromHex(
+                                        state.data.attributes?.colors?[index].hex ??"#6A1580"),
+                                        borderRadius: const BorderRadius.all(Radius.circular(8)),
+                                        border: Border.all(color: (state.data.attributes?.colors?[index].hex != "#ffffff" && state.data.attributes?.colors?[index].hex != "#FFFFFF")
                                             ? CommonUtils.getColorFromHex(state
-                                                    .data
-                                                    .attributes
-                                                    ?.colors?[index]
-                                                    .hex ??
-                                                "#6A1580")
-                                            : MColors.moveColor,
-                                        fontFamily: 'Tajawal'),
+                                            .data
+                                            .attributes
+                                            ?.colors?[index]
+                                            .hex ??
+                                            "#6A1580")
+                                            : Colors.black,width: 4)),
+                                    width: 30,
+                                    height: 30,
+                                    margin: const EdgeInsets.all(2.0),
+
                                   ),
                                 ),
                               ),
