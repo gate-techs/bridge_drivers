@@ -64,6 +64,31 @@ class OrderDetailsScreen extends StatelessWidget {
               ),
               body: Column(
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Row(
+                      children: [
+                        Text(
+                          "orderStatus".tr,
+                          style: const TextStyle(
+                            color: Colors.black87,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text(
+                          ' : ${state.data.row?.statusName?.toLowerCase().tr ?? ''}',
+                          style:  TextStyle(
+                            color:CommonUtils.getStatusColorFromId(state.data.row?.statusId ?? '0'),
+                            fontWeight: FontWeight.normal,
+                            fontSize: 16,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                      ],
+                    ),
+                  ),
                   ExpansionTile(title: Text('clientInfo'.tr), children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),

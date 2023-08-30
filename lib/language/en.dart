@@ -140,4 +140,5 @@ Map<String, String> en = {
   "address": "Address",
   "empty_data": "Sorry No Data Found.",
   "pull_to_refresh": "Pull To Refresh.",
+  "orderStatus": "Order Status",
 };

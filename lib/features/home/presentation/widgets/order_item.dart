@@ -44,12 +44,12 @@ class OrderListItem extends StatelessWidget {
                       child: Container(
                         color: CommonUtils.getStatusColorFromId(
                             data.statusId ?? '0'),
-                        width: 80,
+                        width: 100,
                         height: 30,
                         alignment: Alignment.center,
                         child: Center(
                           child: Text(
-                            data.statusName ?? '',
+                            data.statusName?.toLowerCase().tr ?? '',
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: Colors.white,

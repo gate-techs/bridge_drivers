@@ -140,4 +140,5 @@ Map<String, String> ar = {
   "address": "العنوان",
   "empty_data": "عذراً لا يوجد بيانات.",
   "pull_to_refresh": "اسحب للتحديث.",
+  "orderStatus": "حالة الطلب",
 };
