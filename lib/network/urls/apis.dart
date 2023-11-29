@@ -1,24 +1,24 @@
 import 'package:flutter/foundation.dart';
- class Apis {
+
+class Apis {
   static const String urlScheme = 'https';
 
-  static const String releaseTest = "bridgeskw.com";
-  static const String releaseLive = "bridgeskw.com";
+  static const String releaseTest = "api.bridgeskw.com";
+  static const String releaseLive = "api.bridgeskw.com";
 
   static const String baseUrl =
       "$urlScheme://${kDebugMode ? releaseTest : releaseLive}/api/v1/";
 
-  static const String doLoginApiCall = "login";
+  static const String doLoginApiCall = "backend/auth/login";
   static const String sendFcmToken = "fcm-token";
   static const String getProfileData = "me";
   static const String doLogoutApiCall = "logout";
+
   static const String doContactUsApiCall = "contacts";
   static const String getAboutApiCall = "pages/aboutus";
 
-  static const String getAllInvoicesData = "invoices";
-  static const String getAllUsersData = "users";
-  static const String getNotificationsData = "myNotifications";
-  static const String getBadgeCountData = "badgeCount";
+  static const String getNotificationsData = "notifications";
+  static const String getBadgeCountData = "notifications/badgeCount";
 
   static const String getTotalCardsData = "reports/total-cards";
 
@@ -30,33 +30,14 @@ import 'package:flutter/foundation.dart';
   static const String doUpdateProfileApiCall = "auth/update-profile";
   static const String doRegisterApiCall = "register";
 
-  static const String getOrdersDataApiCall = "myOrders";
+  static const String getOrdersDataApiCall = "driver/recentOrders";
 
-  static String getOrderDetailsDataApiCall(id) => "myOrders/$id";
+  static String getOrderDetailsDataApiCall(id) => "showOrder/$id";
 
-  static String updateOrderStatusApiCall(id) => "myOrders/$id/change-status";
+  static String updateOrderStatusApiCall(id) =>
+      "driver/recentOrders/$id/change-status";
 
   static String getProductDetailsDataApiCall(id) => "products/$id";
 
-
-  static const String getOrdersCountApiCall = "myOrders/badgeCount";
-
-  static String getUserDetailsData(id) => "$getAllUsersData/$id";
-
-  static String deleteUserDetailsData(id) => "$getAllUsersData/$id";
-
-  static String getInvoiceDetailsData(id) => "$getAllInvoicesData/$id";
-
-  static String uploadReturnedInvoice(id) =>
-      "$getAllInvoicesData/returned-voucher/$id/upload";
-
-  static const String getClassificationsData = "classifications";
-  static const String getVendorServicePlacesData = "VendorServicePlaces";
-  static const String getVendorServicesData = "services";
-  static const String getWorkingHoursData = "working/hours";
-  static const String getVendorsFieldsData = "vendors/fields";
-  static const String getVehiclesCategoryData = "vehicle-category";
-
-  static String getMedicalSubCategoryData(dynamic id) =>
-      "get/sub/medical/activity/$id";
+  static const String getOrdersCountApiCall = "driver/recentOrders";
 }

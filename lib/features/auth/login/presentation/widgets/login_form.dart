@@ -16,7 +16,6 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return BlocProvider<LoginCubit>(
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(
@@ -34,7 +33,6 @@ class LoginForm extends StatelessWidget {
         },
         builder: (BuildContext context, LoginState state) {
           LoginCubit mLoginCubit = LoginCubit().get(context);
-
           return Scaffold(
             backgroundColor: Colors.transparent,
             body: Container(
@@ -46,8 +44,8 @@ class LoginForm extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset("assets/logo.png",
-                          height: size.height * .4, fit: BoxFit.cover),
-
+                          height: MediaQuery.sizeOf(context).height * .4,
+                          fit: BoxFit.cover),
                       Text(
                         "welcome_back".tr,
                         style: const TextStyle(
@@ -64,7 +62,8 @@ class LoginForm extends StatelessWidget {
                             validator: (value) =>
                                 isValidEmail(context, value ?? ''),
                             decoration: MStyles.textFieldDecoration(
-                                "user_name".tr, "assets/svg/ic_active_profile.svg"),
+                                "user_name".tr,
+                                "assets/svg/ic_active_profile.svg"),
                             maxLines: 1,
                             style: const TextStyle(
                               fontWeight: FontWeight.normal,

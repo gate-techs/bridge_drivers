@@ -9,6 +9,7 @@ class AuthInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options.headers["Accept"] = "application/json";
+    options.headers['appId'] = 'uCwJMa1md7XFhVZ';
     super.onRequest(options, handler);
   }
 }
@@ -71,8 +72,6 @@ class LoggingInterceptor extends Interceptor {
 
   void handleStatus(
       Response<dynamic> response, ResponseInterceptorHandler handler) {
-    switch (response.statusCode) {
-
-    }
+    switch (response.statusCode) {}
   }
 }
