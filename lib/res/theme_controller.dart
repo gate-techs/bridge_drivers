@@ -22,7 +22,7 @@ class ThemeController extends GetxController {
           statusBarColor: MColors.darkColor,
           statusBarIconBrightness: Brightness.light));
     } else {
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      SystemChrome.setSystemUIOverlayStyle( SystemUiOverlayStyle(
           statusBarColor: MColors.colorPrimary,
           statusBarIconBrightness: Brightness.dark));
     }
@@ -203,7 +203,7 @@ class ThemeController extends GetxController {
           statusBarColor: MColors.darkColor,
           statusBarIconBrightness: Brightness.light));
     } else {
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      SystemChrome.setSystemUIOverlayStyle( SystemUiOverlayStyle(
           statusBarColor: MColors.colorPrimary,
           statusBarIconBrightness: Brightness.dark));
     }

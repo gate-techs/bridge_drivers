@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:kishk_driver/features/auth/login/data/auth_data_entity.dart';
 
 import '../features/auth/login/presentation/view/login_screen.dart';
+import '../features/splash/data/vendor_entity.dart';
 
 class HiveHelper {
   static ValueNotifier<Locale> mobileLanguage =
@@ -16,6 +17,7 @@ class HiveHelper {
   static const String keyAppOnBOARDING = "keyAppOnBOARDING";
   static const String keyIsDarkMode = 'keyIsDarkMode';
   static const String keyAppLogin = "keyAppLogin";
+  static const String boxKeyVendorApp = "boxKeyVendorApp";
 
 
   static void setOnBoardingState(bool state) {
@@ -87,5 +89,13 @@ class HiveHelper {
   static void setUserData(AuthDataData authDataData) {
     Hive.box(HiveHelper.boxKeyUserData)
         .put(HiveHelper.boxKeyUserData, authDataData.toJson());
+  }
+
+  static VendorData? getVendorApp() {
+    return Hive.box(boxKeyVendorApp).isNotEmpty
+        ? VendorData.fromJson(
+      Hive.box(boxKeyVendorApp).get(boxKeyVendorApp),
+    )
+        : null;
   }
 }

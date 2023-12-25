@@ -53,7 +53,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     try {
       await EasyLoading.show(
           status: 'loading'.tr,
-          indicator: const SpinKitFadingGrid(
+          indicator:  SpinKitFadingGrid(
             color: MColors.colorPrimary,
             size: 50,
           ));

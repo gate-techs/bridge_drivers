@@ -1,12 +1,11 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:kishk_driver/di/injection.dart';
-import 'package:kishk_driver/network/dio/enum.dart';
-import 'package:kishk_driver/network/dio/network_call.dart';
-import 'package:kishk_driver/network/urls/apis.dart';
-
- import '../hive_helper.dart';
-import 'notification_helper.dart';
+import '../../di/injection.dart';
+import '../../network/dio/enum.dart';
+import '../../network/dio/network_call.dart';
+import '../../network/urls/apis.dart';
+import '../hive_helper.dart';
+import 'notifications_helper.dart';
 
 class SendFcmRepository {
   Future<void> sendFcmToken() async {
@@ -17,7 +16,7 @@ class SendFcmRepository {
         headers: {
           'Content-Type': 'application/json',
           HttpHeaders.authorizationHeader:
-          'Bearer ${HiveHelper.getUserToken()}',
+              'Bearer ${HiveHelper.getUserToken()}',
         },
       ),
       params: {
@@ -34,7 +33,7 @@ class SendFcmRepository {
         headers: {
           'Content-Type': 'application/json',
           HttpHeaders.authorizationHeader:
-          'Bearer ${HiveHelper.getUserToken()}',
+              'Bearer ${HiveHelper.getUserToken()}',
         },
       ),
       params: {
@@ -43,4 +42,3 @@ class SendFcmRepository {
     );
   }
 }
-

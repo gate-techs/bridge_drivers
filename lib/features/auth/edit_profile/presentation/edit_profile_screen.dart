@@ -38,7 +38,7 @@ class EditProfileScreen extends StatelessWidget {
              appBar: AppBar(
               title: Text(
                 "my_profile".tr,
-                style: const TextStyle(
+                style:  TextStyle(
                     color: MColors.colorPrimary,
                     fontFamily: 'Tajawal'),
               ),
@@ -47,7 +47,7 @@ class EditProfileScreen extends StatelessWidget {
               leading: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: IconButton(
-                  icon: const Icon(Icons.arrow_back_ios,
+                  icon:  Icon(Icons.arrow_back_ios,
                       color: MColors.colorPrimary),
                   onPressed: () =>
                       Navigator.of(context, rootNavigator: true).pop(),
@@ -108,7 +108,7 @@ class EditProfileScreen extends StatelessWidget {
                               child: TextFormField(
                                 controller: mEditProfileCubit.mNameController,
                                 decoration:
-                                    MStyles.textFieldDecoration("user_name".tr),
+                                    MStyles.textFieldStyle("user_name".tr,null,null),
                                 textInputAction: TextInputAction.next,
                                 onChanged: (value) {
                                   // name = value;
@@ -126,7 +126,7 @@ class EditProfileScreen extends StatelessWidget {
                               child: TextFormField(
                                 controller: mEditProfileCubit.mEmailController,
                                 decoration:
-                                    MStyles.textFieldDecoration("email".tr),
+                                    MStyles.textFieldStyle("email".tr,null,null),
                                 textInputAction: TextInputAction.next,
                                 onChanged: (value) {
                                   // email = value;
@@ -142,7 +142,7 @@ class EditProfileScreen extends StatelessWidget {
                             child: TextFormField(
                               controller: mEditProfileCubit.mPhoneController,
                               decoration:
-                                  MStyles.textFieldDecoration("phone".tr),
+                                  MStyles.textFieldStyle("phone".tr,null,null),
                               keyboardType: TextInputType.number,
                               textInputAction: TextInputAction.next,
                               onChanged: (value) {
@@ -167,7 +167,7 @@ class EditProfileScreen extends StatelessWidget {
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all<Color>(
-                                              MColors.greenColor),
+                                              MColors.colorPrimary),
                                       shape: MaterialStateProperty.all<
                                               RoundedRectangleBorder>(
                                           RoundedRectangleBorder(

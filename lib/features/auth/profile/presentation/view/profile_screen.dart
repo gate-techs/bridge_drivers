@@ -22,7 +22,7 @@ class ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('my_profile'.tr,
-            style: const TextStyle(
+            style:  TextStyle(
                 color: MColors.colorPrimary, fontFamily: 'Tajawal')),
         centerTitle: true,
       ),

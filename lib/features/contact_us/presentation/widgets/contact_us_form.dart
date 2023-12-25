@@ -70,7 +70,7 @@ class ContactUsForm extends StatelessWidget {
                         height: 50,
                         child: TextFormField(
                           controller: contactUsCubit.email,
-                          decoration: MStyles.textFieldDecoration("email".tr),
+                          decoration: MStyles.textFieldStyle("email".tr, null, null),
                           validator: (value) => value!.isEmpty
                               ? "empty_email".tr
                               : isValidEmail(context, userEmail),
@@ -85,7 +85,7 @@ class ContactUsForm extends StatelessWidget {
                         maxLines: 6,
                         controller: contactUsCubit.message,
                         decoration:
-                            MStyles.textFieldDecoration("your_message".tr),
+                            MStyles.textFieldStyle("your_message".tr,null,null),
                         validator: (value) =>
                             value!.isEmpty ? "enter_message".tr : null,
                       ),
@@ -101,7 +101,7 @@ class ContactUsForm extends StatelessWidget {
                         child: ElevatedButton(
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  MColors.greenColor),
+                                  MColors.colorPrimary),
                               shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
                                   RoundedRectangleBorder(

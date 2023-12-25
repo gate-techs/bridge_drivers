@@ -1,34 +1,37 @@
 import 'package:flutter/material.dart';
 
+import '../helpers/hive_helper.dart';
+
 class MColors {
-  static const moveColor = Color(0xFF6A1580);
-  static const blueColor = Color(0xFF6A1580);
-  static const greenColor = Color(0xFF6A1580);
-  static const sectionBg = Color(0xFFf1f1f1);
-  static const inputColor = Color(0xFFF0f7f8);
-  static const appInputColor = Color(0xffececec) ;
 
-  static const yellow = Color(0xFFFFE57F);
 
-//static Bottom Bar gradient!
-  static const firstColor = Color(0xFF6A1580);
-  static const secondColor = Color(0xFF005d81);
-  static const thirdColor = Color(0xFF3b0042);
 
-  Color hexToColor(String code) {
-    return Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
-  }
 
-  static const Color colorPrimary = Color(0xFF6A1580);
-  static const Color colorPrimaryLight = Color(0xff73c8ff);
-  static const Color colorPrimaryDark = Color(0xff0069a1);
 
-  static const Color colorSecondary = Color(0xffb6aeae);
-  static const Color colorSecondaryLight = Color(0xffe8e0e0);
-  static const Color colorSecondaryDark = Color(0xff867f7f);
+  // Color(0xff76974C);
+  static Color colorPrimary =Color(int.parse(HiveHelper.getVendorApp()?.primaryColor??'0xFF6a0c80'));
 
-  static const Color accentColor1 = Color(0xfffaa115);
+  // Color(0xffE8F0DE);
+  static  Color colorPrimaryLight = Color(int.parse(HiveHelper.getVendorApp()?.colorPrimaryLight??'0xffe7bcfa'));
+
+  // Color(0xff76974C);
+  static  Color colorPrimaryDark = Color(int.parse(HiveHelper.getVendorApp()?.colorPrimaryDark??'0xFF3b0042'));
+
+  //Color(0xffb6aeae);
+  static  Color colorSecondary = Color(int.parse(HiveHelper.getVendorApp()?.colorSecondary??'0xffb6aeae'));
+
+  //Color(0xffe8e0e0);
+  static  Color colorSecondaryLight = Color(int.parse(HiveHelper.getVendorApp()?.colorSecondaryLight??'0xffe8e0e0'));
+
+  // Color(0xff867f7f);
+  static  Color colorSecondaryDark = Color(int.parse(HiveHelper.getVendorApp()?.colorSecondaryDark??'0xff867f7f'));
+
+  //0xfffafafa
+  static const Color veryLightGray = Color(0xfffafafa);
+
+  static const Color accentColor1 = Color(0xff0e1a34);
   static const darkColor = accentColor1;
+  static const lightOrange = Color(0xFFFAA33C);
 
   static List<Color> gradientColors = [
     colorPrimary,
@@ -36,20 +39,24 @@ class MColors {
     colorPrimaryDark,
   ];
   static const MaterialColor colorPrimarySwatch = MaterialColor(
-    0xFF6A1580,
+    0xff3797d2,
     {
-      50: Color(0xFF6A1580),
-      100: Color(0xFF6A1580),
-      200: Color(0xFF6A1580),
-      300: Color(0xFF6A1580),
-      400: Color(0xFF6A1580),
-      500: Color(0xFF6A1580),
-      600: Color(0xFF6A1580),
-      700: Color(0xFF6A1580),
-      800: Color(0xFF6A1580),
-      900: Color(0xFF6A1580),
+      50: Color(0xff3797d2),
+      100: Color(0xff3797d2),
+      200: Color(0xff3797d2),
+      300: Color(0xff3797d2),
+      400: Color(0xff3797d2),
+      500: Color(0xff3797d2),
+      600: Color(0xff3797d2),
+      700: Color(0xff3797d2),
+      800: Color(0xff3797d2),
+      900: Color(0xff3797d2),
     },
   );
+
+  static const appInputColor = Color(0xffececec) ;
+
+  static const blueColor = Colors.grey;
 
   static const blue2Color = Color.fromRGBO(28, 127, 187, 1);
 
@@ -59,11 +66,25 @@ class MColors {
 
   static const blue3Color = Color.fromRGBO(102, 205, 170, 1);
 
+  static const imageBg = Color.fromRGBO(250, 250, 250, 1);
+
+  static const pendingColor = Color.fromRGBO(255, 248, 236, 1);
+  static const cancelColor = Color.fromRGBO(255, 236, 236, 1.0);
+  static const pendingTextColor = Color.fromRGBO(225, 162, 0, 1);
+
+
+  static const deliveredColor = Color.fromRGBO(232, 240, 222, 1);
+  static const deliveredTextColor = Color.fromRGBO(4, 177, 85, 1);
+
   static Color screensBackgroundColor = Colors.white.withOpacity(0.99);
 
   static const Color colorConfirmedStatues = Color(0xFF4044AA);
 
   static const Color colorProcessingDeliveredStatues = Color(0xFF40AA54);
+
+  static const Color colorSideDetails = Color.fromRGBO(232, 240, 222, 1);
+
+  static const Color colorSideDetailsStyle2 = Color.fromRGBO(118, 151, 76, 0.06);
 
   static const Color colorShippedStatues = Color(0xFF0066cc);
 
@@ -72,12 +93,4 @@ class MColors {
   static const Color colorProcessingStatuesLine = Color(0xFFECECEC);
 
   static const Color profileTextColors = Color(0xFF6C7B8A);
-
-  static const Color lightGrey = Color(0xffE5E5E5);
-
-  static const Color darkGrey = Color(0xff1D2D3A);
-
-  static const Color greyShape = Color(0xffF5F6F8);
-
-  static const Color inputBGColor = Color(0xfffafafa);
 }

@@ -73,6 +73,11 @@ dependencies:
   hive: ^2.2.3
 
   permission_handler: ^10.2.0
+  cherry_toast: ^1.3.1
+  intl_phone_number_input: ^0.7.3+1
+  lottie: ^2.6.0
+  salomon_bottom_bar: ^3.3.2
+  flutter_tabler_icons: ^1.2.0
 
   #  location: ^4.4.0
   geolocator: ^9.0.1
@@ -117,20 +122,26 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/icons/
-    - assets/background/
-    - assets/intro/
     - assets/images/
     - assets/svg/
-    - assets/
+    - assets/gif/
+    - assets/lottie/
+
 
   fonts:
-    - family: Tajawal
+    - family: Manrope
       fonts:
-        - asset: assets/fonts/Tajawal/Tajawal-Light.ttf
-        - asset: assets/fonts/Tajawal/Tajawal-Medium.ttf
-        - asset: assets/fonts/Tajawal/Tajawal-Regular.ttf
-        - asset: assets/fonts/Tajawal/Tajawal-Bold.ttf
+        - asset: assets/fonts/Manrope/Manrope-Light.ttf
+        - asset: assets/fonts/Manrope/Manrope-Medium.ttf
+        - asset: assets/fonts/Manrope/Manrope-Regular.ttf
+        - asset: assets/fonts/Manrope/Manrope-Bold.ttf
+
+    - family: NotoKufiArabic
+      fonts:
+        - asset: assets/fonts/NotoKufiArabic/NotoKufiArabic-Light.ttf
+        - asset: assets/fonts/NotoKufiArabic/NotoKufiArabic-Medium.ttf
+        - asset: assets/fonts/NotoKufiArabic/NotoKufiArabic-Regular.ttf
+        - asset: assets/fonts/NotoKufiArabic/NotoKufiArabic-Bold.ttf
 
 flutter_native_splash:
   color: "#6A1580"

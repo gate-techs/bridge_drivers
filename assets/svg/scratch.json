@@ -1,0 +1,82 @@
+{
+  "data": {
+    "rows":
+      {
+        "id": "eyJpdiI6IlN0ZjZwQm5CcE9PazdBSjI1S2UxeUE9PSIsInZhbHVlIjoiZ25QWkNHZnZkakdXbVF4a1o5cDNsUT09IiwibWFjIjoiOWE5Nzc0MDA0ZGVmYzcyYTgyYjFjYWUxOWM0MWVkZTE4ODU2OTIyZDFmZTU4ODZhYzEwN2RmMWM4NmNlNjg3NCIsInRhZyI6IiJ9",
+        "appName": "E-Commerce-1",
+        "androidPackageName": "com.amr.imallsApp",
+        "iosBundle": "com.amr.imallsApp",
+        "appCurrency": "KWD",
+        "appLogo": {
+          "url": "https://api-ecommerce.mazadak.net/uploads/products/default.png"
+        },
+        "primaryColor": "0xff76974C",
+        "colorPrimaryLight": "0xffE8F0DE",
+        "colorPrimaryDark": "0xff76974C",
+        "colorSecondary": "0xffb6aeae",
+        "colorSecondaryLight": "0xffe8e0e0",
+        "colorSecondaryDark": "0xff867f7f",
+        "onboarding": [
+          {
+            "title": "We provide high quality Plants for you",
+            "onboardingImage": {
+              "url": "https://api-ecommerce.mazadak.net/uploads/products/default.png"
+            }
+          },
+          {
+            "title": "We provide high quality Plants for you",
+            "onboardingImage": {
+              "url": "https://api-ecommerce.mazadak.net/uploads/products/default.png"
+            }
+          },
+          {
+            "title": "We provide high quality Plants for you",
+            "onboardingImage": {
+              "url": "https://api-ecommerce.mazadak.net/uploads/products/default.png"
+            }
+          }
+        ],
+        "Style": {
+          "homeStyle": {
+            "homeStyle": "style1",
+            "homeStructure": [
+              "slider",
+              "bestSelling",
+              "mostRecent",
+              "popular"
+            ],
+            "HomeStructureStyle": [
+              {
+                "style": "bestSelling",
+                "productItemStyle": "style1"
+              },
+              {
+                "style": "mostRecent",
+                "productItemStyle": "style2"
+              },
+              {
+                "style": "popular",
+                "productItemStyle": "style3"
+              }
+            ]
+          },
+          "productDetailsStyle": {
+            "style": "style1",
+            "relatedProductItemStyle": "style1"
+          },
+          "cartStyle": {
+            "style": "style1",
+            "productItemStyle": "style1"
+          },
+          "categoriesStyle": {
+            "style": "style1",
+            "categoryItemStyle": "style1"
+          },
+          "offersStyle": {
+            "style": "style1",
+            "offerItemStyle": "style1"
+          }
+        }
+      }
+  }
+}

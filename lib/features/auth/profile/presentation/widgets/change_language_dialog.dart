@@ -31,12 +31,12 @@ class _LanguageDialogState extends State<LanguageDialog> {
                 onTap: () => Navigator.of(context, rootNavigator: true).pop(),
                 child: Container(
                   alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
+                  decoration:  BoxDecoration(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(10),
                       bottomRight: Radius.circular(30),
                     ),
-                    color: MColors.greenColor,
+                    color: MColors.colorPrimary,
                   ),
                   width: 60,
                   height: 50,
@@ -104,7 +104,7 @@ class _LanguageDialogState extends State<LanguageDialog> {
                   children: [
                     ElevatedButton(
                       style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(MColors.greenColor),
+                          backgroundColor: MaterialStateProperty.all<Color>(MColors.colorPrimary),
                           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -129,7 +129,7 @@ class _LanguageDialogState extends State<LanguageDialog> {
                     const SizedBox(width: 10),
                     ElevatedButton(
                       style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(MColors.greenColor),
+                          backgroundColor: MaterialStateProperty.all<Color>(MColors.colorPrimary),
                           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),

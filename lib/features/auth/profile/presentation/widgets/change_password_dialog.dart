@@ -41,12 +41,12 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                   onTap: () => Navigator.of(context, rootNavigator: true).pop(),
                   child: Container(
                     alignment: Alignment.center,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
+                    decoration:  BoxDecoration(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10),
                         bottomRight: Radius.circular(30),
                       ),
-                      color: MColors.greenColor,
+                      color: MColors.colorPrimary,
                     ),
                     width: 60,
                     height: 50,
@@ -119,8 +119,8 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                           controller: newPassController,
                           obscureText: true,
                           textInputAction: TextInputAction.next,
-                          decoration: MStyles.textFieldDecoration(
-                              "password".tr, "assets/svg/ic_lock.svg"),
+                          decoration: MStyles.textFieldStyle(
+                              "password".tr, null,null),
                           validator: (value) {
                             if (value != null && value.isEmpty) {
                               return "fieldRequired".trParams({
@@ -143,9 +143,9 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                         controller: newPassConfirmController,
                         obscureText: true,
                         textInputAction: TextInputAction.next,
-                        decoration: MStyles.textFieldDecoration(
-                            "confirm_password".tr,
-                            "assets/svg/ic_lock.svg"),
+                        decoration: MStyles.textFieldStyle(
+                            "confirm_password".tr,null,null
+                            ),
                         validator: (value) {
                           if (value != null && value.isEmpty) {
                             return "fieldRequired".trParams({
@@ -170,7 +170,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                         child: ElevatedButton(
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  MColors.greenColor),
+                                  MColors.colorPrimary),
                               shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
