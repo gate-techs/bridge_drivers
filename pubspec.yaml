@@ -86,8 +86,11 @@ dependencies:
   firebase_messaging: ^14.1.0
   firebase_core: ^2.10.0
   firebase_messaging_platform_interface: ^4.2.16
-  firebase_remote_config: ^4.3.8
-  flutter_local_notifications: ^13.0.0
+  flutter_local_notifications: ^14.0.0
+  syncfusion_flutter_charts: ^23.1.36
+  firebase_dynamic_links: ^5.4.2
+  share_plus: ^7.2.1
+  firebase_remote_config: ^4.3.4
 
   internet_connection_checker: ^1.0.0+1
   flutter_screenutil: ^5.8.4
