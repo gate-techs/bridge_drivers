@@ -42,8 +42,7 @@ class OrderListItem extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Container(
-                        color: CommonUtils.getStatusColorFromId(
-                            data.statusId ?? '0'),
+                        // color: CommonUtils.getStatusColorFromId(data.statusId ?? '0'),
                         width: 100,
                         height: 30,
                         alignment: Alignment.center,

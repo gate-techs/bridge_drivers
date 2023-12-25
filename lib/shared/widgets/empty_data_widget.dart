@@ -29,7 +29,7 @@ class EmptyDataWidget extends StatelessWidget {
               Gaps.vGap16,
               Text(
                 'pull_to_refresh'.tr,
-                style: const TextStyle(
+                style:  TextStyle(
                     color: MColors.colorPrimary,
                     fontWeight: FontWeight.bold,
                     fontSize: 18),

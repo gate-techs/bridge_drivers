@@ -7,12 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart' as get_x;
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kishk_driver/common_utils/log_utils.dart';
-import 'package:kishk_driver/features/splash/splach_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'country_code/controller/country_code_cubit.dart';
 import 'di/injection.dart';
+import 'features/splash/presentaion/cubit/splash_cubit.dart';
+import 'features/splash/presentaion/splash_screen.dart';
 import 'firebase_options.dart';
 import 'helpers/hive_helper.dart';
 import 'helpers/notifications_helper/notifications_helper.dart';
@@ -120,7 +123,7 @@ class _MyAppState extends State<MyApp> {
                     AppConfig.responsiveWrapperBuilder(context, widget),
               ),
               locale: Locale(HiveHelper.getAppLanguage()),
-              translations: Languages(),
+              translations: AppLanguage(),
               fallbackLocale: Locale(HiveHelper.getAppLanguage()),
               supportedLocales: const <Locale>[
                 Locale.fromSubtags(languageCode: 'en'),

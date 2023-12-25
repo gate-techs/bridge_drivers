@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                             Text(
                               '${'welcome'.tr} ${HiveHelper.getUserData()?.userData?.username ?? ''}',
                               style: const TextStyle(
-                                  fontSize: 18, color: MColors.darkGrey),
+                                  fontSize: 18, color: MColors.veryLightGray),
                             ),
                             const SizedBox(
                               width: 5,

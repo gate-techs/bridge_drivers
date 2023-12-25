@@ -1,19 +1,14 @@
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
-import 'package:e_commerce_vendor/features/main_screens/orders/presentation/orders_search_screen.dart';
-import 'package:e_commerce_vendor/features/main_screens/profile/presentation/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import '../../CommonUtils/image_utils.dart';
+import '../../common_utils/image_utils.dart';
 import '../../events/bus_events.dart';
 import '../../helpers/hive_helper.dart';
-import '../main_screens/brands/presentation/brands_search_screen.dart';
-import '../main_screens/offers/presentation/offers_search_screen.dart';
-import '../main_screens/products/presentation/products_search_screen.dart';
-import '../notifications_screen/persentation/notifications_screen.dart';
-import '../user/login/presentation/login_screen.dart';
+import '../auth/login/presentation/view/login_screen.dart';
+import '../notifications/presentation/notifications_screen.dart';
 import 'cubit/main_cubit.dart';
 import 'domain/notifications_badge_count_repository.dart';
 
@@ -103,36 +98,36 @@ void initState() {
                   ),
                 ),
               ),
-              actions: [
-                InkWell(
-                  onTap: (){
-                      if(mMainCubit.currentIndex == 0){
-                        Get.to(const ProductsSearchScreen());
-                      }else if(mMainCubit.currentIndex == 1){
-                        Get.to(const BrandsSearchScreen());
-                      }else if(mMainCubit.currentIndex == 2){
-                        Get.to(const ProductsSearchScreen());
-                      }else if(mMainCubit.currentIndex == 3){
-                        Get.to(const OffersSearchScreen());
-                      }else if(mMainCubit.currentIndex == 4){
-                        Get.to(const OrdersSearchScreen());
-                      }
-                    },
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Icon(TablerIcons.search, color:Colors.black),
-                  ),
-                ),
-                InkWell(
-                  onTap: (){
-                    Get.to(const ProfileScreen());
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Icon(TablerIcons.settings, color:Colors.black),
-                  ),
-                ),
-              ],
+              // actions: [
+              //   InkWell(
+              //     onTap: (){
+              //         if(mMainCubit.currentIndex == 0){
+              //           Get.to(const ProductsSearchScreen());
+              //         }else if(mMainCubit.currentIndex == 1){
+              //           Get.to(const BrandsSearchScreen());
+              //         }else if(mMainCubit.currentIndex == 2){
+              //           Get.to(const ProductsSearchScreen());
+              //         }else if(mMainCubit.currentIndex == 3){
+              //           Get.to(const OffersSearchScreen());
+              //         }else if(mMainCubit.currentIndex == 4){
+              //           Get.to(const OrdersSearchScreen());
+              //         }
+              //       },
+              //     child: const Padding(
+              //       padding: EdgeInsets.symmetric(horizontal: 8.0),
+              //       child: Icon(TablerIcons.search, color:Colors.black),
+              //     ),
+              //   ),
+              //   InkWell(
+              //     onTap: (){
+              //       Get.to(const ProfileScreen());
+              //     },
+              //     child: const Padding(
+              //       padding: EdgeInsets.symmetric(horizontal: 8.0),
+              //       child: Icon(TablerIcons.settings, color:Colors.black),
+              //     ),
+              //   ),
+              // ],
               centerTitle: false,
 
               // bottom: PreferredSize(

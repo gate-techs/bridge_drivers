@@ -81,7 +81,7 @@ class _FilterRowState extends State<FilterRow> {
       children: [
         Text(
           widget.filterName,
-          style: const TextStyle(fontSize: 15, color: MColors.colorPrimary),
+          style:  TextStyle(fontSize: 15, color: MColors.colorPrimary),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 15.0),
@@ -96,8 +96,8 @@ class _FilterRowState extends State<FilterRow> {
               child: DropdownButton<OrdersStatus>(
                 isExpanded: true,
                 dropdownColor: Colors.white,
-                icon: const Padding(
-                  padding: EdgeInsetsDirectional.only(start: 30),
+                icon:  Padding(
+                  padding: const EdgeInsetsDirectional.only(start: 30),
                   child: Icon(
                     Icons.arrow_drop_down,
                     color: MColors.colorPrimary,

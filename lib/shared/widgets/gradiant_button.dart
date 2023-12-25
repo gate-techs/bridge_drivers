@@ -12,9 +12,9 @@ Widget gradientButton(
             borderRadius: BorderRadius.circular(15),
             border: Border.all(
               width: 2,
-              color: MColors.moveColor,
+              color: MColors.colorPrimary,
             ),
-            color: MColors.moveColor,
+            color: MColors.colorPrimary,
           ),
           child: Center(
             child: Text(

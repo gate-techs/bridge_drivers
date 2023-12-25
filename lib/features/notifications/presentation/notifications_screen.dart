@@ -20,14 +20,14 @@ class NotificationsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('notifications'.tr,
-            style: const TextStyle(
+            style:  TextStyle(
                 color: MColors.colorPrimary, fontFamily: 'Tajawal')),
         centerTitle: true,
         leading: InkWell(
             onTap: () {
               Get.back();
             },
-            child: const Icon(
+            child:  Icon(
               Icons.arrow_back_ios,
               color: MColors.colorPrimary,
             )),

@@ -12,8 +12,8 @@ class AppLoadingWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SpinKitFadingGrid(
-            color: MColors.moveColor,
+           SpinKitFadingGrid(
+            color: MColors.colorPrimary,
             size: 50,
           ),
           const SizedBox(

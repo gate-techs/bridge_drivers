@@ -32,14 +32,14 @@ class OrderDetailsScreen extends StatelessWidget {
             return Scaffold(
               appBar: AppBar(
                 title: Text('order_details'.tr,
-                    style: const TextStyle(
+                    style:  TextStyle(
                         color: MColors.colorPrimary, fontFamily: 'Tajawal')),
                 centerTitle: true,
                 leading: InkWell(
                     onTap: () {
                       Get.back();
                     },
-                    child: const Icon(
+                    child:  Icon(
                       Icons.arrow_back_ios,
                       color: MColors.colorPrimary,
                     )),
@@ -56,8 +56,8 @@ class OrderDetailsScreen extends StatelessWidget {
                                status: state.data.row?.statusName?.toLowerCase().tr??'',
                             ));
                       },
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      child:  Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Icon(Icons.delivery_dining_outlined,
                             size: 36, color: MColors.colorPrimary),
                       )): Container(): Container()  ,
@@ -276,7 +276,7 @@ class OrderDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    decoration: const BoxDecoration(color: MColors.sectionBg),
+                    decoration:  const BoxDecoration(color: Colors.white),
                     child: Column(
                       children: [
                         Padding(
@@ -286,15 +286,15 @@ class OrderDetailsScreen extends StatelessWidget {
                             children: [
                               Text(
                                 "total_price".tr,
-                                style: const TextStyle(
-                                    fontSize: 18, color: MColors.moveColor),
+                                style:  TextStyle(
+                                    fontSize: 18, color: MColors.colorPrimary),
                               ),
                               Text(
                                 "'${state.data.row?.totalPrice}' ${"kwd".tr}",
-                                style: const TextStyle(
+                                style:  TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
-                                    color: MColors.moveColor),
+                                    color: MColors.colorPrimary),
                               ),
                             ],
                           ),

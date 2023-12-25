@@ -34,7 +34,7 @@ class CustomAppBar extends StatelessWidget {
       elevation: 0,
       title: Text(
         'home_page'.tr,
-        style: const TextStyle(
+        style:  TextStyle(
             color: MColors.colorPrimary, fontFamily: 'Tajawal'),
       ),
       centerTitle: true,

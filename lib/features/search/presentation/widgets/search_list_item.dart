@@ -42,8 +42,8 @@ class SearchListItem extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Container(
-                        color: CommonUtils.getStatusColorFromId(
-                            data.statusId ?? '0'),
+                        // color: CommonUtils.getStatusColorFromId(
+                        //     data.statusId ?? '0'),
                         width: 80,
                         height: 30,
                         alignment: Alignment.center,

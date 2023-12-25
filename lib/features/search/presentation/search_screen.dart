@@ -32,7 +32,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('search'.tr,
-            style: const TextStyle(
+            style:  TextStyle(
                 color: MColors.colorPrimary, fontFamily: 'Tajawal')),
         centerTitle: true,
       ),

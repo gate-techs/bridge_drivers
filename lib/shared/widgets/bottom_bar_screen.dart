@@ -75,7 +75,7 @@ class BottomBarScreenState extends State<BottomBarScreen> {
                   width: 24,
                   height: 24,
                   colorFilter:
-                      const ColorFilter.mode(MColors.colorPrimary, BlendMode.srcIn)),
+                       ColorFilter.mode(MColors.colorPrimary, BlendMode.srcIn)),
               label: "search".tr,
             ),
             BottomNavigationBarItem(

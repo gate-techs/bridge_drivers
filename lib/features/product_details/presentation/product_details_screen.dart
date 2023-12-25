@@ -22,14 +22,14 @@ class ProductDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('order_details'.tr,
-            style: const TextStyle(
+            style:  TextStyle(
                 color: MColors.colorPrimary, fontFamily: 'Tajawal')),
         centerTitle: true,
         leading: InkWell(
             onTap: () {
               Get.back();
             },
-            child: const Icon(
+            child:  Icon(
               Icons.arrow_back_ios,
               color: MColors.colorPrimary,
             )),
@@ -80,7 +80,7 @@ class ProductDetailsScreen extends StatelessWidget {
                             state.data.galleries?.length ?? 0,
                             (int index) => AnimatedContainer(
                               duration: const Duration(milliseconds: 200),
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(50),
                                 ),
@@ -105,8 +105,8 @@ class ProductDetailsScreen extends StatelessWidget {
                             vertical: 4.0, horizontal: 14),
                         child: Text(
                           '${"price".tr} ${state.data.price.toString()} ${"kwd".tr} ',
-                          style: const TextStyle(
-                              color: MColors.moveColor,
+                          style:  TextStyle(
+                              color: MColors.colorPrimary,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Franklin'),
                         ),
@@ -123,8 +123,8 @@ class ProductDetailsScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 'color'.tr,
-                                style: const TextStyle(
-                                    color: MColors.moveColor,
+                                style:  TextStyle(
+                                    color: MColors.colorPrimary,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Franklin'),
                               ),
@@ -172,8 +172,8 @@ class ProductDetailsScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text('size'.tr,
-                                  style: const TextStyle(
-                                      color: MColors.moveColor,
+                                  style:  TextStyle(
+                                      color: MColors.colorPrimary,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'Franklin')),
                             ),
@@ -204,8 +204,8 @@ class ProductDetailsScreen extends StatelessWidget {
                       ExpansionTile(
                         title: Text(
                           "product_info".tr,
-                          style: const TextStyle(
-                              color: MColors.moveColor,
+                          style:  TextStyle(
+                              color: MColors.colorPrimary,
                               fontWeight: FontWeight.bold,
                               height: 2,
                               fontFamily: 'Franklin'),

@@ -30,12 +30,12 @@ class ErrorDialog extends StatelessWidget {
                 onTap: () => Get.back(result: {'refresh': true}),
                 child: Container(
                   alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
+                  decoration:  BoxDecoration(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(10),
                       bottomRight: Radius.circular(30),
                     ),
-                    color: MColors.moveColor,
+                    color: MColors.colorPrimary,
                   ),
                   width: 60,
                   height: 50,

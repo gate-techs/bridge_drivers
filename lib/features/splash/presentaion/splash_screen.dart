@@ -5,6 +5,7 @@ import 'package:get/route_manager.dart';
 
 import '../../../helpers/hive_helper.dart';
 import '../../auth/login/presentation/view/login_screen.dart';
+import '../../main/main_screen.dart';
 import 'cubit/splash_cubit.dart';
 
 class SplashScreen extends StatefulWidget {

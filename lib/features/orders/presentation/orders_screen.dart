@@ -34,14 +34,14 @@ class _OrdersScreenState extends State<OrdersScreen> {
             widget.mOrdersStatus == OrdersStatus.news
                 ? 'new_orders'.tr
                 : 'all_orders'.tr,
-            style: const TextStyle(
+            style:  TextStyle(
                 color: MColors.colorPrimary, fontFamily: 'Tajawal')),
         centerTitle: true,
         leading: InkWell(
             onTap: () {
               Get.back();
             },
-            child: const Icon(
+            child:  Icon(
               Icons.arrow_back_ios,
               color: MColors.colorPrimary,
             )),

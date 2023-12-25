@@ -45,8 +45,8 @@ class NotificationsListItem extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Container(
-                      color: CommonUtils.getStatusColorFromId(
-                          data.userData?.orderId.toString() ?? '1'),
+                      // color: notificationsListDataRows?.seen == false ?
+                      // MColors.colorPrimaryLight : Colors.white,
                       width: 100,
                       height: 25,
                       alignment: Alignment.center,
@@ -89,8 +89,8 @@ class NotificationsListItem extends StatelessWidget {
                   child: Text(
                     data.msg ?? '',
                     textAlign: TextAlign.start,
-                    style: const TextStyle(
-                      color: MColors.moveColor,
+                    style:  TextStyle(
+                      color: MColors.colorPrimary,
                       fontSize: 16,
                     ),
                   ),
