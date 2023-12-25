@@ -17,7 +17,7 @@ class EditProfileScreen extends StatelessWidget {
       required this.mProfileDataRows,
       required this.onRefreshCallBack});
 
-  final ProfileDataRows mProfileDataRows;
+  final ProfileData mProfileDataRows;
   final Function() onRefreshCallBack;
 
   @override
@@ -67,7 +67,7 @@ class EditProfileScreen extends StatelessWidget {
                               ? Image.file(mEditProfileCubit.driverImage!,
                                   fit: BoxFit.cover, width: 120, height: 120)
                               : ImageLoader.loadDefaultWithPlaceHolder(
-                                  mProfileDataRows.avatar ?? '',
+                                  mProfileDataRows.image ?? '',
                                   fit: BoxFit.cover,
                                   width: 120,
                                   height: 120),

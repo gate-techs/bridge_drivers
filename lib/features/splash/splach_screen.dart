@@ -21,11 +21,13 @@ class Splash extends State<SplashScreen> {
   Widget build(BuildContext context) {
     Timer(
         const Duration(milliseconds: 1700),
-        () => Get.offAll(() => HiveHelper.getOnBoardingState()
-            ? HiveHelper.getUserToken().isNotEmpty
+        () => Get.offAll(() =>
+        // HiveHelper.getOnBoardingState() ?
+        HiveHelper.getUserToken().isNotEmpty
                 ? const BottomBarScreen()
                 : const LoginScreen()
-            : const IntroScreen()));
+            // : const IntroScreen()
+        ));
 
     return Scaffold(
       backgroundColor: MColors.moveColor,

@@ -43,7 +43,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
   TextEditingController mPhoneController = TextEditingController();
 
-  initData(ProfileDataRows mProfileDataRows) {
+  initData(ProfileData mProfileDataRows) {
     mNameController.text = mProfileDataRows.name ?? '';
     mEmailController.text = mProfileDataRows.email ?? '';
     mPhoneController.text = mProfileDataRows.mobile ?? '';

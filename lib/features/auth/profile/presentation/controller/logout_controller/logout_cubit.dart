@@ -16,29 +16,29 @@ class LogoutCubit extends Cubit<LogoutState> {
 
   LogoutRepository logoutRerpository = LogoutRepository();
 
-  Future<void> logout(Map<String, dynamic> params) async {
+  Future<void> logout() async {
     EasyLoading.show(status: 'loading'.tr);
-    final resul = await logoutRerpository.logout(params);
-    resul.fold((l) {
-      EasyLoading.dismiss();
-      emit(LogoutFailed(l.message!));
-    }, (r) async {
-      EasyLoading.dismiss();
-      HiveHelper.clearUserData();
-      emit(LogoutSuccess(r.message!));
-    });
-  }
-
-  Future<void> changePassword(Map<String, dynamic> params) async {
-    EasyLoading.show(status: 'loading'.tr);
-    final resul = await logoutRerpository.changePassword(params);
+    final resul = await logoutRerpository.logout();
     resul.fold((l) {
       EasyLoading.dismiss();
       emit(LogoutFailed(l));
     }, (r) async {
       EasyLoading.dismiss();
-      CommonUtils.showToastMessage('ok'.tr);
-      // emit(LogoutSuccess('ok'.tr));
+      HiveHelper.clearUserData();
+      emit(LogoutSuccess(r));
     });
   }
+
+  // Future<void> changePassword(Map<String, dynamic> params) async {
+  //   EasyLoading.show(status: 'loading'.tr);
+  //   final resul = await logoutRerpository.changePassword(params);
+  //   resul.fold((l) {
+  //     EasyLoading.dismiss();
+  //     emit(LogoutFailed(l));
+  //   }, (r) async {
+  //     EasyLoading.dismiss();
+  //     CommonUtils.showToastMessage('ok'.tr);
+  //     // emit(LogoutSuccess('ok'.tr));
+  //   });
+  // }
 }

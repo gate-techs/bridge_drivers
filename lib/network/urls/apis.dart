@@ -3,16 +3,18 @@ import 'package:flutter/foundation.dart';
 class Apis {
   static const String urlScheme = 'https';
 
-  static const String releaseTest = "api.bridgeskw.com";
-  static const String releaseLive = "api.bridgeskw.com";
+  static const String debug = "api-test-multivendor.mazadak.net/api/v1/";
 
-  static const String baseUrl =
-      "$urlScheme://${kDebugMode ? releaseTest : releaseLive}/api/v1/";
+  static const String release = "api.bridgeskw.com/api/v1/";
+
+  static const String baseUrl = "$urlScheme://${kDebugMode ? debug : release}";
+
+  static const String appId = "uCwJMa1md7XFhVZ";
 
   static const String doLoginApiCall = "backend/auth/login";
-  static const String sendFcmToken = "fcm-token";
-  static const String getProfileData = "me";
-  static const String doLogoutApiCall = "logout";
+  static const String sendFcmToken = "fcmToken";
+  static const String getProfileData = "auth/me";
+  static const String doLogoutApiCall = "auth/logout";
 
   static const String doContactUsApiCall = "contacts";
   static const String getAboutApiCall = "pages/aboutus";

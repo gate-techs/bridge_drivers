@@ -48,6 +48,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await AppConfig.setupRemoteConfig();
 
   mNotificationSettings.init();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
@@ -62,6 +63,7 @@ void main() async {
   await Hive.openBox(HiveHelper.keyAppOnBOARDING);
   await Hive.openBox(HiveHelper.boxKeyUserData);
   await Hive.openBox(HiveHelper.boxKeyUserToken);
+  await Hive.openBox(HiveHelper.keyAppLogin);
 
   AppConfig.configLoading();
 

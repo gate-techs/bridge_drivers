@@ -21,7 +21,7 @@ class SendFcmRepository {
         },
       ),
       params: {
-        "fcm_token": await NotificationsHelper.getToken(),
+        "fcmToken": await NotificationsHelper.getToken(),
       },
     );
   }
@@ -38,8 +38,9 @@ class SendFcmRepository {
         },
       ),
       params: {
-        "fcm_token": newToken,
+        "fcmToken": newToken,
       },
     );
   }
 }
+

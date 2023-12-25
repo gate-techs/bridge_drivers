@@ -5,8 +5,7 @@ import 'package:get/get.dart';
 import 'package:kishk_driver/common_utils/image_utils.dart';
 import 'package:kishk_driver/helpers/hive_helper.dart';
 import 'package:kishk_driver/res/m_colors.dart';
-import 'package:kishk_driver/shared/widgets/error_dialog.dart';
-
+import '../../../../../shared/widgets/error_dialog.dart';
 import '../../../../about/presentaion/view/about_screen.dart';
 import '../../../../contact_us/presentation/view/contact_us_screen.dart';
 import '../../../edit_profile/presentation/edit_profile_screen.dart';
@@ -14,7 +13,6 @@ import '../../../login/presentation/view/login_screen.dart';
 import '../../data/profile_entity.dart';
 import '../controller/logout_controller/logout_cubit.dart';
 import 'change_language_dialog.dart';
-import 'change_password_dialog.dart';
 
 class ProfileListSection extends StatelessWidget {
   const ProfileListSection({
@@ -23,7 +21,7 @@ class ProfileListSection extends StatelessWidget {
     required this.onRefreshCallBack,
   });
 
-  final ProfileDataRows mProfileDataRows;
+  final ProfileData mProfileDataRows;
   final Function() onRefreshCallBack;
 
   @override
@@ -68,25 +66,25 @@ class ProfileListSection extends StatelessWidget {
                 LogoutCubit logoutCubit = LogoutCubit.get(context);
                 return Column(
                   children: [
-                    buildListItem(context, ImageUtils.svALockIcon,
-                        "change_password".tr, () {
-                      showDialog(
-                          context: context,
-                          builder: (ctx) => ChangePasswordDialog(
-                                onSubmitChangePasswordCallBack:
-                                    (String newPass, String newPassConfirm) {
-                                  logoutCubit.changePassword({
-                                    "old_password": '',
-                                    "password": newPass,
-                                    "password_confirmation": newPassConfirm
-                                  });
-                                },
-                              ));
-                    }),
+                    // buildListItem(context, ImageUtils.svALockIcon,
+                    //     "change_password".tr, () {
+                    //   showDialog(
+                    //       context: context,
+                    //       builder: (ctx) => ChangePasswordDialog(
+                    //             onSubmitChangePasswordCallBack:
+                    //                 (String newPass, String newPassConfirm) {
+                    //               logoutCubit.changePassword({
+                    //                 "old_password": '',
+                    //                 "password": newPass,
+                    //                 "password_confirmation": newPassConfirm
+                    //               });
+                    //             },
+                    //           ));
+                    // }),
                     buildListItem(
                         context, ImageUtils.svALogoutIcon, "logout".tr,
                         () async {
-                      logoutCubit.logout({});
+                      logoutCubit.logout();
                     }),
                   ],
                 );

@@ -46,7 +46,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(60),
                         child: ImageLoader.loadDefaultWithPlaceHolder(
-                            data.avatar ?? '',
+                            data.image ?? '',
                             fit: BoxFit.cover,
                             width: 120,
                             height: 120),

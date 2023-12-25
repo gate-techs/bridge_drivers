@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:hive/hive.dart';
 import 'package:kishk_driver/features/auth/login/data/auth_data_entity.dart';
+
+import '../features/auth/login/presentation/view/login_screen.dart';
 
 class HiveHelper {
   static ValueNotifier<Locale> mobileLanguage =
@@ -12,6 +15,8 @@ class HiveHelper {
   static const String keyBoxAppLanguage = "keyBoxAppLanguage";
   static const String keyAppOnBOARDING = "keyAppOnBOARDING";
   static const String keyIsDarkMode = 'keyIsDarkMode';
+  static const String keyAppLogin = "keyAppLogin";
+
 
   static void setOnBoardingState(bool state) {
     Hive.box(keyAppOnBOARDING).put(keyAppOnBOARDING, state);
@@ -41,10 +46,17 @@ class HiveHelper {
         : null;
   }
 
+
+  static void setLoginState(bool state) {
+    Hive.box(keyAppLogin).put(keyAppLogin, state);
+  }
+
+
   static void clearUserData() {
     Hive.box(boxKeyUserToken).clear();
-    // mLastLocationsDbProvider?.deleteAll();
-    // Get.offAll(() => const CheckCivilScreen());
+    Hive.box(boxKeyUserData).clear();
+    Hive.box(boxKeyUserToken).clear();
+    Get.offAll(() => const LoginScreen());
   }
 
   static void setModeState(bool state) {
@@ -65,6 +77,11 @@ class HiveHelper {
     return Hive.box(keyBoxAppLanguage).isNotEmpty
         ? Hive.box(keyBoxAppLanguage).get(keyBoxAppLanguage)
         : 'ar';
+  }
+  static bool getLoginState() {
+    return Hive.box(keyAppLogin).isNotEmpty
+        ? Hive.box(keyAppLogin).get(keyAppLogin)
+        : false;
   }
 
   static void setUserData(AuthDataData authDataData) {

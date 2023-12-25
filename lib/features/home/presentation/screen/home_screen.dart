@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '${'welcome'.tr} ${HiveHelper.getUserData()?.username ?? ''}',
+                              '${'welcome'.tr} ${HiveHelper.getUserData()?.userData?.username ?? ''}',
                               style: const TextStyle(
                                   fontSize: 18, color: MColors.darkGrey),
                             ),

@@ -1,8 +1,12 @@
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:kishk_driver/res/m_colors.dart';
+
+import '../common_utils/app_constants.dart';
+import '../common_utils/log_utils.dart';
 
 class AppConfig {
   static Widget responsiveWrapperBuilder(context, widget) {
@@ -44,5 +48,25 @@ class AppConfig {
       ..maskType = EasyLoadingMaskType.black
       ..userInteractions = false
       ..dismissOnTap = false;
+  }
+
+  static Future<void> setupRemoteConfig() async {
+    final remoteConfig = FirebaseRemoteConfig.instance;
+    await remoteConfig.setConfigSettings(RemoteConfigSettings(
+      fetchTimeout: const Duration(minutes: 1),
+      minimumFetchInterval: const Duration(minutes: 1),
+    ));
+    await remoteConfig.ensureInitialized();
+    await remoteConfig.fetchAndActivate();
+    await remoteConfig.fetch();
+    await remoteConfig.activate();
+
+    String remoteConfigBaseUrl = remoteConfig.getString("BaseUrl");
+    String remoteConfigAppId = remoteConfig.getString("AppId");
+    //Todo
+    if (remoteConfigBaseUrl.isNotEmpty) appCurrentBaseUrl = remoteConfigBaseUrl;
+    if (remoteConfigAppId.isNotEmpty) appCurrentAppId = remoteConfigAppId;
+
+    Log.e('remoteConfigBaseUrl=>$appCurrentBaseUrl remoteConfigAppId=>$appCurrentAppId ');
   }
 }

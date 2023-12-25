@@ -1,6 +1,7 @@
 import 'package:kishk_driver/generated/json/base/json_field.dart';
 import 'package:kishk_driver/generated/json/auth_data_entity.g.dart';
 import 'dart:convert';
+export 'package:kishk_driver/generated/json/auth_data_entity.g.dart';
 
 @JsonSerializable()
 class AuthDataEntity {
@@ -8,14 +9,9 @@ class AuthDataEntity {
 
 	AuthDataEntity();
 
-	factory AuthDataEntity.fromJson(Map<dynamic, dynamic> json) => $AuthDataEntityFromJson(json);
+	factory AuthDataEntity.fromJson(Map<String, dynamic> json) => $AuthDataEntityFromJson(json);
 
 	Map<String, dynamic> toJson() => $AuthDataEntityToJson(this);
-
-	AuthDataEntity copyWith({AuthDataData? data}) {
-		return AuthDataEntity()
-			..data= data ?? this.data;
-	}
 
 	@override
 	String toString() {
@@ -25,28 +21,53 @@ class AuthDataEntity {
 
 @JsonSerializable()
 class AuthDataData {
-	bool? status;
-	String? message;
-	String? tokenType;
+	AuthDataDataUserData? userData;
 	String? accessToken;
-	String? username;
-	dynamic avatar;
+	List<AuthDataDataUserAbilities>? userAbilities;
 
 	AuthDataData();
 
-	factory AuthDataData.fromJson(Map<dynamic, dynamic> json) => $AuthDataDataFromJson(json);
+	factory AuthDataData.fromJson(Map<String, dynamic> json) => $AuthDataDataFromJson(json);
 
 	Map<String, dynamic> toJson() => $AuthDataDataToJson(this);
 
-	AuthDataData copyWith({bool? status, String? message, String? tokenType, String? accessToken, String? username, dynamic avatar}) {
-		return AuthDataData()
-			..status= status ?? this.status
-			..message= message ?? this.message
-			..tokenType= tokenType ?? this.tokenType
-			..accessToken= accessToken ?? this.accessToken
-			..username= username ?? this.username
-			..avatar= avatar ?? this.avatar;
+	@override
+	String toString() {
+		return jsonEncode(this);
 	}
+}
+
+@JsonSerializable()
+class AuthDataDataUserData {
+	String? encryptId;
+	dynamic vendorId;
+	String? username;
+	String? email;
+	String? avatar;
+	String? role;
+
+	AuthDataDataUserData();
+
+	factory AuthDataDataUserData.fromJson(Map<String, dynamic> json) => $AuthDataDataUserDataFromJson(json);
+
+	Map<String, dynamic> toJson() => $AuthDataDataUserDataToJson(this);
+
+	@override
+	String toString() {
+		return jsonEncode(this);
+	}
+}
+
+@JsonSerializable()
+class AuthDataDataUserAbilities {
+	String? action;
+	String? subject;
+
+	AuthDataDataUserAbilities();
+
+	factory AuthDataDataUserAbilities.fromJson(Map<String, dynamic> json) => $AuthDataDataUserAbilitiesFromJson(json);
+
+	Map<String, dynamic> toJson() => $AuthDataDataUserAbilitiesToJson(this);
 
 	@override
 	String toString() {

@@ -7,7 +7,79 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:371273133115:android:b8bb402b1d9557c23b401e",
+        "mobilesdk_app_id": "1:371273133115:android:6850cadab95f29a53b401e",
+        "android_client_info": {
+          "package_name": "com.bridge.vendors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371273133115-a8d6lc90r8hv3kmrfdgp3m30ggfme0bp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClHnawIUBSkSd0_pAHN5iC1nwlpJ9Pwe0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371273133115-a8d6lc90r8hv3kmrfdgp3m30ggfme0bp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "371273133115-7187d4arjf62j531ivuinve0evq2psfq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gatetechs.kishk.driver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371273133115:android:4123460e02b941d73b401e",
+        "android_client_info": {
+          "package_name": "com.gatetechs.kishk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371273133115-a8d6lc90r8hv3kmrfdgp3m30ggfme0bp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClHnawIUBSkSd0_pAHN5iC1nwlpJ9Pwe0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371273133115-a8d6lc90r8hv3kmrfdgp3m30ggfme0bp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "371273133115-7187d4arjf62j531ivuinve0evq2psfq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gatetechs.kishk.driver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371273133115:android:f6b2b6a82dc51e833b401e",
         "android_client_info": {
           "package_name": "com.gatetechs.kishk.driver"
         }
