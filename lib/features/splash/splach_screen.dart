@@ -7,7 +7,6 @@ import 'package:kishk_driver/res/m_colors.dart';
 
 import '../../shared/widgets/bottom_bar_screen.dart';
 import '../auth/login/presentation/view/login_screen.dart';
-import '../intro/intro_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
