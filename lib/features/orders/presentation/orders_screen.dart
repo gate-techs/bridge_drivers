@@ -1,163 +1,107 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:kishk_driver/features/orders/presentation/widgets/orders_item.dart';
 import 'package:paginated_list/paginated_list.dart';
-import 'package:kishk_driver/common_utils/common_utils.dart';
-import 'package:kishk_driver/res/gaps.dart';
-import 'package:kishk_driver/res/m_colors.dart';
-import 'package:kishk_driver/shared/widgets/app_loading_widget.dart';
-import 'package:kishk_driver/shared/widgets/empty_data_widget.dart';
-import '../../main_screens/home/data/my_orders_response.dart';
-import '../../main_screens/home/presentation/widgets/order_item.dart';
+import '../../../../res/gaps.dart';
+import '../../../../res/m_colors.dart';
+import '../../../shared/error_widget.dart';
+import '../../../shared/loading_widget.dart';
+import '../../../shared/result_widget/result_widget.dart';
+import '../../main_screens/home/data/orders_entity.dart';
 import 'cubit/orders_cubit.dart';
 
 class OrdersScreen extends StatefulWidget {
-  const OrdersScreen({super.key, required this.mOrdersStatus});
-
-  final OrdersStatus mOrdersStatus;
+  const OrdersScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<OrdersScreen> createState() => _OrdersScreenState();
 }
 
 class _OrdersScreenState extends State<OrdersScreen> {
-  OrdersCubit? mOrdersCubit;
-  int length = 0;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-            widget.mOrdersStatus == OrdersStatus.news
-                ? 'new_orders'.tr
-                : 'all_orders'.tr,
-            style:  TextStyle(
-                color: MColors.colorPrimary, fontFamily: 'Tajawal')),
-        centerTitle: true,
-        leading: InkWell(
-            onTap: () {
-              Get.back();
-            },
-            child:  Icon(
-              Icons.arrow_back_ios,
-              color: MColors.colorPrimary,
-            )),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: TextFormField(
-              textAlignVertical: TextAlignVertical.bottom,
-              cursorColor: Colors.black,
-              controller: mOrdersCubit?.searchController,
-              decoration: InputDecoration(
-                  fillColor: MColors.appInputColor,
-                  filled: true,
-                  hintText: 'search_hint'.tr,
-                  prefixIcon: const Icon(
-                    Iconsax.search_normal,
-                    color: Colors.black,
-                  ),
-                  suffixIcon: InkWell(
-                    onTap: () {
-                      mOrdersCubit?.searchController.clear();
-                      mOrdersCubit?.resetListConfig();
-                      mOrdersCubit?.getLastOrders(status: widget.mOrdersStatus);
-                    },
-                    child: const Icon(
-                      Iconsax.close_circle,
-                      color: Colors.black,
-                    ),
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 14),
-                  hintStyle: const TextStyle(
-                      color: Colors.black, fontSize: 12, fontFamily: "Tajawal"),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                        color: MColors.appInputColor, width: 1.0),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                      borderSide: const BorderSide(
-                          color: MColors.appInputColor, width: 1.0))),
-              keyboardType: TextInputType.text,
-              onChanged: (value) {
-                mOrdersCubit?.resetListConfig();
-                mOrdersCubit?.getLastOrders(
-                    status: widget.mOrdersStatus, searchKeyWord: value);
-              },
-            ),
-          ),
-          Gaps.vGap16,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child:
-                    Text('${mOrdersCubit?.totalLength ?? ''} ${'results'.tr} '),
-              ),
-            ],
-          ),
-          Expanded(
-            child: BlocProvider(
-              create: (context) =>
-                  OrdersCubit()..getLastOrders(status: widget.mOrdersStatus),
-              child: BlocConsumer<OrdersCubit, OrdersState>(
-                listener: (context, state) {
-                  if (state is OrdersLoaded) {
-                    setState(() {
-                      length = mOrdersCubit?.totalLength ?? 0;
-                    });
-                  }
-                },
-                builder: (context, state) {
-                  mOrdersCubit = OrdersCubit.get(context);
-                  if (state is OrdersLoaded) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: RefreshIndicator(
-                        onRefresh: () async {
-                          mOrdersCubit?.resetListConfig();
-                          mOrdersCubit?.getLastOrders(
-                              status: widget.mOrdersStatus);
-                        },
-                        child: PaginatedList<MyOrdersDataRows>(
-                          loadingIndicator: const AppLoadingWidget(),
+    return BlocProvider(
+      create: (context) {
+          return OrdersCubit()..getOrders({'paginate':30, 'mobile':true,});
+      },
+      child: BlocConsumer<OrdersCubit, OrdersState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          OrdersCubit ordersCubit = OrdersCubit.get(context);
+          if (state is  OrdersLoaded) {
+            final data = state.orders;
+            return Scaffold(
+              backgroundColor: MColors.screensBackgroundColor,
+              body: RefreshIndicator(
+                  backgroundColor: MColors.colorPrimaryLight,
+                  onRefresh: () async {
+                    ordersCubit.ordersList.clear();
+                    ordersCubit.isLastPage = false;
+                    ordersCubit.currentPageIndex = 1;
+                    ordersCubit
+                        .getOrders({ 'mobile':true,
+                      'paginate': 30,
+                      'page': ordersCubit.currentPageIndex});
+                  },
+                  child: SingleChildScrollView(
+                      child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Gaps.vGap10,
+                      ResultWidget(title: '${'numberOfOrders'.tr} (${data.length.toString()})',),
+                      PaginatedList<OrdersDataRows>(
+                          loadingIndicator: const LoadingWidget(),
                           shrinkWrap: true,
-                          items: state.mDataList,
+                          items: data,
                           isRecentSearch: false,
-                          isLastPage: mOrdersCubit!.isLastIndex,
-                          onLoadMore: (int index) {
-                            if (!mOrdersCubit!.isLastIndex) {
-                              mOrdersCubit?.getLastOrders(
-                                  status: widget.mOrdersStatus,
-                                  pageIndex: ++mOrdersCubit!.currentPageIndex);
+                          isLastPage: ordersCubit.isLastPage,
+                          onLoadMore: (index) {
+                            if (!ordersCubit.isLastPage) {
+                              ordersCubit.getOrders({ 'mobile':true,
+                                'page': (++ordersCubit.currentPageIndex).toString(),
+                                'paginate': 30
+                              });
                             }
                           },
-                          builder: (e, index) => OrderListItem(
-                              data: state.mDataList[index],
-                              refreshCallBack: () {
-                                mOrdersCubit?.getLastOrders(
-                                    status: widget.mOrdersStatus);
-                              }),
-                        ),
-                      ),
-                    );
-                  } else if (state is OrdersError) {
-                    return const EmptyDataWidget();
-                  } else {
-                    return const AppLoadingWidget();
-                  }
-                },
-              ),
-            ),
-          ),
-        ],
+                          builder: (OrdersDataRows e, int index) {
+                            return  InkWell(
+                              onTap: () {
+                                // Get.to(
+                                    // OrderDetailsScreen(id: e.id.toString(),)
+                                // );
+                              },
+                              child: OrdersItem(
+                                ordersDataRows: e,
+                              ),
+                            );
+                          }),
+                    ],
+                  ))),
+            );
+          } else if (state is  OrdersFailed) {
+            return  RefreshIndicator(
+              backgroundColor: MColors.colorPrimaryLight,
+              onRefresh: () async {
+                ordersCubit.ordersList.clear();
+                ordersCubit.isLastPage = false;
+                ordersCubit.currentPageIndex = 1;
+                ordersCubit
+                    .getOrders({ 'mobile':true,
+                  'paginate': 30,
+                  'page': ordersCubit.currentPageIndex});
+              },
+              child: Center(
+                  child: FailedWidget(
+                failedMessage: state.message,
+              )),
+            );
+          } else {
+            return const LoadingWidget();
+          }
+        },
       ),
     );
   }

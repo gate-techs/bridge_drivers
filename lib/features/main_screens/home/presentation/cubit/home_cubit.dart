@@ -1,11 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:kishk_driver/common_utils/common_utils.dart';
-import 'package:kishk_driver/common_utils/log_utils.dart';
 import '../../../../notifications/domain/notifications_repository.dart';
-import '../../data/my_orders_response.dart';
+import '../../data/orders_entity.dart';
 import '../../domain/orders_repository.dart';
 
 part 'home_state.dart';
@@ -17,31 +14,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   OrdersRepository mOrdersRepository = OrdersRepository();
 
-  Future<void> getOrdersCount() async {
-    if (data != null) {
-      data?.clear();
-    }
-    try {
-      emit(HomeLoading());
-      final mResponse = await mOrdersRepository.getOrdersCount();
-      mResponse.fold((left) async {
-        await EasyLoading.dismiss();
-        CommonUtils.showToastMessage(left);
-        emit(HomeError(left));
-      }, (right) async {
-        await EasyLoading.dismiss();
-        newOrdersCount = right.news ?? '0';
-        totalOrdersCount = right.total ?? '0';
-        getLastOrders();
-      });
-    } catch (e) {
-      await EasyLoading.dismiss();
-      if (data != null && data!.isEmpty) {
-        emit(HomeError("empty_data".tr));
-      }
-      Log.e(e.toString());
-    }
-  }
 
   String newOrdersCount = '0';
   String totalOrdersCount = '0';
@@ -49,38 +21,43 @@ class HomeCubit extends Cubit<HomeState> {
   int currentPageIndex = 1;
   bool isLastIndex = false;
 
-  List<MyOrdersDataRows>? data = [];
+  bool isGrade = false;
+  bool isLastPage = false;
+  int lastPage = 10;
+  int listTotal = 0;
+  int radioSelected = 1;
+  String categoryId = '1';
 
-  Future<void> getLastOrders({int pageIndex = 1}) async {
-    try {
-      if (pageIndex == 1) {
-        emit(HomeLoading());
-      }
+  List<OrdersDataRows> ordersList = [];
 
-      final mResponse = await mOrdersRepository.getOrdersData(status: OrdersStatus.all,
-          pageIndex: pageIndex, paginate: 5);
-      mResponse.fold((left) async {
-        await EasyLoading.dismiss();
-        CommonUtils.showToastMessage(left);
-        emit(HomeError(left));
-      }, (right) async {
-        await EasyLoading.dismiss();
+  OrdersRepository ordersRepository = OrdersRepository();
 
-        if (right.length < 10) {
-          isLastIndex = !isLastIndex;
-        }
-        data?.addAll(right);
-
-        emit(HomeLoaded(data!));
-      });
-    } catch (e) {
-      await EasyLoading.dismiss();
-      if (data != null && data!.isEmpty) {
-        emit(HomeError("empty_data".tr));
-      }
-      Log.e(e.toString());
+  Future<void> getOrdersCount() async {
+    if (currentPageIndex == 1) {
+      emit(HomeLoading());
     }
+    final resul = await ordersRepository.getOrdersCount();
+    resul.fold((l) {
+      emit(HomeError("empty_data".tr));
+    }, (r) {
+      final List<OrdersDataRows> fetchedPosts = r.data?.rows ?? [];
+      lastPage = r.data?.paginate?.lastPage ?? 1;
+      listTotal = r.data?.paginate?.total ?? 0;
+      if (r.data == null || r.data!.rows!.isEmpty) {
+        emit(HomeError("empty_data".tr));
+      } else {
+        if (currentPageIndex == r.data!.paginate!.lastPage) {
+          isLastPage = true;
+        }
+        if (fetchedPosts.isNotEmpty) {
+          ordersList.addAll(fetchedPosts);
+          fetchedPosts.clear();
+          emit(HomeLoaded(ordersList));
+        }
+      }
+    });
   }
+
 
   int badgeCount = 0;
 

@@ -147,4 +147,5 @@ Map<String, String> en = {
   "rateApp": "Rate this app",
   "likeApp":
   "If you like this app, please take a little bit of your time to review it !\\nIt really helps us and it shouldn\\'t take you more than one minute.",
+  'welcomeBack': 'Welcome Back',
 };

@@ -1,12 +1,11 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
-import 'package:kishk_driver/network/urls/apis.dart';
 
 import '../../common_utils/log_utils.dart';
 import '../../helpers/hive_helper.dart';
 import '../dio_inter/interceptors.dart';
+import '../urls/apis.dart';
 
 class DioHelper {
   late Dio _dio;

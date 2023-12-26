@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../order_details/presentation/order_details_screen.dart';
-import '../../data/my_orders_response.dart';
+import '../../data/orders_entity.dart';
 
 class OrderListItem extends StatelessWidget {
-  final MyOrdersDataRows data;
+  final OrdersDataRows data;
   final Function() refreshCallBack;
 
   const OrderListItem(
@@ -46,7 +46,7 @@ class OrderListItem extends StatelessWidget {
                         alignment: Alignment.center,
                         child: Center(
                           child: Text(
-                            data.statusName?.toLowerCase().tr ?? '',
+                            data.orderStatus?.toLowerCase().tr ?? '',
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: Colors.white,
@@ -59,7 +59,7 @@ class OrderListItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Text(
-                        data.date ?? '',
+                        data.orderedDate ?? '',
                         style: const TextStyle(
                           color: Colors.grey,
                           fontSize: 14,
@@ -92,7 +92,7 @@ class OrderListItem extends StatelessWidget {
               ),
             ),
             Text(
-              ' : ${data.user?.name??''}',
+              ' : ${data.customer?.name??''}',
               style: const TextStyle(
                 color: Colors.grey,
                 fontWeight: FontWeight.normal,
@@ -114,7 +114,7 @@ class OrderListItem extends StatelessWidget {
               ),
             ),
             Text(
-              ' ${data.invoiceNumber}',
+              ' ${data.orderNo}',
               style: const TextStyle(
                 color: Colors.grey,
                 fontWeight: FontWeight.normal,
@@ -139,7 +139,7 @@ class OrderListItem extends StatelessWidget {
             const SizedBox(width: 10),
             Expanded(
               child: Text(
-                "${data.totalPrice ?? ''} ${"kwd".tr}",
+                "${data.totalGrandPrice ?? ''} ${"kwd".tr}",
                 style: const TextStyle(
                   color: Colors.grey,
                   fontWeight: FontWeight.normal,

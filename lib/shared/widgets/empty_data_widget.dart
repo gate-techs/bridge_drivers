@@ -20,7 +20,7 @@ class EmptyDataWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/logo.png',
+                'assets/images/logo.png',
                 width: 120,
                 height: 120,
               ),

@@ -1,15 +1,14 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:get/get_utils/get_utils.dart';
 
 import '../../common_utils/log_utils.dart';
+
 
 class AuthInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options.headers["Accept"] = "application/json";
-    options.headers['appId'] = 'uCwJMa1md7XFhVZ';
     super.onRequest(options, handler);
   }
 }
@@ -43,10 +42,9 @@ class LoggingInterceptor extends Interceptor {
     }
 
     Log.w("RequestMethod:${options.method}");
-    printInfo(info: "RequestHeaders:${options.headers}");
+    Log.w("RequestHeaders:${options.headers}");
     Log.w("RequestContentType:${options.contentType}");
-    Log.w(
-        "RequestDataOptions:${options.data is FormData ? (options.data as FormData).fields.toString() : options.data.toString()}");
+    Log.w("RequestDataOptions:${options.data is FormData ? (options.data as FormData).fields.toString() : options.data.toString()}");
 
     return super.onRequest(options, handler);
   }
@@ -56,8 +54,7 @@ class LoggingInterceptor extends Interceptor {
     endTime = DateTime.now();
     //Request duration
     int duration = endTime!.difference(startTime!).inMilliseconds;
-    Log.json(
-        "----------statusCode ${response.statusCode} Response Data ${jsonDecode(response.data)} ---------");
+    Log.i("----------Response Data ${jsonDecode(response.data)} ---------");
     handleStatus(response, handler);
     Log.i("----------End Request $duration millisecond---------");
     super.onResponse(response, handler);
@@ -72,6 +69,8 @@ class LoggingInterceptor extends Interceptor {
 
   void handleStatus(
       Response<dynamic> response, ResponseInterceptorHandler handler) {
-    switch (response.statusCode) {}
+    switch (response.statusCode) {
+
+    }
   }
 }

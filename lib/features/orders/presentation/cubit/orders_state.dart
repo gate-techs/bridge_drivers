@@ -9,14 +9,14 @@ class OrdersInitial extends OrdersState {}
 
 class OrdersLoading extends OrdersState {}
 
-class OrdersLoaded extends OrdersState {
-  final List<MyOrdersDataRows> mDataList;
+class OrdersLoaded extends OrdersState{
+  final List<OrdersDataRows> orders;
 
-  const OrdersLoaded(this.mDataList);
+  const OrdersLoaded(this.orders);
 }
 
-class OrdersError extends OrdersState {
+class OrdersFailed extends OrdersState {
   final String message;
 
-  const OrdersError(this.message);
+  const OrdersFailed(this.message);
 }

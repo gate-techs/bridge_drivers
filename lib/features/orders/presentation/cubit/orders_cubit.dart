@@ -4,7 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:kishk_driver/common_utils/common_utils.dart';
 import 'package:kishk_driver/common_utils/log_utils.dart';
-import '../../../main_screens/home/data/my_orders_response.dart';
+import '../../../main_screens/home/data/orders_entity.dart';
 import '../../../main_screens/home/domain/orders_repository.dart';
 
 part 'orders_state.dart';
@@ -14,54 +14,76 @@ class OrdersCubit extends Cubit<OrdersState> {
 
   static OrdersCubit get(context) => BlocProvider.of(context);
 
-  OrdersRepository mOrdersRepository = OrdersRepository();
+  final TextEditingController search = TextEditingController();
+  int searchResults = 0;
+  bool isGrade = false;
+  bool isLastPage = false;
+  int currentPageIndex = 1;
+  int lastPage = 10;
+  int listTotal = 0;
+  int radioSelected = 1;
+  String categoryId = '1';
 
-  TextEditingController searchController = TextEditingController();
+  List<OrdersDataRows> ordersList = [];
 
-  void resetListConfig() {
-    currentPageIndex = 1;
-    isLastIndex = false;
-    data?.clear();
+  OrdersRepository ordersRepository = OrdersRepository();
+
+  Future<void> getOrders(Map<String, dynamic> prams) async {
+    searchResults = 0;
+    if (currentPageIndex == 1) {
+      emit(OrdersLoading());
+    }
+    final resul = await ordersRepository.getOrders(prams);
+    resul.fold((l) {
+      searchResults = 0;
+      emit(OrdersFailed("empty_data".tr));
+    }, (r) {
+      final List<OrdersDataRows> fetchedPosts = r.data?.rows ?? [];
+      lastPage = r.data?.paginate?.lastPage ?? 1;
+      listTotal = r.data?.paginate?.total ?? 0;
+      if (r.data == null || r.data!.rows!.isEmpty) {
+        searchResults = 0;
+        emit(OrdersFailed("empty_data".tr));
+      } else {
+        if (currentPageIndex == r.data!.paginate!.lastPage) {
+          isLastPage = true;
+        }
+        if (fetchedPosts.isNotEmpty) {
+          ordersList.addAll(fetchedPosts);
+          fetchedPosts.clear();
+          if (search.text.isNotEmpty) {
+            searchResults = r.data?.paginate?.total ?? 0;
+          } else {
+            searchResults = 0;
+          }
+          emit(OrdersLoaded(ordersList));
+        }
+      }
+    });
   }
 
-  int currentPageIndex = 1;
-  bool isLastIndex = false;
 
-  List<MyOrdersDataRows>? data = [];
-  int totalLength = 0;
 
-  Future<void> getLastOrders(
-      {int pageIndex = 1,
-      required OrdersStatus status,
-      String searchKeyWord=''}) async {
-    try {
-      if (pageIndex == 1) {
-        emit(OrdersLoading());
-      }
+  void getSearch(Map<String, dynamic> prams) async {
+    emit( OrdersInitial());
+    final resul = await ordersRepository.getOrders(prams);
 
-      final mResponse = await mOrdersRepository.getOrdersData(
-          pageIndex: pageIndex, status: status,searchKeyWord: searchKeyWord);
-      mResponse.fold((left) async {
-        await EasyLoading.dismiss();
-        CommonUtils.showToastMessage(left);
-        emit(OrdersError(left));
-      }, (right) async {
-        await EasyLoading.dismiss();
-
-        if (right.length < 10) {
-          isLastIndex = !isLastIndex;
+    resul.fold((l) {
+      searchResults = 0;
+      emit( OrdersFailed(l));
+    }, (r) {
+      if (r.data == null || r.data!.rows!.isEmpty) {
+        searchResults = 0;
+        emit( OrdersFailed("empty_data".tr));
+      } else {
+        if (search.text.isNotEmpty) {
+          searchResults = r.data?.paginate?.total ?? 0;
+        } else {
+          searchResults = 0;
         }
-        data?.addAll(right);
-        totalLength = data?.length ?? 0;
 
-        emit(OrdersLoaded(data!));
-      });
-    } catch (e) {
-      await EasyLoading.dismiss();
-      if (data != null && data!.isEmpty) {
-        emit(OrdersError("empty_data".tr));
+        emit( OrdersLoaded(r.data!.rows!));
       }
-      Log.e(e.toString());
-    }
+    });
   }
 }

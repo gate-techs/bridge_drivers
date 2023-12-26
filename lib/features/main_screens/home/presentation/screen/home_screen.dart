@@ -10,7 +10,7 @@ import 'package:kishk_driver/shared/widgets/app_bar.dart';
 import 'package:kishk_driver/shared/widgets/app_loading_widget.dart';
 import 'package:kishk_driver/shared/widgets/empty_data_widget.dart';
 import '../../../../orders/presentation/orders_screen.dart';
-import '../../data/my_orders_response.dart';
+import '../../data/orders_entity.dart';
 import '../cubit/home_cubit.dart';
 import '../widgets/order_item.dart';
 
@@ -75,8 +75,8 @@ class HomeScreen extends StatelessWidget {
                                 largeSize: 25,
                                 child: InkWell(
                                   onTap: () {
-                                    Get.to(() => const OrdersScreen(
-                                        mOrdersStatus: OrdersStatus.news));
+                                    // Get.to(() => const OrdersScreen(
+                                    //     mOrdersStatus: OrdersStatus.news));
                                   },
                                   child: Container(
                                     padding: const EdgeInsets.all(8),
@@ -94,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         Image.asset(
-                                          'assets/logo.png',
+                                          'assets/images/logo.png',
                                           width: 80,
                                           height: 80,
                                         ),
@@ -120,8 +120,8 @@ class HomeScreen extends StatelessWidget {
                                 largeSize: 25,
                                 child: InkWell(
                                   onTap: () {
-                                    Get.to(() => const OrdersScreen(
-                                        mOrdersStatus: OrdersStatus.all));
+                                    // Get.to(() => const OrdersScreen(
+                                    //     mOrdersStatus: OrdersStatus.all));
                                   },
                                   child: Container(
                                     padding: const EdgeInsets.all(8),
@@ -139,7 +139,7 @@ class HomeScreen extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         Image.asset(
-                                          'assets/logo.png',
+                                          'assets/images/logo.png',
                                           width: 80,
                                           height: 80,
                                         ),
@@ -156,11 +156,11 @@ class HomeScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        PaginatedList<MyOrdersDataRows>(
+                        PaginatedList<OrdersDataRows>(
                           physics: const NeverScrollableScrollPhysics(),
                           loadingIndicator: const SizedBox(),
                           shrinkWrap: true,
-                          items: state.mDataList,
+                          items: state.dataList,
                           isRecentSearch: false,
                           isLastPage: mHomeCubit.isLastIndex,
                           onLoadMore: (int index) {
@@ -170,7 +170,7 @@ class HomeScreen extends StatelessWidget {
                             // }
                           },
                           builder: (e, index) => OrderListItem(
-                              data: state.mDataList[index],
+                              data: state.dataList[index],
                               refreshCallBack: () {
                                 mHomeCubit.getOrdersCount();
                               }),

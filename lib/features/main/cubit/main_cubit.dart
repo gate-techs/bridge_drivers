@@ -8,7 +8,7 @@ import '../../../res/m_colors.dart';
 import '../../../res/styles.dart';
 import '../../main_screens/home/presentation/screen/home_screen.dart';
 import '../../main_screens/profile/presentation/profile_screen.dart';
-import '../../main_screens/search/presentation/search_screen.dart';
+import '../../orders/presentation/orders_search_screen.dart';
 
 
 part 'main_state.dart';
@@ -30,7 +30,7 @@ class MainCubit extends Cubit<MainState> {
   List<Widget> buildScreens() {
     return [
       const HomeScreen(),
-      const SearchScreen(),
+      const OrdersSearchScreen(),
       const ProfileScreen(),
 
 

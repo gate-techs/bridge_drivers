@@ -6,10 +6,10 @@
 import 'package:flutter/material.dart' show debugPrint;
 import 'package:kishk_driver/country_code/data/country_code_entity.dart';
 import 'package:kishk_driver/features/about/data/about_entity.dart';
-import 'package:kishk_driver/features/auth/login/data/auth_data_entity.dart';
 import 'package:kishk_driver/features/contact_us/data/contact_us_entity.dart';
 import 'package:kishk_driver/features/contact_us/data/contact_us_erorr_entity.dart';
 import 'package:kishk_driver/features/main/data/badge_count_entity.dart';
+import 'package:kishk_driver/features/main_screens/home/data/orders_entity.dart';
 import 'package:kishk_driver/features/main_screens/profile/data/app_pages_entity.dart';
 import 'package:kishk_driver/features/main_screens/profile/data/profile_entity.dart';
 
@@ -159,22 +159,6 @@ class JsonConvert {
       return data.map<AboutDataRow>((Map<String, dynamic> e) =>
           AboutDataRow.fromJson(e)).toList() as M;
     }
-    if (<AuthDataEntity>[] is M) {
-      return data.map<AuthDataEntity>((Map<String, dynamic> e) =>
-          AuthDataEntity.fromJson(e)).toList() as M;
-    }
-    if (<AuthDataData>[] is M) {
-      return data.map<AuthDataData>((Map<String, dynamic> e) =>
-          AuthDataData.fromJson(e)).toList() as M;
-    }
-    if (<AuthDataDataUserData>[] is M) {
-      return data.map<AuthDataDataUserData>((Map<String, dynamic> e) =>
-          AuthDataDataUserData.fromJson(e)).toList() as M;
-    }
-    if (<AuthDataDataUserAbilities>[] is M) {
-      return data.map<AuthDataDataUserAbilities>((Map<String, dynamic> e) =>
-          AuthDataDataUserAbilities.fromJson(e)).toList() as M;
-    }
     if (<ContactUsEntity>[] is M) {
       return data.map<ContactUsEntity>((Map<String, dynamic> e) =>
           ContactUsEntity.fromJson(e)).toList() as M;
@@ -198,6 +182,30 @@ class JsonConvert {
     if (<BadgeCountData>[] is M) {
       return data.map<BadgeCountData>((Map<String, dynamic> e) =>
           BadgeCountData.fromJson(e)).toList() as M;
+    }
+    if (<OrdersEntity>[] is M) {
+      return data.map<OrdersEntity>((Map<String, dynamic> e) =>
+          OrdersEntity.fromJson(e)).toList() as M;
+    }
+    if (<OrdersData>[] is M) {
+      return data.map<OrdersData>((Map<String, dynamic> e) =>
+          OrdersData.fromJson(e)).toList() as M;
+    }
+    if (<OrdersDataRows>[] is M) {
+      return data.map<OrdersDataRows>((Map<String, dynamic> e) =>
+          OrdersDataRows.fromJson(e)).toList() as M;
+    }
+    if (<OrdersDataRowsCustomer>[] is M) {
+      return data.map<OrdersDataRowsCustomer>((Map<String, dynamic> e) =>
+          OrdersDataRowsCustomer.fromJson(e)).toList() as M;
+    }
+    if (<OrdersDataRowsDriver>[] is M) {
+      return data.map<OrdersDataRowsDriver>((Map<String, dynamic> e) =>
+          OrdersDataRowsDriver.fromJson(e)).toList() as M;
+    }
+    if (<OrdersDataPaginate>[] is M) {
+      return data.map<OrdersDataPaginate>((Map<String, dynamic> e) =>
+          OrdersDataPaginate.fromJson(e)).toList() as M;
     }
     if (<AppPagesEntity>[] is M) {
       return data.map<AppPagesEntity>((Map<String, dynamic> e) =>
@@ -266,16 +274,18 @@ class JsonConvertClassCollection {
     (AboutEntity).toString(): AboutEntity.fromJson,
     (AboutData).toString(): AboutData.fromJson,
     (AboutDataRow).toString(): AboutDataRow.fromJson,
-    (AuthDataEntity).toString(): AuthDataEntity.fromJson,
-    (AuthDataData).toString(): AuthDataData.fromJson,
-    (AuthDataDataUserData).toString(): AuthDataDataUserData.fromJson,
-    (AuthDataDataUserAbilities).toString(): AuthDataDataUserAbilities.fromJson,
     (ContactUsEntity).toString(): ContactUsEntity.fromJson,
     (ContactUsData).toString(): ContactUsData.fromJson,
     (ContactUsErorrEntity).toString(): ContactUsErorrEntity.fromJson,
     (ContactUsErorrErrors).toString(): ContactUsErorrErrors.fromJson,
     (BadgeCountEntity).toString(): BadgeCountEntity.fromJson,
     (BadgeCountData).toString(): BadgeCountData.fromJson,
+    (OrdersEntity).toString(): OrdersEntity.fromJson,
+    (OrdersData).toString(): OrdersData.fromJson,
+    (OrdersDataRows).toString(): OrdersDataRows.fromJson,
+    (OrdersDataRowsCustomer).toString(): OrdersDataRowsCustomer.fromJson,
+    (OrdersDataRowsDriver).toString(): OrdersDataRowsDriver.fromJson,
+    (OrdersDataPaginate).toString(): OrdersDataPaginate.fromJson,
     (AppPagesEntity).toString(): AppPagesEntity.fromJson,
     (AppPagesData).toString(): AppPagesData.fromJson,
     (AppPagesDataRows).toString(): AppPagesDataRows.fromJson,

@@ -7,7 +7,7 @@ import 'package:kishk_driver/helpers/hive_helper.dart';
 import 'package:kishk_driver/helpers/notifications_helper/send_fcm_repository.dart';
 import '../../../../../common_utils/common_utils.dart';
 import '../../../../main/main_screen.dart';
-import '../../data/auth_data_entity.dart';
+import '../../data/auth_login_entity.dart';
 import '../../domain/login_repository.dart';
 
 part 'login_state.dart';

@@ -47,5 +47,6 @@ class Apis {
   static String getProductDetailsDataApiCall(id) => "products/$id";
 
   static const String getOrdersCountApiCall = "driver/recentOrders";
+  static const String getOrders = "backend/orders";
   static String getPageWithSlug(dynamic id) => "backend/pages/$id";
 }

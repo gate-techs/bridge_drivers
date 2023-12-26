@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:hive/hive.dart';
-import 'package:kishk_driver/features/auth/login/data/auth_data_entity.dart';
-
+import '../features/auth/login/data/auth_login_entity.dart';
 import '../features/auth/login/presentation/view/login_screen.dart';
 import '../features/splash/data/vendor_entity.dart';
 

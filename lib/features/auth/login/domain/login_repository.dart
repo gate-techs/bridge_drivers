@@ -8,7 +8,8 @@ import 'package:kishk_driver/network/dio/enum.dart';
 import 'package:kishk_driver/network/dio/network_call.dart';
 import 'package:kishk_driver/network/urls/apis.dart';
 
-import '../data/auth_data_entity.dart';
+import '../data/auth_login_entity.dart';
+
 
 
 
