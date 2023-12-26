@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kishk_driver/common_utils/common_utils.dart';
-
-import '../../../order_details/presentation/order_details_screen.dart';
+import '../../../../order_details/presentation/order_details_screen.dart';
 import '../../data/my_orders_response.dart';
 
 class OrderListItem extends StatelessWidget {

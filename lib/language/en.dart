@@ -141,4 +141,10 @@ Map<String, String> en = {
   "empty_data": "Sorry No Data Found.",
   "pull_to_refresh": "Pull To Refresh.",
   "orderStatus": "Order Status",
+  "shareApp": "Share app",
+  "followUsOn": "Follow us on ",
+  "enjoying": "Share your experience",
+  "rateApp": "Rate this app",
+  "likeApp":
+  "If you like this app, please take a little bit of your time to review it !\\nIt really helps us and it shouldn\\'t take you more than one minute.",
 };

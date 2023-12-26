@@ -4,9 +4,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:kishk_driver/common_utils/common_utils.dart';
 import 'package:kishk_driver/common_utils/log_utils.dart';
-
-import '../../../home/data/my_orders_response.dart';
-import '../../../home/domain/orders_repository.dart';
+import '../../../main_screens/home/data/my_orders_response.dart';
+import '../../../main_screens/home/domain/orders_repository.dart';
 
 part 'orders_state.dart';
 

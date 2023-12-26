@@ -8,9 +8,8 @@ import 'package:kishk_driver/res/gaps.dart';
 import 'package:kishk_driver/res/m_colors.dart';
 import 'package:kishk_driver/shared/widgets/app_loading_widget.dart';
 import 'package:kishk_driver/shared/widgets/empty_data_widget.dart';
-
-import '../../home/data/my_orders_response.dart';
-import '../../home/presentation/widgets/order_item.dart';
+import '../../main_screens/home/data/my_orders_response.dart';
+import '../../main_screens/home/presentation/widgets/order_item.dart';
 import 'cubit/orders_cubit.dart';
 
 class OrdersScreen extends StatefulWidget {

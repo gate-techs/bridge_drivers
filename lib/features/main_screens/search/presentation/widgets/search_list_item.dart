@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
-import 'package:kishk_driver/common_utils/common_utils.dart';
-
+import '../../../../order_details/presentation/order_details_screen.dart';
 import '../../../home/data/my_orders_response.dart';
-import '../../../order_details/presentation/order_details_screen.dart';
 
 class SearchListItem extends StatelessWidget {
   final MyOrdersDataRows data;
