@@ -1,10 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:kishk_driver/common_utils/common_utils.dart';
-import 'package:kishk_driver/common_utils/image_loader.dart';
 import 'package:kishk_driver/res/gaps.dart';
 import 'package:kishk_driver/res/m_colors.dart';
 import 'package:kishk_driver/shared/widgets/app_loading_widget.dart';
