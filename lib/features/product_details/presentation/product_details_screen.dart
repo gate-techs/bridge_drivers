@@ -50,28 +50,28 @@ class ProductDetailsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      CarouselSlider(
-                        items: state.data.galleries?.map((item) {
-                          return ImageLoader.loadDefaultWithPlaceHolder(
-                              item.image,
-                              height: 350,
-                              fit: BoxFit.fill);
-                        }).toList(),
-                        options: CarouselOptions(
-                          height: 350,
-                          disableCenter: true,
-                          enableInfiniteScroll: false,
-                          autoPlay: true,
-                          autoPlayInterval: const Duration(seconds: 2),
-                          autoPlayAnimationDuration: const Duration(seconds: 2),
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          scrollDirection: Axis.horizontal,
-                          enlargeCenterPage: false,
-                          viewportFraction: 1.0,
-                          onPageChanged: (index, reason) =>
-                              mProductDetailsCubit.updateSliderIndex(index),
-                        ),
-                      ),
+                      // CarouselSlider(
+                      //   items: state.data.galleries?.map((item) {
+                      //     return ImageLoader.loadDefaultWithPlaceHolder(
+                      //         item.image,
+                      //         height: 350,
+                      //         fit: BoxFit.fill);
+                      //   }).toList(),
+                      //   options: CarouselOptions(
+                      //     height: 350,
+                      //     disableCenter: true,
+                      //     enableInfiniteScroll: false,
+                      //     autoPlay: true,
+                      //     autoPlayInterval: const Duration(seconds: 2),
+                      //     autoPlayAnimationDuration: const Duration(seconds: 2),
+                      //     autoPlayCurve: Curves.fastOutSlowIn,
+                      //     scrollDirection: Axis.horizontal,
+                      //     enlargeCenterPage: false,
+                      //     viewportFraction: 1.0,
+                      //     onPageChanged: (index, reason) =>
+                      //         mProductDetailsCubit.updateSliderIndex(index),
+                      //   ),
+                      // ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 15.0),
                         child: Row(
