@@ -1,21 +1,17 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:ui' as ui;
-
 import 'package:cherry_toast/cherry_toast.dart';
 import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:kishk_driver/res/m_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../country_code/data/country_code_entity.dart';
 import '../helpers/hive_helper.dart';
 import 'image_utils.dart';
-import 'log_utils.dart';
 
 class CommonUtils {
   static Color getColorFromHex(String hexColor) {

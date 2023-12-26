@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:hive/hive.dart';
 import 'package:kishk_driver/helpers/hive_helper.dart';
 import 'package:kishk_driver/helpers/notifications_helper/send_fcm_repository.dart';
-
 import '../../../../../common_utils/common_utils.dart';
 import '../../../../main/main_screen.dart';
 import '../../data/auth_data_entity.dart';

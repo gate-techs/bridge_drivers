@@ -81,7 +81,7 @@ class ProductDetailsScreen extends StatelessWidget {
                             (int index) => AnimatedContainer(
                               duration: const Duration(milliseconds: 200),
                               decoration:  BoxDecoration(
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(50),
                                 ),
                                 color: MColors.colorPrimary,

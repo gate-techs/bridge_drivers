@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kishk_driver/common_utils/common_utils.dart';
 import 'package:kishk_driver/res/m_colors.dart';
-
 import '../../../order_details/presentation/order_details_screen.dart';
 import '../../data/notifications_response.dart';
 
