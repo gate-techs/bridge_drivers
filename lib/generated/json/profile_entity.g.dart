@@ -1,5 +1,5 @@
 import 'package:kishk_driver/generated/json/base/json_convert_content.dart';
-import 'package:kishk_driver/features/auth/profile/data/profile_entity.dart';
+import 'package:kishk_driver/features/main_screens/profile/data/profile_entity.dart';
 
 ProfileEntity $ProfileEntityFromJson(Map<String, dynamic> json) {
   final ProfileEntity profileEntity = ProfileEntity();

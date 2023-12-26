@@ -7,11 +7,11 @@ import 'package:flutter/material.dart' show debugPrint;
 import 'package:kishk_driver/country_code/data/country_code_entity.dart';
 import 'package:kishk_driver/features/about/data/about_entity.dart';
 import 'package:kishk_driver/features/auth/login/data/auth_data_entity.dart';
-import 'package:kishk_driver/features/auth/profile/data/profile_entity.dart';
 import 'package:kishk_driver/features/contact_us/data/contact_us_entity.dart';
 import 'package:kishk_driver/features/contact_us/data/contact_us_erorr_entity.dart';
 import 'package:kishk_driver/features/main/data/badge_count_entity.dart';
-import 'package:kishk_driver/features/splash/data/vendor_entity.dart';
+import 'package:kishk_driver/features/main_screens/profile/data/app_pages_entity.dart';
+import 'package:kishk_driver/features/main_screens/profile/data/profile_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 
@@ -125,7 +125,7 @@ class JsonConvert {
         if (value == null) {
           return null;
         }
-        return convertFuncMap[type]!(Map<String, dynamic>.from(value)) as T;
+        return convertFuncMap[type]!(value as Map<String, dynamic>) as T;
       } else {
         throw UnimplementedError(
             '$type unimplemented,you can try running the app again');
@@ -155,6 +155,10 @@ class JsonConvert {
       return data.map<AboutData>((Map<String, dynamic> e) =>
           AboutData.fromJson(e)).toList() as M;
     }
+    if (<AboutDataRow>[] is M) {
+      return data.map<AboutDataRow>((Map<String, dynamic> e) =>
+          AboutDataRow.fromJson(e)).toList() as M;
+    }
     if (<AuthDataEntity>[] is M) {
       return data.map<AuthDataEntity>((Map<String, dynamic> e) =>
           AuthDataEntity.fromJson(e)).toList() as M;
@@ -170,14 +174,6 @@ class JsonConvert {
     if (<AuthDataDataUserAbilities>[] is M) {
       return data.map<AuthDataDataUserAbilities>((Map<String, dynamic> e) =>
           AuthDataDataUserAbilities.fromJson(e)).toList() as M;
-    }
-    if (<ProfileEntity>[] is M) {
-      return data.map<ProfileEntity>((Map<String, dynamic> e) =>
-          ProfileEntity.fromJson(e)).toList() as M;
-    }
-    if (<ProfileData>[] is M) {
-      return data.map<ProfileData>((Map<String, dynamic> e) =>
-          ProfileData.fromJson(e)).toList() as M;
     }
     if (<ContactUsEntity>[] is M) {
       return data.map<ContactUsEntity>((Map<String, dynamic> e) =>
@@ -203,75 +199,48 @@ class JsonConvert {
       return data.map<BadgeCountData>((Map<String, dynamic> e) =>
           BadgeCountData.fromJson(e)).toList() as M;
     }
-    if (<VendorEntity>[] is M) {
-      return data.map<VendorEntity>((Map<String, dynamic> e) =>
-          VendorEntity.fromJson(e)).toList() as M;
+    if (<AppPagesEntity>[] is M) {
+      return data.map<AppPagesEntity>((Map<String, dynamic> e) =>
+          AppPagesEntity.fromJson(e)).toList() as M;
     }
-    if (<VendorData>[] is M) {
-      return data.map<VendorData>((Map<String, dynamic> e) =>
-          VendorData.fromJson(e)).toList() as M;
+    if (<AppPagesData>[] is M) {
+      return data.map<AppPagesData>((Map<String, dynamic> e) =>
+          AppPagesData.fromJson(e)).toList() as M;
     }
-    if (<VendorDataPaymentMethods>[] is M) {
-      return data.map<VendorDataPaymentMethods>((Map<String, dynamic> e) =>
-          VendorDataPaymentMethods.fromJson(e)).toList() as M;
+    if (<AppPagesDataRows>[] is M) {
+      return data.map<AppPagesDataRows>((Map<String, dynamic> e) =>
+          AppPagesDataRows.fromJson(e)).toList() as M;
     }
-    if (<VendorDataPaymentMethodsMedia>[] is M) {
-      return data.map<VendorDataPaymentMethodsMedia>((Map<String, dynamic> e) =>
-          VendorDataPaymentMethodsMedia.fromJson(e)).toList() as M;
+    if (<AppPagesDataRowsUser>[] is M) {
+      return data.map<AppPagesDataRowsUser>((Map<String, dynamic> e) =>
+          AppPagesDataRowsUser.fromJson(e)).toList() as M;
     }
-    if (<VendorDataOnBoarding>[] is M) {
-      return data.map<VendorDataOnBoarding>((Map<String, dynamic> e) =>
-          VendorDataOnBoarding.fromJson(e)).toList() as M;
+    if (<AppPagesDataRowsEn>[] is M) {
+      return data.map<AppPagesDataRowsEn>((Map<String, dynamic> e) =>
+          AppPagesDataRowsEn.fromJson(e)).toList() as M;
     }
-    if (<VendorDataOnBoardingMedia>[] is M) {
-      return data.map<VendorDataOnBoardingMedia>((Map<String, dynamic> e) =>
-          VendorDataOnBoardingMedia.fromJson(e)).toList() as M;
+    if (<AppPagesDataRowsAr>[] is M) {
+      return data.map<AppPagesDataRowsAr>((Map<String, dynamic> e) =>
+          AppPagesDataRowsAr.fromJson(e)).toList() as M;
     }
-    if (<VendorDataSocialMedia>[] is M) {
-      return data.map<VendorDataSocialMedia>((Map<String, dynamic> e) =>
-          VendorDataSocialMedia.fromJson(e)).toList() as M;
+    if (<AppPagesDataPaginate>[] is M) {
+      return data.map<AppPagesDataPaginate>((Map<String, dynamic> e) =>
+          AppPagesDataPaginate.fromJson(e)).toList() as M;
     }
-    if (<VendorDataSocialMediaMedia>[] is M) {
-      return data.map<VendorDataSocialMediaMedia>((Map<String, dynamic> e) =>
-          VendorDataSocialMediaMedia.fromJson(e)).toList() as M;
+    if (<AppPagesDataPermissions>[] is M) {
+      return data.map<AppPagesDataPermissions>((Map<String, dynamic> e) =>
+          AppPagesDataPermissions.fromJson(e)).toList() as M;
     }
-    if (<VendorDataAppStyle>[] is M) {
-      return data.map<VendorDataAppStyle>((Map<String, dynamic> e) =>
-          VendorDataAppStyle.fromJson(e)).toList() as M;
+    if (<ProfileEntity>[] is M) {
+      return data.map<ProfileEntity>((Map<String, dynamic> e) =>
+          ProfileEntity.fromJson(e)).toList() as M;
     }
-    if (<VendorDataAppStyleHomeStyle>[] is M) {
-      return data.map<VendorDataAppStyleHomeStyle>((Map<String, dynamic> e) =>
-          VendorDataAppStyleHomeStyle.fromJson(e)).toList() as M;
-    }
-    if (<VendorDataAppStyleHomeStructureStyle>[] is M) {
-      return data.map<VendorDataAppStyleHomeStructureStyle>((
-          Map<String, dynamic> e) =>
-          VendorDataAppStyleHomeStructureStyle.fromJson(e)).toList() as M;
-    }
-    if (<VendorDataAppStyleProductDetailsStyle>[] is M) {
-      return data.map<VendorDataAppStyleProductDetailsStyle>((
-          Map<String, dynamic> e) =>
-          VendorDataAppStyleProductDetailsStyle.fromJson(e)).toList() as M;
-    }
-    if (<VendorDataAppStyleCartStyle>[] is M) {
-      return data.map<VendorDataAppStyleCartStyle>((Map<String, dynamic> e) =>
-          VendorDataAppStyleCartStyle.fromJson(e)).toList() as M;
-    }
-    if (<VendorDataAppStyleCategoriesStyle>[] is M) {
-      return data.map<VendorDataAppStyleCategoriesStyle>((
-          Map<String, dynamic> e) =>
-          VendorDataAppStyleCategoriesStyle.fromJson(e)).toList() as M;
-    }
-    if (<VendorDataAppStyleBrandsStyle>[] is M) {
-      return data.map<VendorDataAppStyleBrandsStyle>((Map<String, dynamic> e) =>
-          VendorDataAppStyleBrandsStyle.fromJson(e)).toList() as M;
-    }
-    if (<VendorDataAppStyleOffersStyle>[] is M) {
-      return data.map<VendorDataAppStyleOffersStyle>((Map<String, dynamic> e) =>
-          VendorDataAppStyleOffersStyle.fromJson(e)).toList() as M;
+    if (<ProfileData>[] is M) {
+      return data.map<ProfileData>((Map<String, dynamic> e) =>
+          ProfileData.fromJson(e)).toList() as M;
     }
 
-    debugPrint("${M.toString()} not found");
+    debugPrint("$M not found");
 
     return null;
   }
@@ -282,7 +251,7 @@ class JsonConvert {
     }
     if (json is List) {
       return _getListChildType<M>(
-          json.map((e) => e as Map<String, dynamic>).toList());
+          json.map((dynamic e) => e as Map<String, dynamic>).toList());
     } else {
       return jsonConvert.convert<M>(json);
     }
@@ -296,43 +265,27 @@ class JsonConvertClassCollection {
     (CountryCodeDataRows).toString(): CountryCodeDataRows.fromJson,
     (AboutEntity).toString(): AboutEntity.fromJson,
     (AboutData).toString(): AboutData.fromJson,
+    (AboutDataRow).toString(): AboutDataRow.fromJson,
     (AuthDataEntity).toString(): AuthDataEntity.fromJson,
     (AuthDataData).toString(): AuthDataData.fromJson,
     (AuthDataDataUserData).toString(): AuthDataDataUserData.fromJson,
     (AuthDataDataUserAbilities).toString(): AuthDataDataUserAbilities.fromJson,
-    (ProfileEntity).toString(): ProfileEntity.fromJson,
-    (ProfileData).toString(): ProfileData.fromJson,
     (ContactUsEntity).toString(): ContactUsEntity.fromJson,
     (ContactUsData).toString(): ContactUsData.fromJson,
     (ContactUsErorrEntity).toString(): ContactUsErorrEntity.fromJson,
     (ContactUsErorrErrors).toString(): ContactUsErorrErrors.fromJson,
     (BadgeCountEntity).toString(): BadgeCountEntity.fromJson,
     (BadgeCountData).toString(): BadgeCountData.fromJson,
-    (VendorEntity).toString(): VendorEntity.fromJson,
-    (VendorData).toString(): VendorData.fromJson,
-    (VendorDataPaymentMethods).toString(): VendorDataPaymentMethods.fromJson,
-    (VendorDataPaymentMethodsMedia).toString(): VendorDataPaymentMethodsMedia
-        .fromJson,
-    (VendorDataOnBoarding).toString(): VendorDataOnBoarding.fromJson,
-    (VendorDataOnBoardingMedia).toString(): VendorDataOnBoardingMedia.fromJson,
-    (VendorDataSocialMedia).toString(): VendorDataSocialMedia.fromJson,
-    (VendorDataSocialMediaMedia).toString(): VendorDataSocialMediaMedia
-        .fromJson,
-    (VendorDataAppStyle).toString(): VendorDataAppStyle.fromJson,
-    (VendorDataAppStyleHomeStyle).toString(): VendorDataAppStyleHomeStyle
-        .fromJson,
-    (VendorDataAppStyleHomeStructureStyle)
-        .toString(): VendorDataAppStyleHomeStructureStyle.fromJson,
-    (VendorDataAppStyleProductDetailsStyle)
-        .toString(): VendorDataAppStyleProductDetailsStyle.fromJson,
-    (VendorDataAppStyleCartStyle).toString(): VendorDataAppStyleCartStyle
-        .fromJson,
-    (VendorDataAppStyleCategoriesStyle)
-        .toString(): VendorDataAppStyleCategoriesStyle.fromJson,
-    (VendorDataAppStyleBrandsStyle).toString(): VendorDataAppStyleBrandsStyle
-        .fromJson,
-    (VendorDataAppStyleOffersStyle).toString(): VendorDataAppStyleOffersStyle
-        .fromJson,
+    (AppPagesEntity).toString(): AppPagesEntity.fromJson,
+    (AppPagesData).toString(): AppPagesData.fromJson,
+    (AppPagesDataRows).toString(): AppPagesDataRows.fromJson,
+    (AppPagesDataRowsUser).toString(): AppPagesDataRowsUser.fromJson,
+    (AppPagesDataRowsEn).toString(): AppPagesDataRowsEn.fromJson,
+    (AppPagesDataRowsAr).toString(): AppPagesDataRowsAr.fromJson,
+    (AppPagesDataPaginate).toString(): AppPagesDataPaginate.fromJson,
+    (AppPagesDataPermissions).toString(): AppPagesDataPermissions.fromJson,
+    (ProfileEntity).toString(): ProfileEntity.fromJson,
+    (ProfileData).toString(): ProfileData.fromJson,
   };
 
   bool containsKey(String type) {

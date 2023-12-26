@@ -27,38 +27,69 @@ extension AboutEntityExtension on AboutEntity {
 
 AboutData $AboutDataFromJson(Map<String, dynamic> json) {
   final AboutData aboutData = AboutData();
-  final bool? status = jsonConvert.convert<bool>(json['status']);
-  if (status != null) {
-    aboutData.status = status;
-  }
-  final String? message = jsonConvert.convert<String>(json['message']);
-  if (message != null) {
-    aboutData.message = message;
-  }
-  final String? rows = jsonConvert.convert<String>(json['rows']);
-  if (rows != null) {
-    aboutData.rows = rows;
+  final AboutDataRow? row = jsonConvert.convert<AboutDataRow>(json['row']);
+  if (row != null) {
+    aboutData.row = row;
   }
   return aboutData;
 }
 
 Map<String, dynamic> $AboutDataToJson(AboutData entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
-  data['status'] = entity.status;
-  data['message'] = entity.message;
-  data['rows'] = entity.rows;
+  data['row'] = entity.row?.toJson();
   return data;
 }
 
 extension AboutDataExtension on AboutData {
   AboutData copyWith({
-    bool? status,
-    String? message,
-    String? rows,
+    AboutDataRow? row,
   }) {
     return AboutData()
-      ..status = status ?? this.status
-      ..message = message ?? this.message
-      ..rows = rows ?? this.rows;
+      ..row = row ?? this.row;
+  }
+}
+
+AboutDataRow $AboutDataRowFromJson(Map<String, dynamic> json) {
+  final AboutDataRow aboutDataRow = AboutDataRow();
+  final int? id = jsonConvert.convert<int>(json['id']);
+  if (id != null) {
+    aboutDataRow.id = id;
+  }
+  final String? image = jsonConvert.convert<String>(json['image']);
+  if (image != null) {
+    aboutDataRow.image = image;
+  }
+  final String? title = jsonConvert.convert<String>(json['title']);
+  if (title != null) {
+    aboutDataRow.title = title;
+  }
+  final String? body = jsonConvert.convert<String>(json['body']);
+  if (body != null) {
+    aboutDataRow.body = body;
+  }
+  return aboutDataRow;
+}
+
+Map<String, dynamic> $AboutDataRowToJson(AboutDataRow entity) {
+  final Map<String, dynamic> data = <String, dynamic>{};
+  data['id'] = entity.id;
+  data['image'] = entity.image;
+  data['title'] = entity.title;
+  data['body'] = entity.body;
+  return data;
+}
+
+extension AboutDataRowExtension on AboutDataRow {
+  AboutDataRow copyWith({
+    int? id,
+    String? image,
+    String? title,
+    String? body,
+  }) {
+    return AboutDataRow()
+      ..id = id ?? this.id
+      ..image = image ?? this.image
+      ..title = title ?? this.title
+      ..body = body ?? this.body;
   }
 }

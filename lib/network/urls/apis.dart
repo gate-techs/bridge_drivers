@@ -13,9 +13,9 @@ class Apis {
 
   static const String getCountryCodeData = "countries";
   static String getVendorDetails = "appSettings";
-
+  static const String getProfileApiCall = "auth/me";
   static const String getNotificationsBadgeCount = "backend/notifications/badgeCount";
-
+  static String getAppPages = "backend/pages";
   static const String doLoginApiCall = "backend/auth/login";
   static const String sendFcmToken = "fcmToken";
   static const String getProfileData = "auth/me";
@@ -47,4 +47,5 @@ class Apis {
   static String getProductDetailsDataApiCall(id) => "products/$id";
 
   static const String getOrdersCountApiCall = "driver/recentOrders";
+  static String getPageWithSlug(dynamic id) => "backend/pages/$id";
 }

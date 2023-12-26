@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/route_manager.dart';
 
 import '../../../helpers/hive_helper.dart';
+import '../../../res/m_colors.dart';
 import '../../auth/login/presentation/view/login_screen.dart';
 import '../../main/main_screen.dart';
 import 'cubit/splash_cubit.dart';
@@ -32,6 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: MColors.colorPrimary,
         child: AspectRatio(
       aspectRatio:
           MediaQuery.sizeOf(context).width / MediaQuery.sizeOf(context).height,
@@ -41,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
           listener: (context, state) {},
           builder: (context, state) {
             return Center(
-                child: Image.asset('assets/images/logo.jpeg')
+                child: Image.asset('assets/images/logo.png')
             );
           },
         ),

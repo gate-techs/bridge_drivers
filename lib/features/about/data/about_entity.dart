@@ -1,6 +1,7 @@
 import 'package:kishk_driver/generated/json/base/json_field.dart';
 import 'package:kishk_driver/generated/json/about_entity.g.dart';
 import 'dart:convert';
+export 'package:kishk_driver/generated/json/about_entity.g.dart';
 
 @JsonSerializable()
 class AboutEntity {
@@ -12,11 +13,6 @@ class AboutEntity {
 
 	Map<String, dynamic> toJson() => $AboutEntityToJson(this);
 
-	AboutEntity copyWith({AboutData? data}) {
-		return AboutEntity()
-			..data= data ?? this.data;
-	}
-
 	@override
 	String toString() {
 		return jsonEncode(this);
@@ -25,9 +21,7 @@ class AboutEntity {
 
 @JsonSerializable()
 class AboutData {
-	bool? status;
-	String? message;
-	String? rows;
+	AboutDataRow? row;
 
 	AboutData();
 
@@ -35,12 +29,24 @@ class AboutData {
 
 	Map<String, dynamic> toJson() => $AboutDataToJson(this);
 
-	AboutData copyWith({bool? status, String? message, String? rows}) {
-		return AboutData()
-			..status= status ?? this.status
-			..message= message ?? this.message
-			..rows= rows ?? this.rows;
+	@override
+	String toString() {
+		return jsonEncode(this);
 	}
+}
+
+@JsonSerializable()
+class AboutDataRow {
+	int? id;
+	String? image;
+	String? title;
+	String? body;
+
+	AboutDataRow();
+
+	factory AboutDataRow.fromJson(Map<String, dynamic> json) => $AboutDataRowFromJson(json);
+
+	Map<String, dynamic> toJson() => $AboutDataRowToJson(this);
 
 	@override
 	String toString() {

@@ -7,13 +7,11 @@ abstract class AboutState {
 
 class AboutInitial extends AboutState {}
 
+class AboutSuccess extends AboutState{
+  final AboutData data;
 
-class AboutLoaded extends AboutState{
-  final String aboutData;
-
-  const  AboutLoaded(this.aboutData);
+  const AboutSuccess(this.data);
 }
-
 
 
 class AboutFailed extends AboutState {
