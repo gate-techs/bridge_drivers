@@ -35,69 +35,6 @@ class _OrdersSearchScreenState extends State<OrdersSearchScreen> {
           //  OrdersListDataRows  OrdersListDataRows;
           return Scaffold(
             backgroundColor: MColors.screensBackgroundColor,
-            appBar: AppBar(
-              titleSpacing: 0.0,
-              title: Text(
-                "searchOrder".tr,
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              centerTitle: true,
-              leading: IconButton(
-                icon: const Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                ),
-                onPressed: () => Get.back(),
-              ),
-              bottom: PreferredSize(
-                preferredSize: const Size(0, 50),
-                child: Center(
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 40,
-                        margin: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: MColors.veryLightGray,
-                        ),
-                        child: TextFormField(
-                          controller:  ordersCubit.search,
-                          cursorColor: MColors.colorPrimary,
-                          autofocus: true,
-                          onChanged: (value) {
-                            ordersCubit.getSearch({
-                              'search': value,
-                              'paginate': 30,
-                              'mobile':true
-                            });
-                          },
-                          style: const TextStyle(
-                            fontSize: 16,
-                            color: Color(0xff212121),
-                          ),
-                          decoration: MStyles.textFieldStyle(
-                              "searchOrder".tr,
-                              const Icon(TablerIcons.search, color:Colors.black, size: 30,),
-                              null),
-                        ),
-                      ),
-                      ResultWidget(
-                        title:
-                        '${'searchResult'.tr} (${ ordersCubit.searchResults
-                            .toString()})',
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
             body: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
