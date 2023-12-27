@@ -19,8 +19,8 @@ class OrderListItem extends StatelessWidget {
           refreshCallBack.call();
         }
       },
-      child: Card(
-        elevation: 8,
+      child: Container(
+        color: Colors.white,
         child: SizedBox(
           height: 120,
           child: Row(
@@ -40,7 +40,7 @@ class OrderListItem extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Container(
-                        // color: CommonUtils.getStatusColorFromId(data.statusId ?? '0'),
+                      color:data.orderStatus=='pending'?Colors.red:Colors.white,
                         width: 100,
                         height: 30,
                         alignment: Alignment.center,
@@ -86,7 +86,7 @@ class OrderListItem extends StatelessWidget {
             Text(
               "name".tr,
               style: const TextStyle(
-                color: Colors.black87,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),

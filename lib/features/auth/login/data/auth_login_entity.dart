@@ -3,12 +3,12 @@ class AuthDataEntity {
 
   AuthDataEntity({this.data});
 
-  AuthDataEntity.fromJson(Map<String, dynamic> json) {
+  AuthDataEntity.fromJson(Map<dynamic, dynamic> json) {
     data = json['data'] != null ? AuthDataData.fromJson(json['data']) : null;
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+  Map<dynamic, dynamic> toJson() {
+    final Map<dynamic, dynamic> data = <dynamic, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
@@ -23,7 +23,7 @@ class AuthDataData {
 
   AuthDataData({this.userData, this.accessToken, this.userAbilities});
 
-  AuthDataData.fromJson(Map<String, dynamic> json) {
+  AuthDataData.fromJson(Map<dynamic, dynamic> json) {
     userData = json['userData'] != null
         ? UserData.fromJson(json['userData'])
         : null;
@@ -36,8 +36,8 @@ class AuthDataData {
     }
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+  Map<dynamic, dynamic> toJson() {
+    final Map<dynamic, dynamic> data = <dynamic, dynamic>{};
     if (userData != null) {
       data['userData'] = userData!.toJson();
     }
@@ -66,7 +66,7 @@ class UserData {
         this.avatar,
         this.role});
 
-  UserData.fromJson(Map<String, dynamic> json) {
+  UserData.fromJson(Map<dynamic, dynamic> json) {
     encryptId = json['encryptId'];
     vendorId = json['vendorId'];
     username = json['username'];
@@ -75,8 +75,8 @@ class UserData {
     role = json['role'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+  Map<dynamic, dynamic> toJson() {
+    final Map<dynamic, dynamic> data = <dynamic, dynamic>{};
     data['encryptId'] = encryptId;
     data['vendorId'] = vendorId;
     data['username'] = username;
@@ -93,13 +93,13 @@ class UserAbilities {
 
   UserAbilities({this.action, this.subject});
 
-  UserAbilities.fromJson(Map<String, dynamic> json) {
+  UserAbilities.fromJson(Map<dynamic, dynamic> json) {
     action = json['action'];
     subject = json['subject'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+  Map<dynamic, dynamic> toJson() {
+    final Map<dynamic, dynamic> data = <dynamic, dynamic>{};
     data['action'] = action;
     data['subject'] = subject;
     return data;

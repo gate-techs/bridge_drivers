@@ -4,19 +4,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:paginated_list/paginated_list.dart';
 import 'package:kishk_driver/helpers/hive_helper.dart';
-import 'package:kishk_driver/common_utils/common_utils.dart';
 import 'package:kishk_driver/res/m_colors.dart';
-import 'package:kishk_driver/shared/widgets/app_bar.dart';
 import 'package:kishk_driver/shared/widgets/app_loading_widget.dart';
 import 'package:kishk_driver/shared/widgets/empty_data_widget.dart';
-import '../../../../orders/presentation/orders_screen.dart';
 import '../../data/orders_entity.dart';
 import '../cubit/home_cubit.dart';
 import '../widgets/order_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -29,11 +25,6 @@ class HomeScreen extends StatelessWidget {
           HomeCubit mHomeCubit = HomeCubit.get(context);
           if (state is HomeLoaded) {
             return Scaffold(
-              appBar: PreferredSize(
-                  preferredSize: const Size.fromHeight(60),
-                  child: CustomAppBar(
-                    badgeCount: mHomeCubit.badgeCount,
-                  )),
               body: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: RefreshIndicator(
@@ -51,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                             Text(
                               '${'welcome'.tr} ${HiveHelper.getUserData()?.userData?.username ?? ''}',
                               style: const TextStyle(
-                                  fontSize: 18, color: MColors.veryLightGray),
+                                  fontSize: 18, color: Colors.black),
                             ),
                             const SizedBox(
                               width: 5,
@@ -170,7 +161,7 @@ class HomeScreen extends StatelessWidget {
                             // }
                           },
                           builder: (e, index) => OrderListItem(
-                              data: state.dataList[index],
+                              data: e,
                               refreshCallBack: () {
                                 mHomeCubit.getOrdersCount();
                               }),
