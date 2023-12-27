@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../order_details/presentation/order_details_screen.dart';
+import '../../../../order_details_screen/presentation/order_details_screen.dart';
 import '../../data/orders_entity.dart';
 
 class OrderListItem extends StatelessWidget {
@@ -14,13 +14,25 @@ class OrderListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        final res = await Get.to(() => OrderDetailsScreen(id: data.id!));
+        final res = await Get.to(() => OrderDetailsScreen(id: data.id!.toString()));
         if (res != null && res['refresh'] == true) {
           refreshCallBack.call();
         }
       },
       child: Container(
-        color: Colors.white,
+        margin: const EdgeInsets.symmetric(vertical: 2),
+        decoration:  BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black12,
+              offset: Offset(0, 4),
+              blurRadius: 8,
+              spreadRadius: 0,
+            )
+          ],
+        ),
         child: SizedBox(
           height: 120,
           child: Row(
@@ -94,7 +106,7 @@ class OrderListItem extends StatelessWidget {
             Text(
               ' : ${data.customer?.name??''}',
               style: const TextStyle(
-                color: Colors.grey,
+                color: Colors.black,
                 fontWeight: FontWeight.normal,
                 fontSize: 14,
               ),
@@ -108,7 +120,7 @@ class OrderListItem extends StatelessWidget {
             Text(
               "code".tr,
               style: const TextStyle(
-                color: Colors.black87,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -116,7 +128,7 @@ class OrderListItem extends StatelessWidget {
             Text(
               ' ${data.orderNo}',
               style: const TextStyle(
-                color: Colors.grey,
+                color: Colors.black,
                 fontWeight: FontWeight.normal,
                 fontSize: 14,
               ),
@@ -131,7 +143,7 @@ class OrderListItem extends StatelessWidget {
             Text(
               "price".tr,
               style: const TextStyle(
-                color: Colors.black87,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -141,7 +153,7 @@ class OrderListItem extends StatelessWidget {
               child: Text(
                 "${data.totalGrandPrice ?? ''} ${"kwd".tr}",
                 style: const TextStyle(
-                  color: Colors.grey,
+                  color: Colors.black,
                   fontWeight: FontWeight.normal,
                   fontSize: 14,
                 ),

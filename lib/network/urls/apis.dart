@@ -39,7 +39,7 @@ class Apis {
 
   static const String getOrdersDataApiCall = "driver/recentOrders";
 
-  static String getOrderDetailsDataApiCall(id) => "showOrder/$id";
+  static String getOrderDetailsDataApiCall(id) => "orders/$id";
 
   static String updateOrderStatusApiCall(id) =>
       "driver/recentOrders/$id/change-status";

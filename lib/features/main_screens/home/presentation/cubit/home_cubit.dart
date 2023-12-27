@@ -18,25 +18,61 @@ class HomeCubit extends Cubit<HomeState> {
   String newOrdersCount = '0';
   String totalOrdersCount = '0';
 
-  int currentPageIndex = 1;
-  bool isLastIndex = false;
+  int currentPageIndexNew = 1;
+  bool isLastPageNew = false;
+  int lastPageNew = 0;
+  int listTotalNew = 0;
 
-  bool isGrade = false;
-  bool isLastPage = false;
-  int lastPage = 10;
-  int listTotal = 0;
-  int radioSelected = 1;
-  String categoryId = '1';
 
-  List<OrdersDataRows> ordersList = [];
+  List<OrdersDataRows> ordersListNew = [];
 
   OrdersRepository ordersRepository = OrdersRepository();
 
   Future<void> getOrdersCount() async {
-    if (currentPageIndex == 1) {
+    if (currentPageIndexNew == 1) {
       emit(HomeLoading());
     }
     final resul = await ordersRepository.getOrdersCount();
+    resul.fold((l) {
+      emit(HomeError("empty_data".tr));
+    }, (r) {
+      final List<OrdersDataRows> fetchedPosts = r.data?.rows ?? [];
+      lastPageNew = r.data?.paginate?.lastPage ?? 1;
+      listTotalNew = r.data?.paginate?.total ?? 0;
+      if (r.data == null || r.data!.rows!.isEmpty) {
+        emit(HomeError("empty_data".tr));
+      } else {
+        if (currentPageIndexNew == r.data!.paginate!.lastPage) {
+          isLastPageNew = true;
+        }
+        if (fetchedPosts.isNotEmpty) {
+          ordersListNew.addAll(fetchedPosts);
+          fetchedPosts.clear();
+          newOrdersCount = (r.data?.paginate?.total??'0').toString();
+          emit(HomeLoaded(ordersListNew));
+        }
+      }
+    });
+  }
+
+
+  int currentPageIndex = 1;
+  bool isLastPage = false;
+  int lastPage = 10;
+  int listTotal = 0;
+
+
+  List<OrdersDataRows> ordersList = [];
+
+
+
+
+  Future<void> getOrders(Map<String, dynamic> prams) async {
+
+    if (currentPageIndex == 1) {
+      emit(HomeLoading());
+    }
+    final resul = await ordersRepository.getOrders(prams);
     resul.fold((l) {
       emit(HomeError("empty_data".tr));
     }, (r) {
@@ -52,20 +88,13 @@ class HomeCubit extends Cubit<HomeState> {
         if (fetchedPosts.isNotEmpty) {
           ordersList.addAll(fetchedPosts);
           fetchedPosts.clear();
+          totalOrdersCount = (r.data?.paginate?.total??'0').toString();
           emit(HomeLoaded(ordersList));
         }
       }
     });
   }
 
-
-  int badgeCount = 0;
-
-  Future<void> getNotificationsCount() async {
-    badgeCount = await NotificationsRepository()
-        .getNotificationsCount()
-        .then((value) async => value.fold((l) => l, (r) => r));
-  }
 }
 
 

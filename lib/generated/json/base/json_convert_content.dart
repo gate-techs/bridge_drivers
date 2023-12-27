@@ -13,6 +13,8 @@ import 'package:kishk_driver/features/main_screens/home/data/orders_entity.dart'
 import 'package:kishk_driver/features/main_screens/profile/data/app_pages_entity.dart';
 import 'package:kishk_driver/features/main_screens/profile/data/profile_entity.dart';
 
+import '../../../features/order_details_screen/data/order_details_entity.dart';
+
 JsonConvert jsonConvert = JsonConvert();
 
 typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
@@ -247,6 +249,62 @@ class JsonConvert {
       return data.map<ProfileData>((Map<String, dynamic> e) =>
           ProfileData.fromJson(e)).toList() as M;
     }
+    if (<OrderDetailsData>[] is M) {
+      return data.map<OrderDetailsData>((Map<String, dynamic> e) =>
+          OrderDetailsData.fromJson(e)).toList() as M;
+    }
+    if (<OrderDetailsDataRow>[] is M) {
+      return data.map<OrderDetailsDataRow>((Map<String, dynamic> e) =>
+          OrderDetailsDataRow.fromJson(e)).toList() as M;
+    }
+    if (<OrderDetailsDataRowUser>[] is M) {
+      return data.map<OrderDetailsDataRowUser>((Map<String, dynamic> e) =>
+          OrderDetailsDataRowUser.fromJson(e)).toList() as M;
+    }
+    if (<OrderDetailsDataRowDelivery>[] is M) {
+      return data.map<OrderDetailsDataRowDelivery>((Map<String, dynamic> e) =>
+          OrderDetailsDataRowDelivery.fromJson(e)).toList() as M;
+    }
+    if (<OrderDetailsDataRowPayment>[] is M) {
+      return data.map<OrderDetailsDataRowPayment>((Map<String, dynamic> e) =>
+          OrderDetailsDataRowPayment.fromJson(e)).toList() as M;
+    }
+    if (<OrderDetailsDataRowVendors>[] is M) {
+      return data.map<OrderDetailsDataRowVendors>((Map<String, dynamic> e) =>
+          OrderDetailsDataRowVendors.fromJson(e)).toList() as M;
+    }
+    if (<OrderDetailsDataRowProducts>[] is M) {
+      return data.map<OrderDetailsDataRowProducts>((Map<String, dynamic> e) =>
+          OrderDetailsDataRowProducts.fromJson(e)).toList() as M;
+    }
+    if (<OrderDetailsDataRowProductsMedia>[] is M) {
+      return data.map<OrderDetailsDataRowProductsMedia>((
+          Map<String, dynamic> e) =>
+          OrderDetailsDataRowProductsMedia.fromJson(e)).toList() as M;
+    }
+    if (<OrderDetailsDataRowProductsVendor>[] is M) {
+      return data.map<OrderDetailsDataRowProductsVendor>((
+          Map<String, dynamic> e) =>
+          OrderDetailsDataRowProductsVendor.fromJson(e)).toList() as M;
+    }
+    if (<OrderDetailsDataRowProductsBrand>[] is M) {
+      return data.map<OrderDetailsDataRowProductsBrand>((
+          Map<String, dynamic> e) =>
+          OrderDetailsDataRowProductsBrand.fromJson(e)).toList() as M;
+    }
+    if (<OrderDetailsDataRowProductsSelectedAttributes>[] is M) {
+      return data.map<OrderDetailsDataRowProductsSelectedAttributes>((
+          Map<String, dynamic> e) =>
+          OrderDetailsDataRowProductsSelectedAttributes.fromJson(e))
+          .toList() as M;
+    }
+    if (<OrderDetailsDataRowProductsSelectedAttributesSelected>[] is M) {
+      return data.map<OrderDetailsDataRowProductsSelectedAttributesSelected>((
+          Map<String, dynamic> e) =>
+          OrderDetailsDataRowProductsSelectedAttributesSelected.fromJson(e))
+          .toList() as M;
+    }
+
 
     debugPrint("$M not found");
 
@@ -296,6 +354,29 @@ class JsonConvertClassCollection {
     (AppPagesDataPermissions).toString(): AppPagesDataPermissions.fromJson,
     (ProfileEntity).toString(): ProfileEntity.fromJson,
     (ProfileData).toString(): ProfileData.fromJson,
+    (OrderDetailsEntity).toString(): OrderDetailsEntity.fromJson,
+    (OrderDetailsData).toString(): OrderDetailsData.fromJson,
+    (OrderDetailsDataRow).toString(): OrderDetailsDataRow.fromJson,
+    (OrderDetailsDataRowUser).toString(): OrderDetailsDataRowUser.fromJson,
+    (OrderDetailsDataRowDelivery).toString(): OrderDetailsDataRowDelivery
+        .fromJson,
+    (OrderDetailsDataRowPayment).toString(): OrderDetailsDataRowPayment
+        .fromJson,
+    (OrderDetailsDataRowVendors).toString(): OrderDetailsDataRowVendors
+        .fromJson,
+    (OrderDetailsDataRowProducts).toString(): OrderDetailsDataRowProducts
+        .fromJson,
+    (OrderDetailsDataRowProductsMedia)
+        .toString(): OrderDetailsDataRowProductsMedia.fromJson,
+    (OrderDetailsDataRowProductsVendor)
+        .toString(): OrderDetailsDataRowProductsVendor.fromJson,
+    (OrderDetailsDataRowProductsBrand)
+        .toString(): OrderDetailsDataRowProductsBrand.fromJson,
+    (OrderDetailsDataRowProductsSelectedAttributes)
+        .toString(): OrderDetailsDataRowProductsSelectedAttributes.fromJson,
+    (OrderDetailsDataRowProductsSelectedAttributesSelected)
+        .toString(): OrderDetailsDataRowProductsSelectedAttributesSelected
+        .fromJson,
   };
 
   bool containsKey(String type) {

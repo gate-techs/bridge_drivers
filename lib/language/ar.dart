@@ -148,4 +148,6 @@ Map<String, String> ar = {
   "likeApp":
   "إذا كنت تحب هذا التطبيق ، من فضلك الامر لن يأخذ منك دقيقة لتقييمه.",
   'welcomeBack': 'مرحبا بك ',
+  'searchOrder': 'إبحث عن طلب',
+  "orderDetails": "تفاصيل الطلب",
 };

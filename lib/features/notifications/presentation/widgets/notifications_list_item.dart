@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kishk_driver/res/m_colors.dart';
-import '../../../order_details/presentation/order_details_screen.dart';
+import '../../../order_details_screen/presentation/order_details_screen.dart';
 import '../../data/notifications_response.dart';
 
 class NotificationsListItem extends StatelessWidget {
@@ -14,7 +14,7 @@ class NotificationsListItem extends StatelessWidget {
     return InkWell(
       onTap: () async {
         if (data.userData != null && data.userData?.orderId != null) {
-          await Get.to(() => OrderDetailsScreen(id: data.userData!.orderId!));
+          await Get.to(() => OrderDetailsScreen(id: data.userData!.orderId!.toString()));
         }
       },
       child: Container(

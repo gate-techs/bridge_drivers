@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:kishk_driver/shared/loading_widget.dart';
 import 'package:paginated_list/paginated_list.dart';
 import 'package:kishk_driver/helpers/hive_helper.dart';
-import 'package:kishk_driver/res/m_colors.dart';
-import 'package:kishk_driver/shared/widgets/app_loading_widget.dart';
 import 'package:kishk_driver/shared/widgets/empty_data_widget.dart';
 import '../../data/orders_entity.dart';
 import '../cubit/home_cubit.dart';
@@ -16,9 +15,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()
-        ..getNotificationsCount()
-        ..getOrdersCount(),
+      create: (context) => HomeCubit()..getOrdersCount()..getOrders({}),
       child: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -70,6 +67,7 @@ class HomeScreen extends StatelessWidget {
                                     //     mOrdersStatus: OrdersStatus.news));
                                   },
                                   child: Container(
+                                    width: 150,
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(12),
@@ -86,8 +84,8 @@ class HomeScreen extends StatelessWidget {
                                       children: [
                                         Image.asset(
                                           'assets/images/logo.png',
-                                          width: 80,
-                                          height: 80,
+                                          width: 100,
+                                          height: 100,
                                         ),
                                         Text(
                                           'new_orders'.tr,
@@ -115,6 +113,7 @@ class HomeScreen extends StatelessWidget {
                                     //     mOrdersStatus: OrdersStatus.all));
                                   },
                                   child: Container(
+                                    width: 150,
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(12),
@@ -131,8 +130,8 @@ class HomeScreen extends StatelessWidget {
                                       children: [
                                         Image.asset(
                                           'assets/images/logo.png',
-                                          width: 80,
-                                          height: 80,
+                                          width: 100,
+                                          height: 100,
                                         ),
                                         Text(
                                           'all_orders'.tr,
@@ -153,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                           shrinkWrap: true,
                           items: state.dataList,
                           isRecentSearch: false,
-                          isLastPage: mHomeCubit.isLastIndex,
+                          isLastPage: mHomeCubit.isLastPageNew,
                           onLoadMore: (int index) {
                             // if (!mHomeCubit.isLastIndex) {
                             //   mHomeCubit.getLastOrders(
@@ -175,7 +174,7 @@ class HomeScreen extends StatelessWidget {
           } else if (state is HomeError) {
             return const EmptyDataWidget();
           } else {
-            return const AppLoadingWidget();
+            return const LoadingWidget();
           }
         },
       ),

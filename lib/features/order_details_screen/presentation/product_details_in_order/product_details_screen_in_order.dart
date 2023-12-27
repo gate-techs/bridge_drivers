@@ -2,34 +2,42 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:kishk_driver/features/product_details/presentation/widgets/description_widget.dart';
-import '../../../../res/gaps.dart';
-import '../../../../res/m_colors.dart';
-import '../../../common_utils/common_utils.dart';
-import '../../../main.dart';
-import '../../../shared/error_widget.dart';
-import '../../../shared/loading_widget.dart';
-import '../../../shared/rating_bar.dart';
-import '../../order_details_screen/presentation/product_details_in_order/widgets/top_details_part.dart';
-import 'cubit/poduct_details_cubit.dart';
+import '../../../../../main.dart';
+import '../../../../../res/gaps.dart';
+import '../../../../../res/m_colors.dart';
+import '../../../../common_utils/common_utils.dart';
+import '../../../../shared/error_widget.dart';
+import '../../../../shared/loading_widget.dart';
+import '../../../../shared/rating_bar.dart';
+import '../../../product_details/presentation/cubit/poduct_details_cubit.dart';
+import '../../../product_details/presentation/widgets/description_widget.dart';
+import '../../data/order_details_entity.dart';
+import 'widgets/top_details_part.dart';
 
-class ProductDetailsScreen extends StatefulWidget {
-  const ProductDetailsScreen(
-      {Key? key, required this.id, this.fromOnBoarding = false})
+
+
+
+class ProductDetailsScreenInOrder extends StatefulWidget {
+  const ProductDetailsScreenInOrder(
+      {Key? key, required this.id,required this.selectedAttributes})
       : super(key: key);
   final String id;
-  final bool? fromOnBoarding;
-  static const String routeName = "/details_route_name";
+
+
+  final   List<OrderDetailsDataRowProductsSelectedAttributes>? selectedAttributes;
 
   @override
-  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+  State<ProductDetailsScreenInOrder> createState() =>
+      _ProductDetailsScreenInOrderState();
 }
 
-class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+class _ProductDetailsScreenInOrderState extends State<ProductDetailsScreenInOrder> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductDetailsCubit()..getProductDetails(widget.id),
+      create: (context) =>
+      ProductDetailsCubit()
+        ..getProductDetails(widget.id),
       child: BlocConsumer<ProductDetailsCubit, ProductDetailsState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -47,9 +55,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     color: Colors.black,
                   ),
                   onPressed: () {
-                    Get.back();
+                      Get.back();
                   },
                 ),
+
               ),
               body: RefreshIndicator(
                 backgroundColor: MColors.colorPrimaryLight,
@@ -59,7 +68,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 },
                 child: SingleChildScrollView(
                     child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TopDetailsPart(
                           productDetailsRow: data,
@@ -70,11 +79,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment
+                                    .spaceBetween,
                                 children: [
                                   SizedBox(
-                                    width: MediaQuery.sizeOf(context).width * 0.8,
+                                    width: MediaQuery
+                                        .sizeOf(context)
+                                        .width * 0.8,
                                     child: AutoSizeText(
                                       data.title ?? '',
                                       maxLines: 2,
@@ -106,7 +119,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment
+                                    .spaceBetween,
                                 children: [
                                   Padding(
                                     padding:
@@ -135,7 +149,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       ],
                                     ),
                                   ),
-
                                   data.hasOffer == true
                                       ? Column(
                                     mainAxisAlignment:
@@ -151,7 +164,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                           TextDecoration.lineThrough,
                                         ),
                                       ),
-                                      Gaps.vGap4,
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
                                       Text(
                                         '${data.price ?? '0'} ${'KWD'.tr}',
                                         style: const TextStyle(
@@ -162,7 +177,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     ],
                                   )
                                       : Text(
-                                    '${data.oldPrice ?? '0'} ${'KWD'.tr}',
+                                    '${data.price ?? '0'} ${'KWD'.tr}',
                                     style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 20,
@@ -170,9 +185,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   )
                                 ],
                               ),
-
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment
+                                    .spaceBetween,
                                 children: [
                                   StarRatingBar(
                                       score: double.parse(
@@ -184,112 +199,86 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               ListView.builder(
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
-                                itemCount: 1,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return data.attributes![index].childs!.isNotEmpty
-                                      ? Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                          BorderRadius.circular(16)),
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 8.0),
-                                      margin: const EdgeInsets.all(2.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
-                                          ListView.builder(
-                                            shrinkWrap: true,
-                                            physics:
-                                            const NeverScrollableScrollPhysics(),
-                                            itemCount:
-                                            data.attributes?.length,
-                                            itemBuilder:
-                                                (BuildContext context,
-                                                int index) {
-                                              return data.attributes![index]
-                                                  .childs!.isNotEmpty
-                                                  ? Container(
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.white,
-                                                      borderRadius:
-                                                      BorderRadius
-                                                          .circular(
-                                                          16)),
-                                                  padding:
-                                                  const EdgeInsets.symmetric(vertical: 8.0),
-                                                  margin: const EdgeInsets.all(2.0),
-                                                  child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      Text(
-                                                        data.attributes![index].title ?? '',
-                                                        style:
-                                                        const TextStyle(
-                                                          color: Colors
-                                                              .black,
-                                                          fontSize: 16,
+                                itemCount:  widget.selectedAttributes?.length,
+                                itemBuilder: (BuildContext context,
+                                    int index) {
+
+                                  return
+                                    widget.selectedAttributes![index].selected==null? Container():        widget.selectedAttributes!.isNotEmpty ?
+                                    Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                            BorderRadius.circular(16)),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 8.0),
+                                        margin: const EdgeInsets.all(2.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              widget.selectedAttributes![index].name ?? '',
+                                              style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 40,
+                                              child: ListView.builder(
+                                                  scrollDirection: Axis.horizontal,
+                                                  shrinkWrap: true,
+                                                  itemCount:  widget.selectedAttributes!.length,
+                                                  itemBuilder: (context,i){
+                                                    return  Container(
+                                                      margin: const EdgeInsets.all(2),
+                                                      width: ( widget.selectedAttributes![index].name!.contains('#')) ?100:150,
+                                                      decoration: BoxDecoration(
+                                                        border:widget.selectedAttributes![i].name!.contains('#')? Border.all(
+                                                            color: MColors.colorPrimary, width: 2):null,
+                                                        borderRadius:
+                                                        const BorderRadius
+                                                            .all(
+                                                          Radius.circular(
+                                                              12),
                                                         ),
                                                       ),
-                                                      SizedBox(
-                                                        height: 40,
-                                                        child: ListView.builder(
-                                                            scrollDirection: Axis.horizontal,
-                                                            shrinkWrap:
-                                                            true,
-                                                            itemCount: data.attributes![index].childs?.length,
-                                                            itemBuilder:
-                                                                (context, i) {
-                                                              return Container(
-                                                                margin: const EdgeInsets
-                                                                    .all(
-                                                                    2),
-                                                                width: (data.attributes![index].childs![i].title!.contains('#'))
-                                                                    ? 100
-                                                                    : 150,
-                                                                decoration:
-                                                                const BoxDecoration(
-                                                                  borderRadius: BorderRadius.all(Radius.circular(12),
-                                                                  ),
-                                                                ),
-                                                                child:
-                                                                Padding(
-                                                                  padding:
-                                                                  const EdgeInsets.all(1.0),
-                                                                  child: (data.attributes![index].childs![i].title!.contains('#'))
-                                                                      ? Container(
-                                                                    height: 20,
-                                                                    decoration: BoxDecoration(
-                                                                        color: CommonUtils.getColorFromHex((data.attributes?[index].childs?[i].title ?? '' ).split('-').last),
-                                                                        border: Border.all(color: Colors.grey,width: 0.5),
-                                                                        borderRadius: const BorderRadius.all(Radius.circular(8))),
-                                                                    width: 50,
-                                                                  )
-                                                                      : Container(
-                                                                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                                                                    decoration: const BoxDecoration(
-                                                                      color: Colors.white,
-                                                                      borderRadius: BorderRadius.all(
-                                                                        Radius.circular(12),
-                                                                      ),
-                                                                    ),
-                                                                    child: Text(
-                                                                      data.attributes?[index].childs?[i].title ?? '',
-                                                                      style: TextStyle(color: MColors.colorPrimary, fontSize: 16, fontWeight: FontWeight.w500),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            }),
-                                                      )
-                                                    ],
-                                                  ))
-                                                  : const SizedBox();
-                                            },
-                                          ),
-                                        ],
-                                      ))
-                                      : const SizedBox();
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(1.0),
+                                                        child: ( widget.selectedAttributes![index].name!.contains('#'))
+                                                            ? Container(
+                                                          height: 20,
+                                                          decoration: BoxDecoration(
+                                                              color: CommonUtils.getColorFromHex(( widget.selectedAttributes?[index].selected?.name??'' ).split('-').last),
+                                                              border: Border.all(color: Colors.grey,width: 0.5),
+                                                              borderRadius: const BorderRadius.all(Radius.circular(8))),
+                                                          width: 50,
+                                                        )
+                                                            : Container(
+                                                          padding: const EdgeInsets.symmetric(
+                                                              horizontal:
+                                                              6,
+                                                              vertical:
+                                                              4),
+                                                          child: Text(
+                                                            widget.selectedAttributes?[index].selected?.name??'',
+                                                            style: TextStyle(
+                                                                color: MColors.colorPrimary,
+                                                                fontSize:
+                                                                16,
+                                                                fontWeight:
+                                                                FontWeight.w500),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                              ),
+                                            )
+                                          ],
+                                        ))
+                                        : const SizedBox();
                                 },
                               ),
                               Gaps.vGap10,
@@ -297,8 +286,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               //     ? Container()
                               //     :
                               Padding(
-                                padding:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 4.0),
                                 child: DescriptionWidget(
                                   productDetailsDataRow: data,
                                   productDetailsCubit: mDetailsCubit,
@@ -329,19 +318,22 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                           children: [
                                             Row(
                                               children: [
-                                                Text('${'isRefundable'.tr} : ',
+                                                Text(
+                                                    '${'isRefundable'.tr} : ',
                                                     style: TextStyle(
                                                       color: Colors.black,
                                                       fontSize: 14,
                                                       fontFamily: appFontFamily,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight: FontWeight
+                                                          .bold,
                                                     )),
                                                 Row(
                                                   mainAxisAlignment:
                                                   MainAxisAlignment.end,
                                                   children: [
                                                     Text(
-                                                        data.vendor!.isRefundable ==
+                                                        data.vendor!
+                                                            .isRefundable ==
                                                             true
                                                             ? 'yes'.tr
                                                             : 'no'.tr,
@@ -360,12 +352,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                             Gaps.vGap8,
                                             if (data.vendor!.policy != null)
                                               Text(
-                                                  '${'policy'.tr} : ${data.vendor!.policy ?? ''}',
+                                                  '${'policy'.tr} : ${data
+                                                      .vendor!.policy ?? ''}',
                                                   style: TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 14,
                                                     fontFamily: appFontFamily,
-                                                    fontWeight: FontWeight.bold,
+                                                    fontWeight: FontWeight
+                                                        .bold,
                                                   )),
                                           ],
                                         ),
@@ -374,12 +368,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   ),
                                 ],
                               ),
+
+
+
                             ],
                           ),
                         ),
                       ],
-                )),
+                    )),
               ),
+
             );
           } else if (state is ProductDetailsFailed) {
             return Scaffold(
@@ -416,3 +414,4 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 }
+
