@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
-import 'package:get/get.dart';
 import 'package:kishk_driver/features/orders/presentation/widgets/orders_item.dart';
 import 'package:lottie/lottie.dart';
-import '../../../../main.dart';
 import '../../../../res/m_colors.dart';
-import '../../../../res/styles.dart';
 import '../../../shared/error_widget.dart';
 import '../../../shared/loading_widget.dart';
-import '../../../shared/result_widget/result_widget.dart';
 import 'cubit/orders_cubit.dart';
 
 class OrdersSearchScreen extends StatefulWidget {

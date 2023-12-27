@@ -4,15 +4,11 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:kishk_driver/common_utils/common_utils.dart';
-
 import '../../../../../di/injection.dart';
 import '../../../../../helpers/hive_helper.dart';
 import '../../../../../network/dio/enum.dart';
 import '../../../../../network/dio/network_call.dart';
-import '../../../../../network/errors/exceptions.dart';
 import '../../../../../network/urls/apis.dart';
-import '../data/orders_count_response.dart';
 import '../data/orders_entity.dart';
 
 class OrdersRepository {

@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import '../../../../notifications/domain/notifications_repository.dart';
 import '../../data/orders_entity.dart';
 import '../../domain/orders_repository.dart';
 

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
+
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:kishk_driver/common_utils/common_utils.dart';
-import 'package:kishk_driver/common_utils/log_utils.dart';
 import '../../../main_screens/home/data/orders_entity.dart';
 import '../../../main_screens/home/domain/orders_repository.dart';
 
