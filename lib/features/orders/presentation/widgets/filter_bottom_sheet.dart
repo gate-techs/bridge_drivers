@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:kishk_driver/features/orders/presentation/orders_screen.dart';
-import '../../../../../common_utils/image_utils.dart';
-import '../../../../../helpers/hive_helper.dart';
-import '../../../../../main.dart';
 import '../../../../../res/gaps.dart';
 import '../../../../res/m_colors.dart';
 

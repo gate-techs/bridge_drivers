@@ -11,7 +11,6 @@ import '../../../../orders/presentation/orders_screen.dart';
 import '../../../../orders/presentation/widgets/orders_item.dart';
 import '../../data/orders_entity.dart';
 import '../cubit/home_cubit.dart';
-import '../widgets/order_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
