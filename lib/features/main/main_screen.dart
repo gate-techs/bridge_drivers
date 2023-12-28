@@ -65,7 +65,7 @@ void initState() {
         builder: (context, state) {
           MainCubit mMainCubit = MainCubit.get(context);
           return Scaffold(
-            appBar: mMainCubit.currentIndex==1?null:AppBar(
+            appBar: mMainCubit.currentIndex==0?AppBar(
               titleSpacing: 0.0,
               leading: InkWell(
                 onTap: () {
@@ -185,7 +185,7 @@ void initState() {
               //     ),
               //   ),
               // ),
-            ),
+            ):null,
             backgroundColor: const Color(0xffFAFAFA),
             body: mMainCubit.buildScreens().elementAt(mMainCubit.currentIndex),
             bottomNavigationBar: SalomonBottomBar(

@@ -41,288 +41,290 @@ class _ProfileScreenState extends State<ProfileScreen> {
       //     Get.back();
       //   },icon: const Icon(Icons.arrow_back_ios, color: Colors.black,),),
       // ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: BlocProvider<ProfileCubit>(
-            create: (_) => ProfileCubit()..getProfile(),
-            child: BlocConsumer<ProfileCubit, ProfileState>(
-              listener: (context, state) {},
-              builder: (context, state) {
-                ProfileCubit profileCubit = ProfileCubit.get(context);
-                if (state is ProfileLoaded) {
-                  final data = state.profileData;
-                  return RefreshIndicator(
-                    onRefresh: () async {
-                      profileCubit.getProfile();
-                    },
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Gaps.vGap4,
-                         Column(
-                            children: [
-                              SizedBox(
-                                width: 100,
-                                height: 100,
-                                child: ClipRRect(
-                                  borderRadius:
-                                  BorderRadius.circular(60),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color:
-                                            MColors.deliveredColor),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SingleChildScrollView(
+            child: BlocProvider<ProfileCubit>(
+              create: (_) => ProfileCubit()..getProfile(),
+              child: BlocConsumer<ProfileCubit, ProfileState>(
+                listener: (context, state) {},
+                builder: (context, state) {
+                  ProfileCubit profileCubit = ProfileCubit.get(context);
+                  if (state is ProfileLoaded) {
+                    final data = state.profileData;
+                    return RefreshIndicator(
+                      onRefresh: () async {
+                        profileCubit.getProfile();
+                      },
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Gaps.vGap4,
+                           Column(
+                              children: [
+                                SizedBox(
+                                  width: 100,
+                                  height: 100,
+                                  child: ClipRRect(
+                                    borderRadius:
+                                    BorderRadius.circular(60),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color:
+                                              MColors.deliveredColor),
+                                      ),
+                                      width: 120,
+                                      height: 120,
+                                      alignment: Alignment.center,
+                                      child: ImageLoader.loadDefaultWithPlaceHolder(data.image),
                                     ),
-                                    width: 120,
-                                    height: 120,
-                                    alignment: Alignment.center,
-                                    child: ImageLoader.loadDefaultWithPlaceHolder(data.image),
                                   ),
                                 ),
-                              ),
-                              Gaps.vGap4,
-                              Text(
-                                data.name ?? '',
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                data.email ?? '',
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                ),
-                              ),
-                              Gaps.vGap16,
-                              // buildListItem(
-                              //     context,
-                              //     ImageUtils.svgProfileIcon,
-                              //     "profile".tr, () async {
-                              //   var res = await Get.to(
-                              //           () => const EditProfileScreen());
-                              //   if (res['refresh'] == true) {
-                              //     profileCubit.getProfile();
-                              //   }
-                              // }),
-                              // buildListItem(
-                              //     context,
-                              //     ImageUtils.svgLockIcon,
-                              //     "changePassword".tr, () {
-                              //   Get.to(
-                              //           () => const ChangePasswordScreen());
-                              // }),
-                            ],
-                          ),
-
-                          buildListItem(context, ImageUtils.svgLanguageIcon,
-                              "language".tr, () {
-                                showModalBottomSheet(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                    backgroundColor: Colors.white,
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return LanguageBottomSheet(
-                                        callBack: () {
-                                          profileCubit.getProfile();
-                                          profileCubit.mSocialMediaCubit
-                                              ?.getSocialLinks();
-                                          profileCubit.mAppPagesCubit
-                                              ?.getAppPages();
-                                        },
-                                      );
-                                    });
-                              }),
-                          // buildListItem(context, ImageUtils.svContactUsIcon,
-                          //     "contactUs".tr, () {
-                          //       Get.to(() => ContactUsScreen(
-                          //         profileRow: data,
-                          //       ));
-                          //     }),
-                          Gaps.vGap16,
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Center(
-                                child: Text(
-                                  'followUsOn'.tr,
+                                Gaps.vGap4,
+                                Text(
+                                  data.name ?? '',
                                   style: const TextStyle(
-                                    fontSize: 18,
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  data.email ?? '',
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
                                   ),
                                 ),
-                              ),
-                              Gaps.vGap16,
-                              BlocProvider(
-                                create: (context) =>
-                                SocialMediaCubit()..getSocialLinks(),
-                                child: BlocConsumer<SocialMediaCubit,
-                                    SocialMediaState>(
-                                  listener: (context, state) {},
-                                  builder: (context, state) {
-                                    profileCubit.mSocialMediaCubit =
-                                        SocialMediaCubit.get(context);
-                                    if (state is SocialMediaLoaded) {
-                                      return SizedBox(
-                                        height: 100,
-                                        child: Center(
-                                          child: ListView.builder(
-                                              itemCount: state.data?.length,
-                                              shrinkWrap: true,
-                                              scrollDirection:
-                                              Axis.horizontal,
-                                              itemBuilder: (context, index) =>
-                                                  SocialItem(
-                                                      state.data![index])),
-                                        ),
-                                      );
-                                    } else if (state is SocialMediaLoading) {
-                                      return const LoadingWidget();
-                                    } else {
-                                      return const SizedBox();
-                                    }
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                          BlocProvider(
-                            create: (context) =>
-                            AppPagesCubit()..getAppPages(),
-                            child: BlocConsumer<AppPagesCubit, AppPagesState>(
-                              listener: (context, state) {},
-                              builder: (context, state) {
-                                profileCubit.mAppPagesCubit =
-                                    AppPagesCubit.get(context);
-                                if (state is AppPagesLoaded) {
-                                  return Column(
-                                    children: state.data!.map((e) {
-                                      var title =
-                                      HiveHelper.getAppLanguage() == 'ar'
-                                          ? e.ar?.title ?? ''
-                                          : e.en?.title ?? '';
-                                      return buildListItem(
-                                          context,
-                                          ImageUtils.svAboutUsIcon,
-                                          title, () {
-                                        Get.to(AboutScreen(
-                                          page: e.encryptId!,
-                                          title: title,
-                                        ));
+                                Gaps.vGap16,
+                                // buildListItem(
+                                //     context,
+                                //     ImageUtils.svgProfileIcon,
+                                //     "profile".tr, () async {
+                                //   var res = await Get.to(
+                                //           () => const EditProfileScreen());
+                                //   if (res['refresh'] == true) {
+                                //     profileCubit.getProfile();
+                                //   }
+                                // }),
+                                // buildListItem(
+                                //     context,
+                                //     ImageUtils.svgLockIcon,
+                                //     "changePassword".tr, () {
+                                //   Get.to(
+                                //           () => const ChangePasswordScreen());
+                                // }),
+                              ],
+                            ),
+        
+                            buildListItem(context, ImageUtils.svgLanguageIcon,
+                                "language".tr, () {
+                                  showModalBottomSheet(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(16.0),
+                                      ),
+                                      backgroundColor: Colors.white,
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return LanguageBottomSheet(
+                                          callBack: () {
+                                            profileCubit.getProfile();
+                                            profileCubit.mSocialMediaCubit
+                                                ?.getSocialLinks();
+                                            profileCubit.mAppPagesCubit
+                                                ?.getAppPages();
+                                          },
+                                        );
                                       });
-                                    }).toList(),
-                                  );
-                                } else if (state is AppPagesLoading) {
-                                  return const LoadingWidget();
-                                } else {
-                                  return const SizedBox();
-                                }
-                              },
+                                }),
+                            // buildListItem(context, ImageUtils.svContactUsIcon,
+                            //     "contactUs".tr, () {
+                            //       Get.to(() => ContactUsScreen(
+                            //         profileRow: data,
+                            //       ));
+                            //     }),
+                            Gaps.vGap16,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Center(
+                                  child: Text(
+                                    'followUsOn'.tr,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                Gaps.vGap16,
+                                BlocProvider(
+                                  create: (context) =>
+                                  SocialMediaCubit()..getSocialLinks(),
+                                  child: BlocConsumer<SocialMediaCubit,
+                                      SocialMediaState>(
+                                    listener: (context, state) {},
+                                    builder: (context, state) {
+                                      profileCubit.mSocialMediaCubit =
+                                          SocialMediaCubit.get(context);
+                                      if (state is SocialMediaLoaded) {
+                                        return SizedBox(
+                                          height: 100,
+                                          child: Center(
+                                            child: ListView.builder(
+                                                itemCount: state.data?.length,
+                                                shrinkWrap: true,
+                                                scrollDirection:
+                                                Axis.horizontal,
+                                                itemBuilder: (context, index) =>
+                                                    SocialItem(
+                                                        state.data![index])),
+                                          ),
+                                        );
+                                      } else if (state is SocialMediaLoading) {
+                                        return const LoadingWidget();
+                                      } else {
+                                        return const SizedBox();
+                                      }
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          Gaps.vGap16,
-                          Center(
-                            child: Text(
-                              'enjoying'.tr,
-                              style: const TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: InkWell(
-                              onTap: () async {
-                                if (HiveHelper.getVendorApp()!.appLogo !=
-                                    null) {
-                                  await profileCubit.saveAppImageToShare(
-                                      HiveHelper.getVendorApp()!.appLogo!);
-                                }
-                              },
-                              child: Container(
-                                width: 200,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 8),
-                                decoration: BoxDecoration(
-                                    color: MColors.colorPrimary,
-                                    borderRadius: BorderRadius.circular(6)),
-                                child: Center(
-                                    child: Text(
-                                      'shareApp'.tr,
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600),
-                                    )),
-                              ),
-                            ),
-                          ),
-                          Gaps.vGap16,
-                          if (HiveHelper.getUserToken().isNotEmpty)
                             BlocProvider(
-                              create: (context) => LogoutCubit(),
-                              child: BlocConsumer<LogoutCubit, LogoutState>(
+                              create: (context) =>
+                              AppPagesCubit()..getAppPages(),
+                              child: BlocConsumer<AppPagesCubit, AppPagesState>(
                                 listener: (context, state) {},
                                 builder: (context, state) {
-                                  LogoutCubit mLogoutCubit =LogoutCubit.get(context);
-                                  return InkWell(
-                                    onTap: () {
-                                      HiveHelper.clearUserData();
-                                      setState(() {});
-
-                                      mLogoutCubit.doLogoutApiCall();
-                                    },
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 50,
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 20),
-                                      decoration: BoxDecoration(
-                                          color: MColors.colorPrimary,
-                                          borderRadius:
-                                          BorderRadius.circular(66)),
-                                      child: Center(
-                                        child: Text(
-                                          'logout'.tr,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                            fontFamily: appFontFamily,
-                                            fontWeight: FontWeight.w700,
-                                            shadows: [
-                                              BoxShadow(
-                                                color: MColors.colorPrimary,
-                                                offset: const Offset(4, 8),
-                                                blurRadius: 24,
-                                                spreadRadius: 0,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  );
+                                  profileCubit.mAppPagesCubit =
+                                      AppPagesCubit.get(context);
+                                  if (state is AppPagesLoaded) {
+                                    return Column(
+                                      children: state.data!.map((e) {
+                                        var title =
+                                        HiveHelper.getAppLanguage() == 'ar'
+                                            ? e.ar?.title ?? ''
+                                            : e.en?.title ?? '';
+                                        return buildListItem(
+                                            context,
+                                            ImageUtils.svAboutUsIcon,
+                                            title, () {
+                                          Get.to(AboutScreen(
+                                            page: e.encryptId!,
+                                            title: title,
+                                          ));
+                                        });
+                                      }).toList(),
+                                    );
+                                  } else if (state is AppPagesLoading) {
+                                    return const LoadingWidget();
+                                  } else {
+                                    return const SizedBox();
+                                  }
                                 },
                               ),
                             ),
-                        ],
-
+                            Gaps.vGap16,
+                            Center(
+                              child: Text(
+                                'enjoying'.tr,
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              child: InkWell(
+                                onTap: () async {
+                                  if (HiveHelper.getVendorApp()!.appLogo !=
+                                      null) {
+                                    await profileCubit.saveAppImageToShare(
+                                        HiveHelper.getVendorApp()!.appLogo!);
+                                  }
+                                },
+                                child: Container(
+                                  width: 200,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 8),
+                                  decoration: BoxDecoration(
+                                      color: MColors.colorPrimary,
+                                      borderRadius: BorderRadius.circular(6)),
+                                  child: Center(
+                                      child: Text(
+                                        'shareApp'.tr,
+                                        style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600),
+                                      )),
+                                ),
+                              ),
+                            ),
+                            Gaps.vGap16,
+                            if (HiveHelper.getUserToken().isNotEmpty)
+                              BlocProvider(
+                                create: (context) => LogoutCubit(),
+                                child: BlocConsumer<LogoutCubit, LogoutState>(
+                                  listener: (context, state) {},
+                                  builder: (context, state) {
+                                    LogoutCubit mLogoutCubit =LogoutCubit.get(context);
+                                    return InkWell(
+                                      onTap: () {
+                                        HiveHelper.clearUserData();
+                                        setState(() {});
+        
+                                        mLogoutCubit.doLogoutApiCall();
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 50,
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20),
+                                        decoration: BoxDecoration(
+                                            color: MColors.colorPrimary,
+                                            borderRadius:
+                                            BorderRadius.circular(66)),
+                                        child: Center(
+                                          child: Text(
+                                            'logout'.tr,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                              fontFamily: appFontFamily,
+                                              fontWeight: FontWeight.w700,
+                                              shadows: [
+                                                BoxShadow(
+                                                  color: MColors.colorPrimary,
+                                                  offset: const Offset(4, 8),
+                                                  blurRadius: 24,
+                                                  spreadRadius: 0,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                          ],
+        
+                        ),
                       ),
-                    ),
-                  );
-                } else if (state is ProfileFailed) {
-                  return FailedWidget(
-                    failedMessage: state.message,
-                  );
-                } else {
-                  return const Padding(
-                    padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
-                    child: LoadingWidget(),
-                  );
-                }
-              },
+                    );
+                  } else if (state is ProfileFailed) {
+                    return FailedWidget(
+                      failedMessage: state.message,
+                    );
+                  } else {
+                    return const Padding(
+                      padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
+                      child: LoadingWidget(),
+                    );
+                  }
+                },
+              ),
             ),
           ),
         ),
