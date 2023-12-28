@@ -173,4 +173,9 @@ Map<String, String> en = {
   'delivery':'Delivery Service',
   'shipped': 'shipped',
   'delivered': 'delivered',
+  "numberOfOrders": "Number Of Orders",
+  "chooseLanguage": "Choose Language",
+  "SelectYourPreferredLanguage": "Select your preferred language",
+  "selectOrderStatus": "Select Order Status",
+  "cancel": "Cancel",
 };

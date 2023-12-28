@@ -121,7 +121,11 @@ class OrderItem extends StatelessWidget {
               if(orderDetailsRowProducts?.isDelivered==false)
               InkWell(
                 onTap:(){
+                  if(orderDetailsRowProducts?.isDispatched==true){
 
+                  }else if(orderDetailsRowProducts?.isShipped==true){
+
+                  }
                 },
                 child: Container(
                   width: 100,
@@ -140,9 +144,12 @@ class OrderItem extends StatelessWidget {
                       )
                     ],
                   ),
-                  child: Center(child: Text('ss',style: TextStyle(
+                  child: Center(child: Text(
+                    (orderDetailsRowProducts?.isDispatched??false)?'shipped'.tr:
+                    (orderDetailsRowProducts?.isShipped??false)?'delivered'.tr:'dispatched'.tr
+                    ,style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 12,
                     fontFamily: appFontFamily,
                     fontWeight: FontWeight.bold,
                   ),)),

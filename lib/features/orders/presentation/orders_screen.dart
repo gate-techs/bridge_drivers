@@ -5,6 +5,7 @@ import 'package:kishk_driver/features/orders/presentation/widgets/orders_item.da
 import 'package:paginated_list/paginated_list.dart';
 import '../../../../res/gaps.dart';
 import '../../../../res/m_colors.dart';
+import '../../../main.dart';
 import '../../../shared/error_widget.dart';
 import '../../../shared/loading_widget.dart';
 import '../../../shared/result_widget/result_widget.dart';
@@ -13,9 +14,9 @@ import '../../order_details_screen/presentation/order_details_screen.dart';
 import 'cubit/orders_cubit.dart';
 
 class OrdersScreen extends StatefulWidget {
-  const OrdersScreen({
-    Key? key,
-  }) : super(key: key);
+  const OrdersScreen({super.key,  required this.keyX, required this.value,}) ;
+  final String keyX;
+  final String value;
 
   @override
   State<OrdersScreen> createState() => _OrdersScreenState();
@@ -26,7 +27,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-          return OrdersCubit()..getOrders({'paginate':30, 'mobile':true,});
+          return OrdersCubit()..getOrders({'paginate':30,widget.keyX:widget.value});
       },
       child: BlocConsumer<OrdersCubit, OrdersState>(
         listener: (context, state) {},
@@ -36,6 +37,20 @@ class _OrdersScreenState extends State<OrdersScreen> {
             final data = state.orders;
             return Scaffold(
               backgroundColor: MColors.screensBackgroundColor,
+              appBar: AppBar(
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios, color: Colors.black,),
+                  onPressed: (){
+                    Get.back();
+                  },
+                ),
+                title:Text('orders'.tr, style:  TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: appFontFamily,
+                  color: Colors.black,
+                ),),
+              ),
               body: RefreshIndicator(
                   backgroundColor: MColors.colorPrimaryLight,
                   onRefresh: () async {
@@ -43,7 +58,8 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     ordersCubit.isLastPage = false;
                     ordersCubit.currentPageIndex = 1;
                     ordersCubit
-                        .getOrders({ 'mobile':true,
+                        .getOrders({
+                      widget.keyX:widget.value,
                       'paginate': 30,
                       'page': ordersCubit.currentPageIndex});
                   },
@@ -61,9 +77,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           isLastPage: ordersCubit.isLastPage,
                           onLoadMore: (index) {
                             if (!ordersCubit.isLastPage) {
-                              ordersCubit.getOrders({ 'mobile':true,
+                              ordersCubit.getOrders({
                                 'page': (++ordersCubit.currentPageIndex).toString(),
-                                'paginate': 30
+                                'paginate': 30,
+                                widget.keyX:widget.value
                               });
                             }
                           },
@@ -90,9 +107,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 ordersCubit.isLastPage = false;
                 ordersCubit.currentPageIndex = 1;
                 ordersCubit
-                    .getOrders({ 'mobile':true,
+                    .getOrders({
                   'paginate': 30,
-                  'page': ordersCubit.currentPageIndex});
+                  'page': ordersCubit.currentPageIndex,
+                  widget.keyX:widget.value});
               },
               child: Center(
                   child: FailedWidget(

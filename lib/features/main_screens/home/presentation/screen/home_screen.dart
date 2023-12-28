@@ -7,6 +7,7 @@ import 'package:paginated_list/paginated_list.dart';
 import 'package:kishk_driver/helpers/hive_helper.dart';
 import 'package:kishk_driver/shared/widgets/empty_data_widget.dart';
 import '../../../../order_details_screen/presentation/order_details_screen.dart';
+import '../../../../orders/presentation/orders_screen.dart';
 import '../../../../orders/presentation/widgets/orders_item.dart';
 import '../../data/orders_entity.dart';
 import '../cubit/home_cubit.dart';
@@ -65,8 +66,7 @@ class HomeScreen extends StatelessWidget {
                                 largeSize: 25,
                                 child: InkWell(
                                   onTap: () {
-                                    // Get.to(() => const OrdersScreen(
-                                    //     mOrdersStatus: OrdersStatus.news));
+                                    Get.to(() => const OrdersScreen(keyX: 'orderStatus', value: 'pending',));
                                   },
                                   child: Container(
                                     width: 150,
@@ -111,8 +111,8 @@ class HomeScreen extends StatelessWidget {
                                 largeSize: 25,
                                 child: InkWell(
                                   onTap: () {
-                                    // Get.to(() => const OrdersScreen(
-                                    //     mOrdersStatus: OrdersStatus.all));
+                                    Get.to(() => const OrdersScreen(keyX: '', value: '',));
+
                                   },
                                   child: Container(
                                     width: 150,

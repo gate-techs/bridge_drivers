@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
+import 'package:kishk_driver/common_utils/common_utils.dart';
+import 'package:kishk_driver/features/orders/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:kishk_driver/features/orders/presentation/widgets/orders_item.dart';
 import 'package:kishk_driver/main.dart';
 import 'package:lottie/lottie.dart';
@@ -48,33 +50,66 @@ class _OrdersSearchScreenState extends State<OrdersSearchScreen> {
                 child: Center(
                   child: Column(
                     children: [
-                      Container(
-                        height: 40,
-                        margin: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: MColors.veryLightGray,
-                        ),
-                        child: TextFormField(
-                          controller:  ordersCubit.search,
-                          cursorColor: MColors.colorPrimary,
-                          autofocus: true,
-                          onChanged: (value) {
-                            ordersCubit.getSearch({
-                              'search': value,
-                              'paginate': 30,
-                              'mobile':true
-                            });
-                          },
-                          style: const TextStyle(
-                            fontSize: 16,
-                            color: Color(0xff212121),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 40,
+                            width: CommonUtils.getISTablet(context)?500:300,
+                            margin: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: MColors.veryLightGray,
+                            ),
+                            child: TextFormField(
+                              controller:  ordersCubit.search,
+                              cursorColor: MColors.colorPrimary,
+                              autofocus: true,
+                              onChanged: (value) {
+                                ordersCubit.getSearch({
+                                  'search': value,
+                                  'paginate': 30,
+                                  'mobile':true
+                                });
+                              },
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Color(0xff212121),
+                              ),
+                              decoration: MStyles.textFieldStyle(
+                                  "searchOrder".tr,
+                                  const Icon(TablerIcons.search, color:Colors.black, size: 30,),
+                                  null),
+                            ),
                           ),
-                          decoration: MStyles.textFieldStyle(
-                              "searchOrder".tr,
-                              const Icon(TablerIcons.search, color:Colors.black, size: 30,),
-                              null),
-                        ),
+                          InkWell(onTap: (){
+                            showModalBottomSheet(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16.0),
+                                ),
+                                backgroundColor: Colors.white,
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return FilterBottomSheet(
+                                    callBack: () {
+
+                                    },
+                                  );
+                                });
+                          },
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              margin: const EdgeInsets.all(2),
+                              padding: const EdgeInsets.all(2),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: MColors.colorPrimary,
+                              ),
+                              child: const Icon(TablerIcons.filter, size: 24,color: Colors.white,),
+                            ),
+                          )
+                        ],
                       ),
                       ResultWidget(
                         title:
