@@ -18,7 +18,7 @@ class OrderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
       margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -67,20 +67,20 @@ class OrderItem extends StatelessWidget {
                           width: 2,
                         )),
                     child: ImageLoader.loadDefaultWithPlaceHolder(
-                        orderDetailsRowProducts?.image ?? '',
+                        orderDetailsRowProducts?.media?.url ?? '',
                         width: 100,
                         height: 100,
                         fit: BoxFit.fill),
                   ),
                   Gaps.vGap8,
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(2.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          width:CommonUtils.getISTablet(context)?400:200,
+                          width:CommonUtils.getISTablet(context)?400:150,
                           child: Text(
                             orderDetailsRowProducts?.title ?? '',
                             style: TextStyle(

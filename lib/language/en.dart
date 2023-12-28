@@ -150,4 +150,5 @@ Map<String, String> en = {
   'welcomeBack': 'Welcome Back',
   'searchOrder': 'Search For Order',
   "orderDetails": "Order Details",
+  "KWD": "KWD",
 };

@@ -150,7 +150,7 @@ class HomeScreen extends StatelessWidget {
                           physics: const NeverScrollableScrollPhysics(),
                           loadingIndicator: const SizedBox(),
                           shrinkWrap: true,
-                          items: state.dataList,
+                          items: mHomeCubit.ordersListNew,
                           isRecentSearch: false,
                           isLastPage: mHomeCubit.isLastPageNew,
                           onLoadMore: (int index) {

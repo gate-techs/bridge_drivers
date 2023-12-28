@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/product_details_in_order/product_details_screen_in_order.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/widgets/order_details_widget/delivery_details_widgets.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/widgets/order_details_widget/order_price_item.dart';
+import '../../../common_utils/log_utils.dart';
 import '../../../main.dart';
 import '../../../res/m_colors.dart';
 import '../../../shared/error_widget.dart';
@@ -72,6 +73,7 @@ class OrderDetailsScreen extends StatelessWidget {
                               itemBuilder: (context, index) =>
                                   InkWell(
                                     onTap: (){
+                                      Log.e( data.products?[index].encryptId.toString()??'');
                                       Get.to(ProductDetailsScreenInOrder(id:  data.products?[index].encryptId??'', selectedAttributes:  data.products?[index].selectedAttributes,));
                                     },
                                     child: OrderItem(

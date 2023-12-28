@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../common_utils/log_utils.dart';
 import '../../../../order_details_screen/presentation/order_details_screen.dart';
 import '../../data/orders_entity.dart';
 
@@ -89,6 +90,7 @@ class OrderListItem extends StatelessWidget {
   }
 
   Column buildCodeAndPrice(BuildContext context) {
+    Log.e(data.toString());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,

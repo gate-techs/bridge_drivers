@@ -6,6 +6,7 @@ import '../../../../../main.dart';
 import '../../../../../res/gaps.dart';
 import '../../../../../res/m_colors.dart';
 import '../../../../common_utils/common_utils.dart';
+import '../../../../common_utils/log_utils.dart';
 import '../../../../shared/error_widget.dart';
 import '../../../../shared/loading_widget.dart';
 import '../../../../shared/rating_bar.dart';
@@ -34,6 +35,7 @@ class ProductDetailsScreenInOrder extends StatefulWidget {
 class _ProductDetailsScreenInOrderState extends State<ProductDetailsScreenInOrder> {
   @override
   Widget build(BuildContext context) {
+    Log.e(widget.id.toString());
     return BlocProvider(
       create: (context) =>
       ProductDetailsCubit()

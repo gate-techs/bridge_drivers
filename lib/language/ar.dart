@@ -150,4 +150,5 @@ Map<String, String> ar = {
   'welcomeBack': 'مرحبا بك ',
   'searchOrder': 'إبحث عن طلب',
   "orderDetails": "تفاصيل الطلب",
+  "KWD": "د٫ك",
 };
