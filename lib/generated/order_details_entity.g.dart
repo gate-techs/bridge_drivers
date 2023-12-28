@@ -287,9 +287,17 @@ extension OrderDetailsDataRowUserExtension on OrderDetailsDataRowUser {
 OrderDetailsDataRowDelivery $OrderDetailsDataRowDeliveryFromJson(
     Map<String, dynamic> json) {
   final OrderDetailsDataRowDelivery orderDetailsDataRowDelivery = OrderDetailsDataRowDelivery();
+  final String? id = jsonConvert.convert<String>(json['id']);
   final String? name = jsonConvert.convert<String>(json['name']);
+  final String? mobile = jsonConvert.convert<String>(json['mobile']);
+  if (id != null) {
+    orderDetailsDataRowDelivery.id = id;
+  }
   if (name != null) {
     orderDetailsDataRowDelivery.name = name;
+  }
+  if (mobile != null) {
+    orderDetailsDataRowDelivery.mobile = mobile;
   }
   return orderDetailsDataRowDelivery;
 }
@@ -297,16 +305,22 @@ OrderDetailsDataRowDelivery $OrderDetailsDataRowDeliveryFromJson(
 Map<String, dynamic> $OrderDetailsDataRowDeliveryToJson(
     OrderDetailsDataRowDelivery entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
+  data['id'] = entity.id;
   data['name'] = entity.name;
+  data['mobile'] = entity.mobile;
   return data;
 }
 
 extension OrderDetailsDataRowDeliveryExtension on OrderDetailsDataRowDelivery {
   OrderDetailsDataRowDelivery copyWith({
+    String? id,
     String? name,
+    String? mobile,
   }) {
     return OrderDetailsDataRowDelivery()
-      ..name = name ?? this.name;
+      ..id = id ?? this.id
+      ..name = name ?? this.name
+      ..mobile = mobile ?? this.mobile;
   }
 }
 

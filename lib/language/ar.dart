@@ -170,4 +170,5 @@ Map<String, String> ar = {
   'deliveryFees': 'رسوم التوصيل',
   "orders": 'الطلبات',
   'shippingAddress': 'عنوان التوصيل',
+  'delivery':'خدمة التوصيل',
 };

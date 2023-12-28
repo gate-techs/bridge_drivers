@@ -170,4 +170,5 @@ Map<String, String> en = {
   'deliveryFees': 'Delivery Fees',
   "orders": 'Orders',
   'shippingAddress': 'Shipping Address',
+  'delivery':'Delivery Service',
 };

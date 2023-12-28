@@ -137,7 +137,9 @@ class OrderDetailsDataRowUser {
 
 @JsonSerializable()
 class OrderDetailsDataRowDelivery {
+	String? id;
 	String? name;
+	String? mobile;
 
 	OrderDetailsDataRowDelivery();
 
@@ -145,9 +147,11 @@ class OrderDetailsDataRowDelivery {
 
 	Map<String, dynamic> toJson() => $OrderDetailsDataRowDeliveryToJson(this);
 
-	OrderDetailsDataRowDelivery copyWith({String? name}) {
+	OrderDetailsDataRowDelivery copyWith({String? id,String? name,String? mobile}) {
 		return OrderDetailsDataRowDelivery()
-			..name= name ?? this.name;
+			..id= name ?? this.id
+			..name= name ?? this.name
+			..mobile= name ?? this.mobile;
 	}
 
 	@override

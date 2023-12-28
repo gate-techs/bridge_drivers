@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import '../../../../../common_utils/common_utils.dart';
+import '../../../../../common_utils/image_utils.dart';
 import '../../../../../main.dart';
 import '../../../../../res/gaps.dart';
+import '../../../../../res/m_colors.dart';
 import '../../../data/order_details_entity.dart';
 
 class DeliveryDetailsWidget extends StatelessWidget {
@@ -18,7 +22,7 @@ class DeliveryDetailsWidget extends StatelessWidget {
         title:Text(
           'delivery'.tr,
           style: TextStyle(
-            color: Colors.black,
+            color: MColors.colorPrimary,
             fontSize: 16,
             fontFamily: appFontFamily,
             fontWeight: FontWeight.w700,
@@ -33,7 +37,7 @@ class DeliveryDetailsWidget extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '${'deliveryName'.tr} : ',
+                      '${'name'.tr} : ',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 16,
@@ -52,10 +56,51 @@ class DeliveryDetailsWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                Gaps.vGap10,
+                Gaps.vGap8,
+                Text(
+                  'phone'.tr,
+                  style: TextStyle(
+                    color: MColors.colorSecondaryDark,
+                    fontSize: 16,
+                    fontFamily: appFontFamily,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      orderDetailsRow?.mobile ?? '',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: appFontFamily,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: (){
+                        CommonUtils.makePhoneCall(orderDetailsRow?.mobile ?? '');
+                      },
+                      child: ClipOval(
+                        child: Container(
+                            padding: const EdgeInsets.all(10),
+                            color: MColors.colorPrimaryDark,
+                            child: SvgPicture.asset(
+                              ImageUtils.getAssetsPath('ic_call', 'svg', format: 'svg'),
+                              height: 24,
+                              width: 24,
+                            )
+
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
+          Gaps.vGap8,
     ]
     ):const SizedBox();
   }
