@@ -1,7 +1,7 @@
+import 'package:kishk_driver/generated/json/base/json_field.dart';
+import 'package:kishk_driver/generated/json/product_details_entity.g.dart';
 import 'dart:convert';
-
-import '../../../generated/json/base/json_field.dart';
-import '../../../generated/product_details_entity.g.dart';
+export 'package:kishk_driver/generated/json/product_details_entity.g.dart';
 
 @JsonSerializable()
 class ProductDetailsEntity {
@@ -42,7 +42,7 @@ class ProductDetailsDataRow {
 	List<ProductDetailsDataRowGalleries>? galleries;
 	String? title;
 	String? body;
-	String? youtube;
+	dynamic youtube;
 	String? priceType;
 	String? oldPrice;
 	String? vendorPrice;
@@ -305,11 +305,11 @@ class ProductDetailsDataRowAttributes {
 class ProductDetailsDataRowAttributesChilds {
 	int? id;
 	String? title;
-	String? oldPrice;
-	String? price;
-	String? qty;
-	String? minQtyPerOrder;
-	String? availableQty;
+	dynamic oldPrice;
+	dynamic price;
+	dynamic qty;
+	dynamic minQtyPerOrder;
+	dynamic availableQty;
 	bool? outOfStock;
 
 	ProductDetailsDataRowAttributesChilds();
@@ -344,7 +344,14 @@ class ProductDetailsDataRowAttributesReadOnly {
 
 @JsonSerializable()
 class ProductDetailsDataRowAttributesReadOnlyChilds {
+	int? id;
 	String? title;
+	dynamic oldPrice;
+	dynamic price;
+	dynamic qty;
+	dynamic minQtyPerOrder;
+	dynamic availableQty;
+	bool? outOfStock;
 
 	ProductDetailsDataRowAttributesReadOnlyChilds();
 

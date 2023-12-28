@@ -12,8 +12,8 @@ import 'package:kishk_driver/features/main/data/badge_count_entity.dart';
 import 'package:kishk_driver/features/main_screens/home/data/orders_entity.dart';
 import 'package:kishk_driver/features/main_screens/profile/data/app_pages_entity.dart';
 import 'package:kishk_driver/features/main_screens/profile/data/profile_entity.dart';
-
-import '../../../features/order_details_screen/data/order_details_entity.dart';
+import 'package:kishk_driver/features/order_details_screen/data/order_details_entity.dart';
+import 'package:kishk_driver/features/product_details/data/product_details_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 
@@ -249,6 +249,10 @@ class JsonConvert {
       return data.map<ProfileData>((Map<String, dynamic> e) =>
           ProfileData.fromJson(e)).toList() as M;
     }
+    if (<OrderDetailsEntity>[] is M) {
+      return data.map<OrderDetailsEntity>((Map<String, dynamic> e) =>
+          OrderDetailsEntity.fromJson(e)).toList() as M;
+    }
     if (<OrderDetailsData>[] is M) {
       return data.map<OrderDetailsData>((Map<String, dynamic> e) =>
           OrderDetailsData.fromJson(e)).toList() as M;
@@ -304,7 +308,96 @@ class JsonConvert {
           OrderDetailsDataRowProductsSelectedAttributesSelected.fromJson(e))
           .toList() as M;
     }
-
+    if (<ProductDetailsEntity>[] is M) {
+      return data.map<ProductDetailsEntity>((Map<String, dynamic> e) =>
+          ProductDetailsEntity.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsData>[] is M) {
+      return data.map<ProductDetailsData>((Map<String, dynamic> e) =>
+          ProductDetailsData.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRow>[] is M) {
+      return data.map<ProductDetailsDataRow>((Map<String, dynamic> e) =>
+          ProductDetailsDataRow.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowMedia>[] is M) {
+      return data.map<ProductDetailsDataRowMedia>((Map<String, dynamic> e) =>
+          ProductDetailsDataRowMedia.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowMediaResized>[] is M) {
+      return data.map<ProductDetailsDataRowMediaResized>((
+          Map<String, dynamic> e) =>
+          ProductDetailsDataRowMediaResized.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowGalleries>[] is M) {
+      return data.map<ProductDetailsDataRowGalleries>((
+          Map<String, dynamic> e) => ProductDetailsDataRowGalleries.fromJson(e))
+          .toList() as M;
+    }
+    if (<ProductDetailsDataRowGalleriesMedia>[] is M) {
+      return data.map<ProductDetailsDataRowGalleriesMedia>((
+          Map<String, dynamic> e) =>
+          ProductDetailsDataRowGalleriesMedia.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowGalleriesMediaResized>[] is M) {
+      return data.map<ProductDetailsDataRowGalleriesMediaResized>((
+          Map<String, dynamic> e) =>
+          ProductDetailsDataRowGalleriesMediaResized.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowBrand>[] is M) {
+      return data.map<ProductDetailsDataRowBrand>((Map<String, dynamic> e) =>
+          ProductDetailsDataRowBrand.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowBrandMedia>[] is M) {
+      return data.map<ProductDetailsDataRowBrandMedia>((
+          Map<String, dynamic> e) =>
+          ProductDetailsDataRowBrandMedia.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowBrandMediaResized>[] is M) {
+      return data.map<ProductDetailsDataRowBrandMediaResized>((
+          Map<String, dynamic> e) =>
+          ProductDetailsDataRowBrandMediaResized.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowMainCategory>[] is M) {
+      return data.map<ProductDetailsDataRowMainCategory>((
+          Map<String, dynamic> e) =>
+          ProductDetailsDataRowMainCategory.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowSubCategory>[] is M) {
+      return data.map<ProductDetailsDataRowSubCategory>((
+          Map<String, dynamic> e) =>
+          ProductDetailsDataRowSubCategory.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowSub2Category>[] is M) {
+      return data.map<ProductDetailsDataRowSub2Category>((
+          Map<String, dynamic> e) =>
+          ProductDetailsDataRowSub2Category.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowVendor>[] is M) {
+      return data.map<ProductDetailsDataRowVendor>((Map<String, dynamic> e) =>
+          ProductDetailsDataRowVendor.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowAttributes>[] is M) {
+      return data.map<ProductDetailsDataRowAttributes>((
+          Map<String, dynamic> e) =>
+          ProductDetailsDataRowAttributes.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowAttributesChilds>[] is M) {
+      return data.map<ProductDetailsDataRowAttributesChilds>((
+          Map<String, dynamic> e) =>
+          ProductDetailsDataRowAttributesChilds.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowAttributesReadOnly>[] is M) {
+      return data.map<ProductDetailsDataRowAttributesReadOnly>((
+          Map<String, dynamic> e) =>
+          ProductDetailsDataRowAttributesReadOnly.fromJson(e)).toList() as M;
+    }
+    if (<ProductDetailsDataRowAttributesReadOnlyChilds>[] is M) {
+      return data.map<ProductDetailsDataRowAttributesReadOnlyChilds>((
+          Map<String, dynamic> e) =>
+          ProductDetailsDataRowAttributesReadOnlyChilds.fromJson(e))
+          .toList() as M;
+    }
 
     debugPrint("$M not found");
 
@@ -377,6 +470,41 @@ class JsonConvertClassCollection {
     (OrderDetailsDataRowProductsSelectedAttributesSelected)
         .toString(): OrderDetailsDataRowProductsSelectedAttributesSelected
         .fromJson,
+    (ProductDetailsEntity).toString(): ProductDetailsEntity.fromJson,
+    (ProductDetailsData).toString(): ProductDetailsData.fromJson,
+    (ProductDetailsDataRow).toString(): ProductDetailsDataRow.fromJson,
+    (ProductDetailsDataRowMedia).toString(): ProductDetailsDataRowMedia
+        .fromJson,
+    (ProductDetailsDataRowMediaResized)
+        .toString(): ProductDetailsDataRowMediaResized.fromJson,
+    (ProductDetailsDataRowGalleries).toString(): ProductDetailsDataRowGalleries
+        .fromJson,
+    (ProductDetailsDataRowGalleriesMedia)
+        .toString(): ProductDetailsDataRowGalleriesMedia.fromJson,
+    (ProductDetailsDataRowGalleriesMediaResized)
+        .toString(): ProductDetailsDataRowGalleriesMediaResized.fromJson,
+    (ProductDetailsDataRowBrand).toString(): ProductDetailsDataRowBrand
+        .fromJson,
+    (ProductDetailsDataRowBrandMedia)
+        .toString(): ProductDetailsDataRowBrandMedia.fromJson,
+    (ProductDetailsDataRowBrandMediaResized)
+        .toString(): ProductDetailsDataRowBrandMediaResized.fromJson,
+    (ProductDetailsDataRowMainCategory)
+        .toString(): ProductDetailsDataRowMainCategory.fromJson,
+    (ProductDetailsDataRowSubCategory)
+        .toString(): ProductDetailsDataRowSubCategory.fromJson,
+    (ProductDetailsDataRowSub2Category)
+        .toString(): ProductDetailsDataRowSub2Category.fromJson,
+    (ProductDetailsDataRowVendor).toString(): ProductDetailsDataRowVendor
+        .fromJson,
+    (ProductDetailsDataRowAttributes)
+        .toString(): ProductDetailsDataRowAttributes.fromJson,
+    (ProductDetailsDataRowAttributesChilds)
+        .toString(): ProductDetailsDataRowAttributesChilds.fromJson,
+    (ProductDetailsDataRowAttributesReadOnly)
+        .toString(): ProductDetailsDataRowAttributesReadOnly.fromJson,
+    (ProductDetailsDataRowAttributesReadOnlyChilds)
+        .toString(): ProductDetailsDataRowAttributesReadOnlyChilds.fromJson,
   };
 
   bool containsKey(String type) {

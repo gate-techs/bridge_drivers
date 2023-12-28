@@ -58,7 +58,7 @@ class _TopDetailsPartState extends State<TopDetailsPart> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: 300.w,
+            width: 280.w,
             height: 400.h,
             padding: const EdgeInsets.all(15),
             decoration: const BoxDecoration(
