@@ -33,26 +33,11 @@ class OrderItem extends StatelessWidget {
         ],
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Text(
-              //       '${'item'.tr }: ${index.toString()}',
-              //       style: TextStyle(
-              //         color: Colors.black,
-              //         fontSize: 16,
-              //         fontFamily: appFontFamily,
-              //         fontWeight: FontWeight.w700,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // Gaps.vGap8,
               Row(
                 children: [
                   Container(
@@ -130,14 +115,49 @@ class OrderItem extends StatelessWidget {
               ),
             ],
           ),
-          Text(
-            '${orderDetailsRowProducts?.totalPrice ?? ''} ${'KWD'.tr}',
-            style: TextStyle(
-              color: Colors.green,
-              fontSize: 16,
-              fontFamily: appFontFamily,
-              fontWeight: FontWeight.bold,
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if(orderDetailsRowProducts?.isDelivered==false)
+              InkWell(
+                onTap:(){
+
+                },
+                child: Container(
+                  width: 100,
+                  height: 30,
+                  padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 4),
+                  margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+                  decoration: BoxDecoration(
+                    color: MColors.colorPrimary,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black12,
+                        offset: Offset(0, 6),
+                        blurRadius: 6,
+                        spreadRadius: 0,
+                      )
+                    ],
+                  ),
+                  child: Center(child: Text('ss',style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontFamily: appFontFamily,
+                    fontWeight: FontWeight.bold,
+                  ),)),
+                ),
+              ),
+              Text(
+                '${orderDetailsRowProducts?.totalPrice ?? ''} ${'KWD'.tr}',
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 16,
+                  fontFamily: appFontFamily,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
         ],
       ),
