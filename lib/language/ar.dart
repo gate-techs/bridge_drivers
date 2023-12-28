@@ -171,4 +171,6 @@ Map<String, String> ar = {
   "orders": 'الطلبات',
   'shippingAddress': 'عنوان التوصيل',
   'delivery':'خدمة التوصيل',
+  'shipped': 'تم الشحن',
+  'delivered': 'تم التوصيل',
 };
