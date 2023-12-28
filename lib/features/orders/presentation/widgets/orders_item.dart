@@ -34,7 +34,7 @@ class OrdersItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '${'orderId'.tr }: ${ ordersDataRows.orderNo ?? ' '}',
+                '${'code'.tr } ${ ordersDataRows.orderNo ?? ' '}',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 14,

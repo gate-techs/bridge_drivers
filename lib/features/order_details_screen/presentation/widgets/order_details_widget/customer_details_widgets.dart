@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import '../../../../../common_utils/common_utils.dart';
+import '../../../../../common_utils/image_utils.dart';
 import '../../../../../main.dart';
 import '../../../../../res/gaps.dart';
 import '../../../../../res/m_colors.dart';
@@ -73,67 +76,111 @@ class CustomerDetailsWidget extends StatelessWidget {
               //     ),
               //   ],
               // ),
-              // Gaps.vGap8,
-              // Text(
-              //   'phone'.tr,
-              //   style: TextStyle(
-              //     color: MColors.colorSecondaryDark,
-              //     fontSize: 16,
-              //     fontFamily: appFontFamily,
-              //     fontWeight: FontWeight.w700,
-              //   ),
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Text(
-              //       orderDetailsRow?.user?.mobile ?? '',
-              //       style: TextStyle(
-              //         color: Colors.black,
-              //         fontSize: 16,
-              //         fontFamily: appFontFamily,
-              //         fontWeight: FontWeight.w700,
-              //       ),
-              //     ),
-              //     InkWell(
-              //       onTap: (){
-              //         CommonUtils.makePhoneCall(orderDetailsRow?.user?.mobile ?? '');
-              //       },
-              //       child: ClipOval(
-              //         child: Container(
-              //             padding: const EdgeInsets.all(10),
-              //             color: MColors.colorPrimaryDark,
-              //             child: SvgPicture.asset(
-              //               ImageUtils.getAssetsPath('ic_call', 'svg', format: 'svg'),
-              //               height: 24,
-              //               width: 24,
-              //             )
-              //
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // Gaps.vGap8,
-              // Text(
-              //   'shippingAddress'.tr,
-              //   style: TextStyle(
-              //     color: MColors.colorSecondaryDark,
-              //     fontSize: 16,
-              //     fontFamily: appFontFamily,
-              //     fontWeight: FontWeight.w700,
-              //   ),
-              // ),
-              // Text(
-              //   orderDetailsRow?.user?.address ?? '',
-              //   style: TextStyle(
-              //     color: Colors.black,
-              //     fontSize: 16,
-              //     fontFamily: appFontFamily,
-              //     fontWeight: FontWeight.w700,
-              //   ),
-              // ),
-              // Gaps.vGap8,
+              Gaps.vGap8,
+              Text(
+                'phone'.tr,
+                style: TextStyle(
+                  color: MColors.colorSecondaryDark,
+                  fontSize: 16,
+                  fontFamily: appFontFamily,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    orderDetailsRow?.user?.mobile ?? '',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: appFontFamily,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: (){
+                      CommonUtils.makePhoneCall(orderDetailsRow?.user?.mobile ?? '');
+                    },
+                    child: ClipOval(
+                      child: Container(
+                          padding: const EdgeInsets.all(10),
+                          color: MColors.colorPrimaryDark,
+                          child: SvgPicture.asset(
+                            ImageUtils.getAssetsPath('ic_call', 'svg', format: 'svg'),
+                            height: 24,
+                            width: 24,
+                          )
+
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Gaps.vGap8,
+              Text(
+                'shippingAddress'.tr,
+                style: TextStyle(
+                  color: MColors.colorSecondaryDark,
+                  fontSize: 16,
+                  fontFamily: appFontFamily,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Row(
+                children: [
+                  Text(
+                    '${'city'.tr} : ',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: appFontFamily,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Text(
+                    orderDetailsRow?.user?.city ?? '',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: appFontFamily,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text(
+                    '${'province'.tr} : ',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: appFontFamily,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Text(
+                    orderDetailsRow?.user?.province ?? '',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: appFontFamily,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                orderDetailsRow?.user?.address ?? '',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontFamily: appFontFamily,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Gaps.vGap8,
 
               if(orderDetailsRow?.userNote !=null)
                 Column(

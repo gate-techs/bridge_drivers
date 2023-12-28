@@ -9,6 +9,7 @@ import '../../../shared/error_widget.dart';
 import '../../../shared/loading_widget.dart';
 import '../../../shared/result_widget/result_widget.dart';
 import '../../main_screens/home/data/orders_entity.dart';
+import '../../order_details_screen/presentation/order_details_screen.dart';
 import 'cubit/orders_cubit.dart';
 
 class OrdersScreen extends StatefulWidget {
@@ -69,9 +70,9 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           builder: (OrdersDataRows e, int index) {
                             return  InkWell(
                               onTap: () {
-                                // Get.to(
-                                    // OrderDetailsScreen(id: e.id.toString(),)
-                                // );
+                                Get.to(
+                                    OrderDetailsScreen(id: e.id.toString(),)
+                                );
                               },
                               child: OrdersItem(
                                 ordersDataRows: e,

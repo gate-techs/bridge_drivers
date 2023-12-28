@@ -6,6 +6,8 @@ import 'package:kishk_driver/shared/loading_widget.dart';
 import 'package:paginated_list/paginated_list.dart';
 import 'package:kishk_driver/helpers/hive_helper.dart';
 import 'package:kishk_driver/shared/widgets/empty_data_widget.dart';
+import '../../../../order_details_screen/presentation/order_details_screen.dart';
+import '../../../../orders/presentation/widgets/orders_item.dart';
 import '../../data/orders_entity.dart';
 import '../cubit/home_cubit.dart';
 import '../widgets/order_item.dart';
@@ -159,11 +161,16 @@ class HomeScreen extends StatelessWidget {
                             //       pageIndex: ++mHomeCubit.currentPageIndex);
                             // }
                           },
-                          builder: (e, index) => OrderListItem(
-                              data: e,
-                              refreshCallBack: () {
-                                mHomeCubit.getOrdersCount();
-                              }),
+                          builder: (e, index) => InkWell(
+                            onTap: () {
+                              Get.to(
+                                  OrderDetailsScreen(id: e.id.toString(),)
+                              );
+                            },
+                            child: OrdersItem(
+                              ordersDataRows: e,
+                            ),
+                          )
                         )
                       ],
                     ),

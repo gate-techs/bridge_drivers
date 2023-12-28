@@ -65,7 +65,7 @@ void initState() {
         builder: (context, state) {
           MainCubit mMainCubit = MainCubit.get(context);
           return Scaffold(
-            appBar: AppBar(
+            appBar: mMainCubit.currentIndex==1?null:AppBar(
               titleSpacing: 0.0,
               leading: InkWell(
                 onTap: () {

@@ -57,7 +57,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    '${'orderId'.tr} : ',
+                    '${'code'.tr} : ',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
