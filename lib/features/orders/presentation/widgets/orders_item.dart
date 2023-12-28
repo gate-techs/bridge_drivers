@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:kishk_driver/common_utils/common_utils.dart';
+import 'package:kishk_driver/helpers/hive_helper.dart';
 import '../../../../../main.dart';
 import '../../../../res/gaps.dart';
 import '../../../../res/m_colors.dart';
@@ -26,60 +28,127 @@ class OrdersItem extends StatelessWidget {
               spreadRadius: 0,
             )
           ]),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                '${'code'.tr } ${ ordersDataRows.orderNo ?? ' '}',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '${'code'.tr } ${ ordersDataRows.orderNo ?? ' '}',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontFamily: appFontFamily,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Gaps.vGap8,
+                  Text(
+                    '${'total'.tr }: ${ ordersDataRows.totalGrandPrice ?? ''} ${'KWD'.tr}',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: appFontFamily,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
-              Gaps.vGap8,
-              Text(
-                '${'total'.tr }: ${ ordersDataRows.totalGrandPrice ?? ''} ${'KWD'.tr}',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontFamily: appFontFamily,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    ordersDataRows.orderedDate ?? '',
+                    style: TextStyle(
+                      color: MColors.colorSecondaryDark,
+                      fontSize: 14,
+                      fontFamily: appFontFamily,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Gaps.vGap8,
+                  Text(
+                  (ordersDataRows.orderStatus??"").tr,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color:ordersDataRows.orderStatus=='pending'?Colors.red:MColors.colorPrimary,
+                      fontFamily: appFontFamily,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+
+                ],
+              )
             ],
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          const Divider(),
+           if(HiveHelper.getUserData()?.userData?.role=='driversAdmin')
+            (ordersDataRows.driver?.id == null)?
+             InkWell(
+            onTap: (){
+
+            },
+            child: Container(
+              width: 150,
+              height: 40,
+              margin: const EdgeInsets.all(2),
+              padding: const EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: MColors.colorPrimary,
+              ),
+              child:  Center(
+                child: Text('selectDriver'.tr, style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color:Colors.white
+                ),),
+              ),
+            ),
+          ):Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                ordersDataRows.orderedDate ?? '',
-                style: TextStyle(
-                  color: MColors.colorSecondaryDark,
-                  fontSize: 14,
-                  fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+              SizedBox(
+                width: CommonUtils.getISTablet(context)?380:190,
+                child: Text(
+                  '${'driverName'.tr } : ${ ordersDataRows.driver?.name ?? ' '}',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: appFontFamily,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
-              Gaps.vGap8,
-              Text(
-              (ordersDataRows.orderStatus??"").tr,
-                style: TextStyle(
-                  fontSize: 14,
-                  color:ordersDataRows.orderStatus=='pending'?Colors.red:MColors.colorPrimary,
-                  fontFamily: appFontFamily,
-                  fontWeight: FontWeight.bold,
+              InkWell(
+                  onTap: (){
+
+                  },
+                  child: Container(
+                    width: 120,
+                    height: 40,
+                    margin: const EdgeInsets.all(2),
+                    padding: const EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: MColors.colorPrimary,
+                    ),
+                    child:  Center(
+                      child: Text('editDriver'.tr, style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color:Colors.white
+                      ),),
+                    ),
+                  ),
                 ),
-              ),
-
-
             ],
-          )
+          ),
         ],
       ),
     );

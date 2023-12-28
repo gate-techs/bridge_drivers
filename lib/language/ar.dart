@@ -178,4 +178,9 @@ Map<String, String> ar = {
   "SelectYourPreferredLanguage": "اختر لغتك المفضلة",
   "selectOrderStatus": "إختر حالة الطلب",
   "cancel": "إلغاء",
+  "city": "المدينة",
+  "province": "المحافظة",
+  "selectDriver": "إختر سائق",
+  "driverName": "إسم السائق",
+  "editDriver": "تعديل السائق",
 };

@@ -178,4 +178,9 @@ Map<String, String> en = {
   "SelectYourPreferredLanguage": "Select your preferred language",
   "selectOrderStatus": "Select Order Status",
   "cancel": "Cancel",
+  "city": "City",
+  "province": "Province",
+  "selectDriver": "Select Driver",
+  "driverName": "Driver Name",
+  "editDriver": "Edit Driver",
 };
