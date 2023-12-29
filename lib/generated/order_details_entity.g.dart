@@ -198,7 +198,7 @@ extension OrderDetailsDataRowExtension on OrderDetailsDataRow {
     String? tax,
     String? couponValue,
     String? grandTotal,
-    dynamic userNote,
+    String? userNote,
     String? orderStatus,
     String? orderedDate,
     String? dispatchedDate,
