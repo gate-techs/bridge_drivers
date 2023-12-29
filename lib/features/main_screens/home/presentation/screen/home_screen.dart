@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         Image.asset(
-                                          'assets/images/logo.png',
+                                          'assets/images/logo2.png',
                                           width: 100,
                                           height: 100,
                                         ),
@@ -130,7 +130,7 @@ class HomeScreen extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         Image.asset(
-                                          'assets/images/logo.png',
+                                          'assets/images/logo2.png',
                                           width: 100,
                                           height: 100,
                                         ),

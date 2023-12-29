@@ -22,7 +22,7 @@ class AssignDriverRepository{
        Apis.assignDriver,
         params: {
           "orderId": orderId,
-          "driverId": driverId,
+          "driverId": driverId
         },
         options: Options(method: Method.post.name,headers: {
           HttpHeaders.authorizationHeader: 'Bearer ${HiveHelper.getUserToken()}',
