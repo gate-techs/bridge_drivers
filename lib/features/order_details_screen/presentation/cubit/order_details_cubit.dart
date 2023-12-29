@@ -17,7 +17,14 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
 
   OrderDetailsRepository orderDetailsRepository = OrderDetailsRepository();
 
+
+  bool isRefresh = false;
+
+
   Future<void> getOrderDetails(String id) async {
+    if (isRefresh==true) {
+      emit(OrderDetailsLoading());
+    }
     final resul = await orderDetailsRepository.getOrderDetails(id);
 
     resul.fold((l) {
@@ -47,7 +54,7 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
           CommonUtils.showToastMessage(left);
         },
         (right) async {
-          getOrderDetails(orderId);
+          isRefresh =true;
           await EasyLoading.dismiss();
           CommonUtils.showToastMessage(right);
         });

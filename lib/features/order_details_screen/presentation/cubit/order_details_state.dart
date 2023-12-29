@@ -7,6 +7,8 @@ abstract class OrderDetailsState {
 
 class OrderDetailsInitial extends OrderDetailsState {}
 
+class OrderDetailsLoading extends OrderDetailsState {}
+
 class OrderDetailsLoaded extends OrderDetailsState{
   final OrderDetailsDataRow orderDetails;
 

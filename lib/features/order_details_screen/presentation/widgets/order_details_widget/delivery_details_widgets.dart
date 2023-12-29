@@ -23,14 +23,14 @@ class DeliveryDetailsWidget extends StatelessWidget {
           'delivery'.tr,
           style: TextStyle(
             color: MColors.colorPrimary,
-            fontSize: 16,
+            fontSize: 14,
             fontFamily: appFontFamily,
             fontWeight: FontWeight.w700,
           ),
         ),
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 14.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -40,7 +40,7 @@ class DeliveryDetailsWidget extends StatelessWidget {
                       '${'name'.tr} : ',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontFamily: appFontFamily,
                         fontWeight: FontWeight.w700,
                       ),
@@ -49,7 +49,7 @@ class DeliveryDetailsWidget extends StatelessWidget {
                       orderDetailsRow?.name ?? '',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontFamily: appFontFamily,
                         fontWeight: FontWeight.w700,
                       ),
@@ -61,7 +61,7 @@ class DeliveryDetailsWidget extends StatelessWidget {
                   'phone'.tr,
                   style: TextStyle(
                     color: MColors.colorSecondaryDark,
-                    fontSize: 16,
+                    fontSize: 14,
                     fontFamily: appFontFamily,
                     fontWeight: FontWeight.w700,
                   ),
@@ -73,7 +73,7 @@ class DeliveryDetailsWidget extends StatelessWidget {
                       orderDetailsRow?.mobile ?? '',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontFamily: appFontFamily,
                         fontWeight: FontWeight.w700,
                       ),

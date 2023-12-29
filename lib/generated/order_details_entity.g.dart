@@ -59,7 +59,7 @@ OrderDetailsDataRow $OrderDetailsDataRowFromJson(Map<String, dynamic> json) {
     orderDetailsDataRow.id = id;
   }
   final int? shoppingCartId = jsonConvert.convert<int>(json['shoppingCartId']);
-  if (id != null) {
+  if (shoppingCartId != null) {
     orderDetailsDataRow.shoppingCartId = shoppingCartId;
   }
   final String? encryptId = jsonConvert.convert<String>(json['encryptId']);
@@ -479,7 +479,7 @@ OrderDetailsDataRowProducts $OrderDetailsDataRowProductsFromJson(
     orderDetailsDataRowProducts.id = id;
   }
   final int? shoppingCartId = jsonConvert.convert<int>(json['shoppingCartId']);
-  if (id != null) {
+  if (shoppingCartId != null) {
     orderDetailsDataRowProducts.shoppingCartId = shoppingCartId;
   }
   final String? encryptId = jsonConvert.convert<String>(json['encryptId']);
@@ -616,7 +616,7 @@ extension OrderDetailsDataRowProductsExtension on OrderDetailsDataRowProducts {
   }) {
     return OrderDetailsDataRowProducts()
       ..id = id ?? this.id
-      ..id = id ?? this.shoppingCartId
+      ..shoppingCartId = shoppingCartId ?? this.shoppingCartId
       ..encryptId = encryptId ?? this.encryptId
       ..image = image ?? this.image
       ..media = media ?? this.media

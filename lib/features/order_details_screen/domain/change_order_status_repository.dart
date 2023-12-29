@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -25,14 +26,15 @@ class ChangeOrderStatusRepository{
           "shoppingCartId": shoppingCartId
         },
         options: Options(method: Method.post.name,headers: {
+          HttpHeaders.authorizationHeader: 'Bearer ${HiveHelper.getUserToken()}',
           'locale': HiveHelper.getAppLanguage(),
           'Content-Type': 'application/json'
         }));
     if(response.statusCode == 200){
-      return Right(jsonDecode(response.data)['error']?? 'empty_data'.tr);
+      return Right(jsonDecode(response.data)['data']['message']?? 'empty_data'.tr);
     }
     else{
-      return Left(jsonDecode(response.data)['error']?? 'empty_data'.tr);
+      return Left(jsonDecode(response.data)['data']['message']?? 'empty_data'.tr);
     }
   }
 }

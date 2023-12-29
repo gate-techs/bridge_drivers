@@ -89,7 +89,7 @@ class OrderItem extends StatelessWidget {
                                   "${'quantity'.tr} : ",
                                   style: TextStyle(
                                     color: MColors.colorSecondaryDark,
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     fontFamily: appFontFamily,
                                     fontWeight: FontWeight.w700,
                                   ),
@@ -98,7 +98,7 @@ class OrderItem extends StatelessWidget {
                                   orderDetailsRowProducts?.qty ?? '',
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     fontFamily: appFontFamily,
                                     fontWeight: FontWeight.w700,
                                   ),
@@ -161,7 +161,7 @@ class OrderItem extends StatelessWidget {
                 '${orderDetailsRowProducts?.totalPrice ?? ''} ${'KWD'.tr}',
                 style: TextStyle(
                   color: Colors.green,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
                   fontWeight: FontWeight.bold,
                 ),

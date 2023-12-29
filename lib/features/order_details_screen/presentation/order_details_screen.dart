@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/product_details_in_order/product_details_screen_in_order.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/widgets/order_details_widget/delivery_details_widgets.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/widgets/order_details_widget/order_price_item.dart';
-import '../../../common_utils/log_utils.dart';
 import '../../../main.dart';
 import '../../../res/m_colors.dart';
 import '../../../shared/error_widget.dart';
@@ -14,10 +13,15 @@ import 'widgets/order_details_widget/customer_details_widgets.dart';
 import 'widgets/order_details_widget/order_details_widgets.dart';
 import 'widgets/order_details_widget/order_item.dart';
 
-class OrderDetailsScreen extends StatelessWidget {
+class OrderDetailsScreen extends StatefulWidget {
   const OrderDetailsScreen({Key? key, required this.id}) : super(key: key);
   final String id;
 
+  @override
+  State<OrderDetailsScreen> createState() => _OrderDetailsScreenState();
+}
+
+class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +33,7 @@ class OrderDetailsScreen extends StatelessWidget {
           textAlign: TextAlign.left,
           style: TextStyle(
             color: Colors.black,
-            fontSize: 22,
+            fontSize: 14,
             fontFamily: appFontFamily,
             fontWeight: FontWeight.w700,
           ),
@@ -44,7 +48,7 @@ class OrderDetailsScreen extends StatelessWidget {
         ),
       ),
       body: BlocProvider(
-        create: (context) => OrderDetailsCubit()..getOrderDetails(id),
+        create: (context) => OrderDetailsCubit()..getOrderDetails(widget.id),
         child: BlocConsumer<OrderDetailsCubit, OrderDetailsState>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -82,20 +86,28 @@ class OrderDetailsScreen extends StatelessWidget {
                                       index: index + 1,
                                       isDelivered: (data.orderStatus?.toLowerCase() == 'delivered'),
                                       onChangedCallBack: ( ) {
-                                        Log.e('shoppingCartId   ${state.orderDetails.products?[index].shoppingCartId.toString().toString()}');
-                                        // if(  data.products?[index].isDispatched==true){
-                                        //   orderDetailsCubit.changeOrderStatus(
-                                        //     id.toString(),'shipped',data.products?[index].shoppingCartId.toString()??'-1'
-                                        //   );
-                                        // }else if(  data.products?[index].isShipped==true){
-                                        //   orderDetailsCubit.changeOrderStatus(
-                                        //       id.toString(),'delivered',data.products?[index].shoppingCartId.toString()??'-1'
-                                        //   );
-                                        // }else{
-                                        //   orderDetailsCubit.changeOrderStatus(
-                                        //       id.toString(),'dispatched',state.orderDetails.products?[index].shoppingCartId.toString()??'-1'
-                                        //   );
-                                        // }
+                                        setState(() {
+
+                                          if(  data.products?[index].isDispatched==true){
+                                            orderDetailsCubit.changeOrderStatus(
+                                                widget.id.toString(),'shipped',data.products?[index].shoppingCartId.toString()??'-1'
+                                            );
+                                            orderDetailsCubit.isRefresh =true;
+                                            orderDetailsCubit.getOrderDetails(widget.id);
+                                          }else if(  data.products?[index].isShipped==true){
+                                            orderDetailsCubit.changeOrderStatus(
+                                                widget.id.toString(),'delivered',data.products?[index].shoppingCartId.toString()??'-1'
+                                            );
+                                            orderDetailsCubit.isRefresh =true;
+                                            orderDetailsCubit.getOrderDetails(widget.id);
+                                          }else{
+                                            orderDetailsCubit.changeOrderStatus(
+                                                widget.id.toString(),'dispatched',state.orderDetails.products?[index].shoppingCartId.toString()??'-1'
+                                            );
+                                            orderDetailsCubit.isRefresh =true;
+                                            orderDetailsCubit.getOrderDetails(widget.id);
+                                          }
+                                        });
 
                                       },
                                     ),

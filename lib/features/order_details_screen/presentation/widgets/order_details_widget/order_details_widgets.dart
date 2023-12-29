@@ -60,18 +60,18 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                     '${'code'.tr} : ',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: appFontFamily,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
                     widget.orderDetailsRow?.orderNo ?? '',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: appFontFamily,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
@@ -80,9 +80,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                 '${widget.orderDetailsRow?.grandTotal ?? ''} ${'KWD'.tr}',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.bold,
                 ),
               )
             ],
@@ -102,9 +102,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                 '${'orderedDate'.tr} : ',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+                  
                 ),
               ),
               Text(
@@ -114,9 +114,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                     'notDetermined'.tr,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+                  
                 ),
               ),
             ],
@@ -136,9 +136,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                 '${'dispatchedDate'.tr} : ',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+                  
                 ),
               ),
               Text(
@@ -148,9 +148,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                     'notDetermined'.tr,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+                  
                 ),
               ),
             ],
@@ -170,9 +170,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                 '${'shippedDate'.tr} : ',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+                  
                 ),
               ),
               Text(
@@ -182,9 +182,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                     ?? 'notDetermined'.tr,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+                  
                 ),
               ),
             ],
@@ -204,9 +204,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                 '${'deliveredDate'.tr} : ',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+                  
                 ),
               ),
               Text(
@@ -216,9 +216,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                     ?? 'notDetermined'.tr,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+                  
                 ),
               ),
             ],
@@ -231,18 +231,18 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                 '${'status'.tr} : ',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+                  
                 ),
               ),
               Text(
                 (widget.orderDetailsRow?.orderStatus ?? '').tr,
                 style: TextStyle(
                   color: MColors.colorPrimary,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+                  
                 ),
               ),
             ],
@@ -271,8 +271,11 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                     child: CircleAvatar(
                       radius: 7,
                       backgroundColor:
-                          (widget.orderDetailsRow?.orderStatus?.toLowerCase() ==
-                                  'pending')
+                          (widget.orderDetailsRow?.orderStatus?.toLowerCase() == 'pending'
+                              || widget.orderDetailsRow?.orderStatus?.toLowerCase() == 'dispatched'
+                              || widget.orderDetailsRow?.orderStatus?.toLowerCase() == 'shipped'
+                              || widget.orderDetailsRow?.orderStatus?.toLowerCase() == 'delivered'
+                          )
                               ? MColors.colorPrimary
                               : MColors.colorPrimaryLight,
                     ),
@@ -286,8 +289,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                     child: CircleAvatar(
                       radius: 7,
                       backgroundColor:
-                          widget.orderDetailsRow?.orderStatus?.toLowerCase() ==
-                                  'dispatched'
+                        (widget.orderDetailsRow?.orderStatus?.toLowerCase() == 'dispatched'
+                            || widget.orderDetailsRow?.orderStatus?.toLowerCase() == 'shipped'
+                            || widget.orderDetailsRow?.orderStatus?.toLowerCase() == 'delivered'
+                        )
                               ? MColors.colorPrimary
                               : MColors.colorPrimaryLight,
                     ),
@@ -302,8 +307,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                     child: CircleAvatar(
                       radius: 7,
                       backgroundColor:
-                          widget.orderDetailsRow?.orderStatus?.toLowerCase() ==
-                                  'shipped'
+                          (widget.orderDetailsRow?.orderStatus?.toLowerCase() == 'shipped'
+                              || widget.orderDetailsRow?.orderStatus?.toLowerCase() == 'delivered'
+                          )
                               ? MColors.colorPrimary
                               : MColors.colorPrimaryLight,
                     ),

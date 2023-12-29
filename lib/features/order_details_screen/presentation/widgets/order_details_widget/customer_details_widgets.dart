@@ -21,14 +21,14 @@ class CustomerDetailsWidget extends StatelessWidget {
         'customer'.tr,
         style: TextStyle(
           color: MColors.colorPrimary,
-          fontSize: 16,
+          fontSize: 14,
           fontFamily: appFontFamily,
           fontWeight: FontWeight.w700,
         ),
       ),
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 14.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -38,7 +38,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                    '${'name'.tr} : ',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: appFontFamily,
                       fontWeight: FontWeight.w700,
                     ),
@@ -47,7 +47,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                     orderDetailsRow?.user?.name ?? '',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: appFontFamily,
                       fontWeight: FontWeight.w700,
                     ),
@@ -60,7 +60,7 @@ class CustomerDetailsWidget extends StatelessWidget {
               //       '${'customerEmail'.tr} :',
               //       style: TextStyle(
               //         color: Colors.black,
-              //         fontSize: 16,
+              //         fontSize: 14,
               //         fontFamily: appFontFamily,
               //         fontWeight: FontWeight.w700,
               //       ),
@@ -69,7 +69,7 @@ class CustomerDetailsWidget extends StatelessWidget {
               //       orderDetailsRow?.user?. ?? '',
               //       style: TextStyle(
               //         color: Colors.black,
-              //         fontSize: 16,
+              //         fontSize: 14,
               //         fontFamily: appFontFamily,
               //         fontWeight: FontWeight.w700,
               //       ),
@@ -81,7 +81,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                 'phone'.tr,
                 style: TextStyle(
                   color: MColors.colorSecondaryDark,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
                   fontWeight: FontWeight.w700,
                 ),
@@ -93,7 +93,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                     orderDetailsRow?.user?.mobile ?? '',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: appFontFamily,
                       fontWeight: FontWeight.w700,
                     ),
@@ -122,7 +122,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                 'shippingAddress'.tr,
                 style: TextStyle(
                   color: MColors.colorSecondaryDark,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
                   fontWeight: FontWeight.w700,
                 ),
@@ -133,7 +133,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                     '${'city'.tr} : ',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: appFontFamily,
                       fontWeight: FontWeight.w700,
                     ),
@@ -142,7 +142,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                     orderDetailsRow?.user?.city ?? '',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: appFontFamily,
                       fontWeight: FontWeight.w700,
                     ),
@@ -155,7 +155,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                     '${'province'.tr} : ',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: appFontFamily,
                       fontWeight: FontWeight.w700,
                     ),
@@ -164,7 +164,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                     orderDetailsRow?.user?.province ?? '',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: appFontFamily,
                       fontWeight: FontWeight.w700,
                     ),
@@ -175,7 +175,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                 orderDetailsRow?.user?.address ?? '',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: appFontFamily,
                   fontWeight: FontWeight.w700,
                 ),
@@ -190,7 +190,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                       '${'orderNote'.tr} : ',
                       style: TextStyle(
                         color: MColors.colorSecondaryDark,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontFamily: appFontFamily,
                         fontWeight: FontWeight.w700,
                       ),
@@ -199,7 +199,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                       orderDetailsRow?.userNote ?? '',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontFamily: appFontFamily,
                         fontWeight: FontWeight.w700,
                       ),
