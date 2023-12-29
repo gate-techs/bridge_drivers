@@ -12,11 +12,9 @@ import '../cubit/drivers_cubit.dart';
 import 'drivers_item.dart';
 
 class SelectDriverBottomSheet extends StatefulWidget {
-  const SelectDriverBottomSheet({
-    Key? key,
-    required this.callBack,
-  }) : super(key: key);
-  final Function() callBack;
+  const SelectDriverBottomSheet({Key? key, required this.orderId,}) : super(key: key);
+  final String orderId;
+
 
   @override
   State<SelectDriverBottomSheet> createState() => _SelectDriverBottomSheetState();
@@ -122,7 +120,7 @@ class _SelectDriverBottomSheetState extends State<SelectDriverBottomSheet> {
                                   builder: (DriversDataRows e, int index) {
                                     return  InkWell(
                                       onTap: () {
-                                        widget.callBack.call();
+                                        driversCubit.assignDriver(widget.orderId.toString(), e.id.toString());
                                       },
                                       child: DriversItem(
                                         driversItemDataRows: e,

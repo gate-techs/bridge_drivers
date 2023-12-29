@@ -1,10 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:get/route_manager.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../common_utils/common_utils.dart';
 import '../../data/drivers_entity.dart';
+import '../../domain/assign_driver_repository.dart';
 import '../../domain/drivers_repository.dart';
 
 part 'drivers_state.dart';
@@ -86,11 +90,32 @@ class DriversCubit extends Cubit<DriversState> {
       }
     });
   }
-  
-  
-  
-  
-  
+
+
+
+
+
+  AssignDriverRepository assignDriverRepository= AssignDriverRepository();
+
+
+  Future<void> assignDriver(String orderId, String driverId) async {
+    try {
+      EasyLoading.show();
+      final mResponse = await assignDriverRepository.assignDriver(orderId, driverId);
+      mResponse.fold((left) async {
+        await EasyLoading.dismiss();
+        CommonUtils.showToastMessage(left);
+      }, (right) async {
+            await EasyLoading.dismiss();
+            CommonUtils.showToastMessage(right);
+            Get.back(result: {'refresh': true});
+            Get.back(result: {'refresh': true});
+          });
+    } catch (e) {
+      await EasyLoading.dismiss();
+      CommonUtils.showToastMessage(e.toString(), status: 'rejected');
+    }
+  }
   
   
   

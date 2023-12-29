@@ -41,6 +41,7 @@ class Apis {
   static const String changeOrderToDispatched = "driver/dispatched";
   static const String changeOrderToShipped = "driver/shipped";
   static const String changeOrderToDelivered= "driver/delivered";
+  static const String assignDriver= "driver/assignDriver";
 
   static String getOrderDetailsDataApiCall(id) => "driver/showOrder/$id";
 
