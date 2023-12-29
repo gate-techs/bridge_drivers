@@ -13,7 +13,7 @@ import 'drivers_item.dart';
 
 class SelectDriverBottomSheet extends StatefulWidget {
   const SelectDriverBottomSheet({Key? key, required this.orderId,}) : super(key: key);
-  final String orderId;
+  final int orderId;
 
 
   @override
@@ -120,7 +120,7 @@ class _SelectDriverBottomSheetState extends State<SelectDriverBottomSheet> {
                                   builder: (DriversDataRows e, int index) {
                                     return  InkWell(
                                       onTap: () {
-                                        driversCubit.assignDriver(widget.orderId.toString(), e.id.toString());
+                                        driversCubit.assignDriver(widget.orderId, e.id??-1);
                                       },
                                       child: DriversItem(
                                         driversItemDataRows: e,

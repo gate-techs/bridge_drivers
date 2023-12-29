@@ -16,7 +16,7 @@ import 'package:kishk_driver/network/urls/apis.dart';
 
 class AssignDriverRepository{
 
-  Future<Either<String,String>> assignDriver(String orderId, String driverId)async{
+  Future<Either<String,String>> assignDriver(int orderId, int driverId)async{
     late Response response;
     response = await instance<NetworkCall>().request(
        Apis.assignDriver,

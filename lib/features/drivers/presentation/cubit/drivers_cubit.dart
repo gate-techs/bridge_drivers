@@ -98,7 +98,7 @@ class DriversCubit extends Cubit<DriversState> {
   AssignDriverRepository assignDriverRepository= AssignDriverRepository();
 
 
-  Future<void> assignDriver(String orderId, String driverId) async {
+  Future<void> assignDriver(int orderId, int driverId) async {
     try {
       EasyLoading.show();
       final mResponse = await assignDriverRepository.assignDriver(orderId, driverId);
