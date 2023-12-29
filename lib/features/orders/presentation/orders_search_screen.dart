@@ -32,7 +32,11 @@ class _OrdersSearchScreenState extends State<OrdersSearchScreen> {
        OrdersCubit()
         ..getOrders({'paginate': 30}),
       child: BlocConsumer< OrdersCubit,  OrdersState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if(state is OrdersLoading){
+            setState(() {});
+          }
+        },
         builder: (context, state) {
            OrdersCubit  ordersCubit =  OrdersCubit.get(context);
           //  OrdersListDataRows  OrdersListDataRows;

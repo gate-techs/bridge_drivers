@@ -119,15 +119,10 @@ class OrderItem extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if(orderDetailsRowProducts?.isDelivered==false)
+              (orderDetailsRowProducts?.isDelivered==false)?
               InkWell(
                 onTap:(){
                   onChangedCallBack.call();
-                  // if(orderDetailsRowProducts?.isDispatched==true){
-                  //
-                  // }else if(orderDetailsRowProducts?.isShipped==true){
-                  //
-                  // }
                 },
                 child: Container(
                   width: 100,
@@ -147,8 +142,8 @@ class OrderItem extends StatelessWidget {
                     ],
                   ),
                   child: Center(child: Text(
-                    (orderDetailsRowProducts?.isDispatched??false)?'shipped'.tr:
-                    (orderDetailsRowProducts?.isShipped??false)?'delivered'.tr:'dispatched'.tr
+                    (orderDetailsRowProducts?.isDispatched==true && orderDetailsRowProducts?.isShipped==false && orderDetailsRowProducts?.isDelivered==false)?'shipped'.tr:
+                    (orderDetailsRowProducts?.isDispatched==true && orderDetailsRowProducts?.isShipped==true &&  orderDetailsRowProducts?.isDelivered==false)?'delivered'.tr:'dispatched'.tr
                     ,style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
@@ -156,7 +151,16 @@ class OrderItem extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),)),
                 ),
-              ),
+              ):
+              Text(
+              'delivered'.tr
+                ,style: TextStyle(
+                color: Colors.green,
+                fontSize: 12,
+                fontFamily: appFontFamily,
+                fontWeight: FontWeight.bold,
+              ),),
+              Gaps.vGap20,
               Text(
                 '${orderDetailsRowProducts?.totalPrice ?? ''} ${'KWD'.tr}',
                 style: TextStyle(

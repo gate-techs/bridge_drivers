@@ -323,8 +323,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                     child: CircleAvatar(
                       radius: 7,
                       backgroundColor:
-                          widget.orderDetailsRow?.orderStatus?.toLowerCase() ==
-                                  'delivered'
+                          widget.orderDetailsRow?.orderStatus?.toLowerCase() == 'delivered'
                               ? MColors.colorPrimary
                               : MColors.colorPrimaryLight,
                     ),

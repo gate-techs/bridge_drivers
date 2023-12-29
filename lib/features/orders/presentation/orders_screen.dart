@@ -27,7 +27,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-          return OrdersCubit()..getOrders({'paginate':30,widget.keyX:widget.value});
+          return OrdersCubit()..getOrders({'paginate':30,widget.keyX:widget.value,'mobile' :true,});
       },
       child: BlocConsumer<OrdersCubit, OrdersState>(
         listener: (context, state) {},
@@ -60,6 +60,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     ordersCubit
                         .getOrders({
                       widget.keyX:widget.value,
+                      'mobile' :true,
                       'paginate': 30,
                       'page': ordersCubit.currentPageIndex});
                   },
@@ -78,6 +79,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           onLoadMore: (index) {
                             if (!ordersCubit.isLastPage) {
                               ordersCubit.getOrders({
+                                'mobile' :true,
                                 'page': (++ordersCubit.currentPageIndex).toString(),
                                 'paginate': 30,
                                 widget.keyX:widget.value
@@ -108,6 +110,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 ordersCubit.currentPageIndex = 1;
                 ordersCubit
                     .getOrders({
+                  'mobile' :true,
                   'paginate': 30,
                   'page': ordersCubit.currentPageIndex,
                   widget.keyX:widget.value});
