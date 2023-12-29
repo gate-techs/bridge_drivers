@@ -471,6 +471,10 @@ OrderDetailsDataRowProducts $OrderDetailsDataRowProductsFromJson(
   if (id != null) {
     orderDetailsDataRowProducts.id = id;
   }
+  final int? shoppingCartId = jsonConvert.convert<int>(json['shoppingCartId']);
+  if (id != null) {
+    orderDetailsDataRowProducts.shoppingCartId = shoppingCartId;
+  }
   final String? encryptId = jsonConvert.convert<String>(json['encryptId']);
   if (encryptId != null) {
     orderDetailsDataRowProducts.encryptId = encryptId;
@@ -559,6 +563,7 @@ Map<String, dynamic> $OrderDetailsDataRowProductsToJson(
     OrderDetailsDataRowProducts entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['id'] = entity.id;
+  data['shoppingCartId'] = entity.shoppingCartId;
   data['encryptId'] = entity.encryptId;
   data['image'] = entity.image;
   data['media'] = entity.media?.toJson();
@@ -583,6 +588,7 @@ Map<String, dynamic> $OrderDetailsDataRowProductsToJson(
 extension OrderDetailsDataRowProductsExtension on OrderDetailsDataRowProducts {
   OrderDetailsDataRowProducts copyWith({
     int? id,
+    int? shoppingCartId,
     String? encryptId,
     String? image,
     OrderDetailsDataRowProductsMedia? media,
@@ -603,6 +609,7 @@ extension OrderDetailsDataRowProductsExtension on OrderDetailsDataRowProducts {
   }) {
     return OrderDetailsDataRowProducts()
       ..id = id ?? this.id
+      ..id = id ?? this.shoppingCartId
       ..encryptId = encryptId ?? this.encryptId
       ..image = image ?? this.image
       ..media = media ?? this.media

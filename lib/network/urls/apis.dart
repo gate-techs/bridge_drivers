@@ -38,6 +38,9 @@ class Apis {
   static const String doRegisterApiCall = "register";
 
   static const String getOrdersDataApiCall = "driver/recentOrders";
+  static const String changeOrderToDispatched = "driver/dispatched";
+  static const String changeOrderToShipped = "driver/shipped";
+  static const String changeOrderToDelivered= "driver/delivered";
 
   static String getOrderDetailsDataApiCall(id) => "driver/showOrder/$id";
 
@@ -45,6 +48,7 @@ class Apis {
       "driver/recentOrders/$id/change-status";
 
   static String getProductDetailsDataApiCall(id) => "backend/products/$id";
+
 
   static const String getOrdersCountApiCall = "driver/recentOrders";
   static const String getOrders = "backend/orders";

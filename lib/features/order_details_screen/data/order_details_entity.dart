@@ -229,6 +229,7 @@ class OrderDetailsDataRowVendors {
 @JsonSerializable()
 class OrderDetailsDataRowProducts {
 	int? id;
+	int? shoppingCartId;
 	String? encryptId;
 	String? image;
 	OrderDetailsDataRowProductsMedia? media;
@@ -253,9 +254,10 @@ class OrderDetailsDataRowProducts {
 
 	Map<String, dynamic> toJson() => $OrderDetailsDataRowProductsToJson(this);
 
-	OrderDetailsDataRowProducts copyWith({int? id, String? encryptId, String? image, OrderDetailsDataRowProductsMedia? media, String? title, OrderDetailsDataRowProductsVendor? vendor, OrderDetailsDataRowProductsBrand? brand, String? unitPrice, String? discountValue, String? qty, String? oldTotalPrice, String? totalPrice, String? vendorStatus, String? deliveryStatus, bool? isDispatched, bool? isShipped, bool? isDelivered, List<OrderDetailsDataRowProductsSelectedAttributes>? selectedAttributes}) {
+	OrderDetailsDataRowProducts copyWith({int? id,int? shoppingCartId, String? encryptId, String? image, OrderDetailsDataRowProductsMedia? media, String? title, OrderDetailsDataRowProductsVendor? vendor, OrderDetailsDataRowProductsBrand? brand, String? unitPrice, String? discountValue, String? qty, String? oldTotalPrice, String? totalPrice, String? vendorStatus, String? deliveryStatus, bool? isDispatched, bool? isShipped, bool? isDelivered, List<OrderDetailsDataRowProductsSelectedAttributes>? selectedAttributes}) {
 		return OrderDetailsDataRowProducts()
 			..id= id ?? this.id
+			..shoppingCartId= shoppingCartId ?? this.shoppingCartId
 			..encryptId= encryptId ?? this.encryptId
 			..image= image ?? this.image
 			..media= media ?? this.media

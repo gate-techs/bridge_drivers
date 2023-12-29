@@ -48,6 +48,7 @@ class OrderDetailsScreen extends StatelessWidget {
         child: BlocConsumer<OrderDetailsCubit, OrderDetailsState>(
           listener: (context, state) {},
           builder: (context, state) {
+            OrderDetailsCubit orderDetailsCubit = OrderDetailsCubit();
             if (state is OrderDetailsLoaded) {
               final data = state.orderDetails;
               return SingleChildScrollView(
@@ -73,7 +74,6 @@ class OrderDetailsScreen extends StatelessWidget {
                               itemBuilder: (context, index) =>
                                   InkWell(
                                     onTap: (){
-                                      Log.e( data.products?[index].encryptId.toString()??'');
                                       Get.to(ProductDetailsScreenInOrder(id:  data.products?[index].encryptId??'', selectedAttributes:  data.products?[index].selectedAttributes,));
                                     },
                                     child: OrderItem(
@@ -81,6 +81,23 @@ class OrderDetailsScreen extends StatelessWidget {
                                       data.products?[index],
                                       index: index + 1,
                                       isDelivered: (data.orderStatus?.toLowerCase() == 'delivered'),
+                                      onChangedCallBack: ( ) {
+                                        Log.e('shoppingCartId   ${state.orderDetails.products?[index].shoppingCartId.toString().toString()}');
+                                        // if(  data.products?[index].isDispatched==true){
+                                        //   orderDetailsCubit.changeOrderStatus(
+                                        //     id.toString(),'shipped',data.products?[index].shoppingCartId.toString()??'-1'
+                                        //   );
+                                        // }else if(  data.products?[index].isShipped==true){
+                                        //   orderDetailsCubit.changeOrderStatus(
+                                        //       id.toString(),'delivered',data.products?[index].shoppingCartId.toString()??'-1'
+                                        //   );
+                                        // }else{
+                                        //   orderDetailsCubit.changeOrderStatus(
+                                        //       id.toString(),'dispatched',state.orderDetails.products?[index].shoppingCartId.toString()??'-1'
+                                        //   );
+                                        // }
+
+                                      },
                                     ),
                                   ))
                         ] ,

@@ -9,11 +9,12 @@ import '../../../data/order_details_entity.dart';
 
 class OrderItem extends StatelessWidget {
   const OrderItem(
-      {Key? key, required this.orderDetailsRowProducts, required this.index, required this.isDelivered})
+      {Key? key, required this.orderDetailsRowProducts, required this.index, required this.isDelivered, required this.onChangedCallBack})
       : super(key: key);
   final OrderDetailsDataRowProducts? orderDetailsRowProducts;
   final int index;
   final bool isDelivered;
+  final Function() onChangedCallBack;
 
   @override
   Widget build(BuildContext context) {
@@ -121,11 +122,12 @@ class OrderItem extends StatelessWidget {
               if(orderDetailsRowProducts?.isDelivered==false)
               InkWell(
                 onTap:(){
-                  if(orderDetailsRowProducts?.isDispatched==true){
-
-                  }else if(orderDetailsRowProducts?.isShipped==true){
-
-                  }
+                  onChangedCallBack.call();
+                  // if(orderDetailsRowProducts?.isDispatched==true){
+                  //
+                  // }else if(orderDetailsRowProducts?.isShipped==true){
+                  //
+                  // }
                 },
                 child: Container(
                   width: 100,
