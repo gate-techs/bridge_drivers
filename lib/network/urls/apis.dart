@@ -53,6 +53,8 @@ class Apis {
 
   static const String getOrdersCountApiCall = "driver/recentOrders";
   static const String getOrders = "backend/orders";
+
   static const String getDrivers = "employees/drivers?";
   static String getPageWithSlug(dynamic id) => "backend/pages/$id";
+  static String getDriverOrders(dynamic id) => "employees/drivers/$id/orders";
 }

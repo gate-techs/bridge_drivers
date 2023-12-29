@@ -8,6 +8,7 @@ import '../../../../res/m_colors.dart';
 import '../../../shared/error_widget.dart';
 import '../../../shared/loading_widget.dart';
 import '../../../shared/result_widget/result_widget.dart';
+import '../../driver_details/presentation/screen/driver_details_screen.dart';
 import '../data/drivers_entity.dart';
 import 'cubit/drivers_cubit.dart';
 
@@ -67,11 +68,19 @@ class DriversScreen extends StatelessWidget {
                             },
                             builder: (DriversDataRows e, int index) {
                               return  InkWell(
-                                onTap: () {
-                                  // Get.to(
-                                  //     OrderDetailsScreen(id: e.id.toString(),)
-                                  // );
-                                },
+
+                                  onTap: () async{
+                                    var res = await Get.to(
+                                            () =>  DriverDetailsScreen(dataRows: data[index],));
+                                    if (res['refresh'] == true) {
+                                      driversCubit.currentPageIndex = 1;
+                                      driversCubit.isLastPage = false;
+                                      driversCubit.lastPage = 10;
+                                      driversCubit.listTotal = 0;
+                                      driversCubit.driversList.clear();
+                                      driversCubit.getDrivers({'mobile' :true,});
+                                    }
+                                  },
                                 child: DriversItem(
                                   driversItemDataRows: e,
                                 ),

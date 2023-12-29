@@ -8,6 +8,7 @@ import 'package:kishk_driver/country_code/data/country_code_entity.dart';
 import 'package:kishk_driver/features/about/data/about_entity.dart';
 import 'package:kishk_driver/features/contact_us/data/contact_us_entity.dart';
 import 'package:kishk_driver/features/contact_us/data/contact_us_erorr_entity.dart';
+import 'package:kishk_driver/features/driver_details/data/driver_details_entity.dart';
 import 'package:kishk_driver/features/drivers/data/drivers_entity.dart';
 import 'package:kishk_driver/features/main/data/badge_count_entity.dart';
 import 'package:kishk_driver/features/main_screens/home/data/orders_entity.dart';
@@ -177,6 +178,30 @@ class JsonConvert {
     if (<ContactUsErorrErrors>[] is M) {
       return data.map<ContactUsErorrErrors>((Map<String, dynamic> e) =>
           ContactUsErorrErrors.fromJson(e)).toList() as M;
+    }
+    if (<DriverDetailsEntity>[] is M) {
+      return data.map<DriverDetailsEntity>((Map<String, dynamic> e) =>
+          DriverDetailsEntity.fromJson(e)).toList() as M;
+    }
+    if (<DriverDetailsData>[] is M) {
+      return data.map<DriverDetailsData>((Map<String, dynamic> e) =>
+          DriverDetailsData.fromJson(e)).toList() as M;
+    }
+    if (<DriverDetailsDataRows>[] is M) {
+      return data.map<DriverDetailsDataRows>((Map<String, dynamic> e) =>
+          DriverDetailsDataRows.fromJson(e)).toList() as M;
+    }
+    if (<DriverDetailsDataRowsCustomer>[] is M) {
+      return data.map<DriverDetailsDataRowsCustomer>((Map<String, dynamic> e) =>
+          DriverDetailsDataRowsCustomer.fromJson(e)).toList() as M;
+    }
+    if (<DriverDetailsDataRowsDriver>[] is M) {
+      return data.map<DriverDetailsDataRowsDriver>((Map<String, dynamic> e) =>
+          DriverDetailsDataRowsDriver.fromJson(e)).toList() as M;
+    }
+    if (<DriverDetailsDataPaginate>[] is M) {
+      return data.map<DriverDetailsDataPaginate>((Map<String, dynamic> e) =>
+          DriverDetailsDataPaginate.fromJson(e)).toList() as M;
     }
     if (<DriversEntity>[] is M) {
       return data.map<DriversEntity>((Map<String, dynamic> e) =>
@@ -462,6 +487,14 @@ class JsonConvertClassCollection {
     (ContactUsData).toString(): ContactUsData.fromJson,
     (ContactUsErorrEntity).toString(): ContactUsErorrEntity.fromJson,
     (ContactUsErorrErrors).toString(): ContactUsErorrErrors.fromJson,
+    (DriverDetailsEntity).toString(): DriverDetailsEntity.fromJson,
+    (DriverDetailsData).toString(): DriverDetailsData.fromJson,
+    (DriverDetailsDataRows).toString(): DriverDetailsDataRows.fromJson,
+    (DriverDetailsDataRowsCustomer).toString(): DriverDetailsDataRowsCustomer
+        .fromJson,
+    (DriverDetailsDataRowsDriver).toString(): DriverDetailsDataRowsDriver
+        .fromJson,
+    (DriverDetailsDataPaginate).toString(): DriverDetailsDataPaginate.fromJson,
     (DriversEntity).toString(): DriversEntity.fromJson,
     (DriversData).toString(): DriversData.fromJson,
     (DriversDataRows).toString(): DriversDataRows.fromJson,

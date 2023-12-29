@@ -188,4 +188,5 @@ Map<String, String> ar = {
   "totalOrder": "عدد الطلبات",
   "drivers": "السائقين",
   "numberOfDrivers": "عدد السائقين",
+  "driverDetails": "بيانات السائق",
 };

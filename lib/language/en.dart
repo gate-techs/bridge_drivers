@@ -188,4 +188,5 @@ Map<String, String> en = {
   "totalOrder": "Total Order",
   "drivers": "Drivers",
   "numberOfDrivers": "Number Of Drivers",
+  "driverDetails": "Driver Details",
 };
