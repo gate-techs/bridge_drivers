@@ -48,6 +48,7 @@ class OrderDetailsData {
 @JsonSerializable()
 class OrderDetailsDataRow {
 	int? id;
+	int? shoppingCartId;
 	String? encryptId;
 	String? orderNo;
 	OrderDetailsDataRowUser? user;
@@ -61,7 +62,7 @@ class OrderDetailsDataRow {
 	String? tax;
 	String? couponValue;
 	String? grandTotal;
-	dynamic userNote;
+	String? userNote;
 	String? orderStatus;
 	String? orderedDate;
 	String? dispatchedDate;
@@ -74,9 +75,10 @@ class OrderDetailsDataRow {
 
 	Map<String, dynamic> toJson() => $OrderDetailsDataRowToJson(this);
 
-	OrderDetailsDataRow copyWith({int? id, String? encryptId, String? orderNo, OrderDetailsDataRowUser? user, OrderDetailsDataRowDelivery? delivery, OrderDetailsDataRowPayment? payment, List<OrderDetailsDataRowVendors>? vendors, List<OrderDetailsDataRowProducts>? products, String? subTotal, String? discount, String? deliveryFees, String? tax, String? couponValue, String? grandTotal, dynamic userNote, String? orderStatus, String? orderedDate, String? dispatchedDate, String? shippedDate, String? deliveredDate}) {
+	OrderDetailsDataRow copyWith({int? id,int? shoppingCartId, String? encryptId, String? orderNo, OrderDetailsDataRowUser? user, OrderDetailsDataRowDelivery? delivery, OrderDetailsDataRowPayment? payment, List<OrderDetailsDataRowVendors>? vendors, List<OrderDetailsDataRowProducts>? products, String? subTotal, String? discount, String? deliveryFees, String? tax, String? couponValue, String? grandTotal, dynamic userNote, String? orderStatus, String? orderedDate, String? dispatchedDate, String? shippedDate, String? deliveredDate}) {
 		return OrderDetailsDataRow()
 			..id= id ?? this.id
+			..shoppingCartId= shoppingCartId ?? this.shoppingCartId
 			..encryptId= encryptId ?? this.encryptId
 			..orderNo= orderNo ?? this.orderNo
 			..user= user ?? this.user

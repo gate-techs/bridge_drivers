@@ -58,6 +58,10 @@ OrderDetailsDataRow $OrderDetailsDataRowFromJson(Map<String, dynamic> json) {
   if (id != null) {
     orderDetailsDataRow.id = id;
   }
+  final int? shoppingCartId = jsonConvert.convert<int>(json['shoppingCartId']);
+  if (id != null) {
+    orderDetailsDataRow.shoppingCartId = shoppingCartId;
+  }
   final String? encryptId = jsonConvert.convert<String>(json['encryptId']);
   if (encryptId != null) {
     orderDetailsDataRow.encryptId = encryptId;
@@ -154,6 +158,7 @@ OrderDetailsDataRow $OrderDetailsDataRowFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> $OrderDetailsDataRowToJson(OrderDetailsDataRow entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['id'] = entity.id;
+  data['shoppingCartId'] = entity.shoppingCartId;
   data['encryptId'] = entity.encryptId;
   data['orderNo'] = entity.orderNo;
   data['user'] = entity.user?.toJson();
@@ -179,6 +184,7 @@ Map<String, dynamic> $OrderDetailsDataRowToJson(OrderDetailsDataRow entity) {
 extension OrderDetailsDataRowExtension on OrderDetailsDataRow {
   OrderDetailsDataRow copyWith({
     int? id,
+    int? shoppingCartId,
     String? encryptId,
     String? orderNo,
     OrderDetailsDataRowUser? user,
@@ -201,6 +207,7 @@ extension OrderDetailsDataRowExtension on OrderDetailsDataRow {
   }) {
     return OrderDetailsDataRow()
       ..id = id ?? this.id
+      ..shoppingCartId = shoppingCartId ?? this.shoppingCartId
       ..encryptId = encryptId ?? this.encryptId
       ..orderNo = orderNo ?? this.orderNo
       ..user = user ?? this.user
