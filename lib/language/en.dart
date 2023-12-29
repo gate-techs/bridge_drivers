@@ -183,4 +183,9 @@ Map<String, String> en = {
   "selectDriver": "Select Driver",
   "driverName": "Driver Name",
   "editDriver": "Edit Driver",
+  "home": "Home",
+  "profile": "Profile",
+  "totalOrder": "Total Order",
+  "drivers": "Drivers",
+  "numberOfDrivers": "Number Of Drivers",
 };

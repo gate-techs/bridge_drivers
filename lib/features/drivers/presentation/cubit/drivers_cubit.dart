@@ -1,16 +1,19 @@
-import 'package:flutter/material.dart';
+import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import '../../../main_screens/home/data/orders_entity.dart';
-import '../../../main_screens/home/domain/orders_repository.dart';
+import 'package:meta/meta.dart';
 
-part 'orders_state.dart';
+import '../../data/drivers_entity.dart';
+import '../../domain/drivers_repository.dart';
 
-class OrdersCubit extends Cubit<OrdersState> {
-  OrdersCubit() : super(OrdersInitial());
+part 'drivers_state.dart';
 
-  static OrdersCubit get(context) => BlocProvider.of(context);
+class DriversCubit extends Cubit<DriversState> {
+  DriversCubit() : super(DriversInitial());
+
+
+  static DriversCubit get(context) => BlocProvider.of(context);
 
   final TextEditingController search = TextEditingController();
   int searchResults = 0;
@@ -21,39 +24,39 @@ class OrdersCubit extends Cubit<OrdersState> {
   int radioSelected = 1;
   String categoryId = '1';
 
-  List<OrdersDataRows> ordersList = [];
+  List<DriversDataRows> driversList = [];
 
-  OrdersRepository ordersRepository = OrdersRepository();
+  DriversRepository driversRepository = DriversRepository();
 
-  Future<void> getOrders(Map<String, dynamic> prams) async {
+  Future<void> getDrivers(Map<String, dynamic> prams) async {
     searchResults = 0;
     if (currentPageIndex == 1) {
-      emit(OrdersLoading());
+      emit(DriversLoading());
     }
-    final resul = await ordersRepository.getOrders(prams);
+    final resul = await driversRepository.getDrivers(prams);
     resul.fold((l) {
       searchResults = 0;
-      emit(OrdersFailed("empty_data".tr));
+      emit(DriversFailed("empty_data".tr));
     }, (r) {
-      final List<OrdersDataRows> fetchedPosts = r.data?.rows ?? [];
+      final List<DriversDataRows> fetchedPosts = r.data?.rows ?? [];
       lastPage = r.data?.paginate?.lastPage ?? 1;
       listTotal = r.data?.paginate?.total ?? 0;
       if (r.data == null || r.data!.rows!.isEmpty) {
         searchResults = 0;
-        emit(OrdersFailed("empty_data".tr));
+        emit(DriversFailed("empty_data".tr));
       } else {
         if (currentPageIndex == r.data!.paginate!.lastPage) {
           isLastPage = true;
         }
         if (fetchedPosts.isNotEmpty) {
-          ordersList.addAll(fetchedPosts);
+          driversList.addAll(fetchedPosts);
           fetchedPosts.clear();
           if (search.text.isNotEmpty) {
             searchResults = r.data?.paginate?.total ?? 0;
           } else {
             searchResults = 0;
           }
-          emit(OrdersLoaded(ordersList));
+          emit(DriversLoaded(driversList));
         }
       }
     });
@@ -62,16 +65,16 @@ class OrdersCubit extends Cubit<OrdersState> {
 
 
   void getSearch(Map<String, dynamic> prams) async {
-    emit( OrdersInitial());
-    final resul = await ordersRepository.getOrders(prams);
+    emit( DriversInitial());
+    final resul = await driversRepository.getDrivers(prams);
 
     resul.fold((l) {
       searchResults = 0;
-      emit( OrdersFailed(l));
+      emit( DriversFailed(l));
     }, (r) {
       if (r.data == null || r.data!.rows!.isEmpty) {
         searchResults = 0;
-        emit( OrdersFailed("empty_data".tr));
+        emit( DriversFailed("empty_data".tr));
       } else {
         if (search.text.isNotEmpty) {
           searchResults = r.data?.paginate?.total ?? 0;
@@ -79,8 +82,18 @@ class OrdersCubit extends Cubit<OrdersState> {
           searchResults = 0;
         }
 
-        emit( OrdersLoaded(r.data!.rows!));
+        emit( DriversLoaded(r.data!.rows!));
       }
     });
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }

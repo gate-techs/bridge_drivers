@@ -183,4 +183,9 @@ Map<String, String> ar = {
   "selectDriver": "إختر سائق",
   "driverName": "إسم السائق",
   "editDriver": "تعديل السائق",
+  "home": "الرئيسية",
+  "profile": "الشخصية",
+  "totalOrder": "عدد الطلبات",
+  "drivers": "السائقين",
+  "numberOfDrivers": "عدد السائقين",
 };

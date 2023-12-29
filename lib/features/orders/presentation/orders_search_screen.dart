@@ -149,11 +149,19 @@ class _OrdersSearchScreenState extends State<OrdersSearchScreen> {
                                   itemCount: data.length>20?20:data.length,
                                   itemBuilder: (ctx, index) {
                                     return  InkWell(
-                                      onTap: () {
-                                        Get.to(
-                                            OrderDetailsScreen(
-                                                id: data[index].id
-                                                    .toString()));
+                                      onTap: () async{
+                                        var res = await Get.to(
+                                                () =>  OrderDetailsScreen(id: data[index].id.toString(),));
+                                        if (res['refresh'] == true) {
+                                          ordersCubit.currentPageIndex = 1;
+                                          ordersCubit.isLastPage = false;
+                                          ordersCubit.lastPage = 10;
+                                          ordersCubit.listTotal = 0;
+                                          ordersCubit.ordersList.clear();
+
+
+                                          ordersCubit.getOrders({'mobile' :true,});
+                                        }
                                       },
                                       child:  OrdersItem(
                                         ordersDataRows:

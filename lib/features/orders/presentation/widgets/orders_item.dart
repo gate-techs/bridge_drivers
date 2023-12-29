@@ -3,9 +3,9 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:kishk_driver/common_utils/common_utils.dart';
 import 'package:kishk_driver/helpers/hive_helper.dart';
 import '../../../../../main.dart';
-import '../../../../common_utils/log_utils.dart';
 import '../../../../res/gaps.dart';
 import '../../../../res/m_colors.dart';
+import '../../../drivers/presentation/widgets/select_driver_bottom_sheet.dart';
 import '../../../main_screens/home/data/orders_entity.dart';
 
 class OrdersItem extends StatelessWidget {
@@ -15,7 +15,6 @@ class OrdersItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Log.e(ordersDataRows.driver.toString());
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       margin: const EdgeInsets.all(2),
@@ -88,13 +87,23 @@ class OrdersItem extends StatelessWidget {
               )
             ],
           ),
+          if(HiveHelper.getUserData()?.userData?.role=='driversAdmin')
           const Divider(),
            if(HiveHelper.getUserData()?.userData?.role=='driversAdmin')
-
             (ordersDataRows.driver?.id == null)?
              InkWell(
             onTap: (){
-
+              showModalBottomSheet(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  backgroundColor: Colors.white,
+                  context: context,
+                  builder: (BuildContext context) {
+                    return SelectDriverBottomSheet(
+                      callBack: () {},
+                    );
+                  });
             },
             child: Container(
               width: 150,
@@ -131,7 +140,17 @@ class OrdersItem extends StatelessWidget {
               if(ordersDataRows.orderStatus !='delivered')
               InkWell(
                   onTap: (){
-
+                    showModalBottomSheet(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        backgroundColor: Colors.white,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return SelectDriverBottomSheet(
+                            callBack: () {},
+                          );
+                        });
                   },
                   child: Container(
                     width: 120,

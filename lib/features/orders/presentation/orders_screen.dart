@@ -88,10 +88,19 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           },
                           builder: (OrdersDataRows e, int index) {
                             return  InkWell(
-                              onTap: () {
-                                Get.to(
-                                    OrderDetailsScreen(id: e.id.toString(),)
-                                );
+                              onTap: () async{
+                                var res = await Get.to(
+                                        () =>  OrderDetailsScreen(id: e.id.toString(),));
+                                if (res['refresh'] == true) {
+                                  ordersCubit.currentPageIndex = 1;
+                                  ordersCubit.isLastPage = false;
+                                  ordersCubit.lastPage = 10;
+                                  ordersCubit.listTotal = 0;
+                                  ordersCubit.ordersList.clear();
+
+
+                                  ordersCubit.getOrders({'paginate':30,widget.keyX:widget.value,'mobile' :true,});
+                                }
                               },
                               child: OrdersItem(
                                 ordersDataRows: e,
