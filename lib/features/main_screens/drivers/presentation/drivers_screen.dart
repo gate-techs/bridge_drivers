@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:kishk_driver/features/drivers/presentation/widgets/drivers_item.dart';
+import 'package:kishk_driver/features/main_screens/drivers/presentation/widgets/drivers_item.dart';
 import 'package:paginated_list/paginated_list.dart';
 import '../../../../res/gaps.dart';
 import '../../../../res/m_colors.dart';
-import '../../../shared/error_widget.dart';
-import '../../../shared/loading_widget.dart';
-import '../../../shared/result_widget/result_widget.dart';
-import '../../driver_details/presentation/screen/driver_details_screen.dart';
+import '../../../../shared/error_widget.dart';
+import '../../../../shared/loading_widget.dart';
+import '../../../../shared/result_widget/result_widget.dart';
+import '../../../driver_details/presentation/screen/driver_details_screen.dart';
 import '../data/drivers_entity.dart';
 import 'cubit/drivers_cubit.dart';
 

@@ -9,13 +9,14 @@ import 'package:kishk_driver/features/about/data/about_entity.dart';
 import 'package:kishk_driver/features/contact_us/data/contact_us_entity.dart';
 import 'package:kishk_driver/features/contact_us/data/contact_us_erorr_entity.dart';
 import 'package:kishk_driver/features/driver_details/data/driver_details_entity.dart';
-import 'package:kishk_driver/features/drivers/data/drivers_entity.dart';
 import 'package:kishk_driver/features/main/data/badge_count_entity.dart';
 import 'package:kishk_driver/features/main_screens/home/data/orders_entity.dart';
 import 'package:kishk_driver/features/main_screens/profile/data/app_pages_entity.dart';
 import 'package:kishk_driver/features/main_screens/profile/data/profile_entity.dart';
 import 'package:kishk_driver/features/order_details_screen/data/order_details_entity.dart';
 import 'package:kishk_driver/features/product_details/data/product_details_entity.dart';
+
+import '../../../features/main_screens/drivers/data/drivers_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 

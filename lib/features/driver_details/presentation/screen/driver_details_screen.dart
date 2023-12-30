@@ -10,7 +10,7 @@ import '../../../../main.dart';
 import '../../../../res/gaps.dart';
 import '../../../../res/m_colors.dart';
 import '../../../../shared/error_widget.dart';
-import '../../../drivers/data/drivers_entity.dart';
+import '../../../main_screens/drivers/data/drivers_entity.dart';
 import '../../../order_details_screen/presentation/order_details_screen.dart';
 import '../../data/driver_details_entity.dart';
 import '../cubit/driver_details_cubit.dart';

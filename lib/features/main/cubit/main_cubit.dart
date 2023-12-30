@@ -7,7 +7,7 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import '../../../common_utils/app_constants.dart';
 import '../../../res/m_colors.dart';
 import '../../../res/styles.dart';
-import '../../drivers/presentation/drivers_screen.dart';
+import '../../main_screens/drivers/presentation/drivers_screen.dart';
 import '../../main_screens/home/presentation/screen/home_screen.dart';
 import '../../main_screens/profile/presentation/profile_screen.dart';
 import '../../orders/presentation/orders_search_screen.dart';

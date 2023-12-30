@@ -6,7 +6,7 @@ import 'package:kishk_driver/helpers/hive_helper.dart';
 import '../../../../../main.dart';
 import '../../../../res/gaps.dart';
 import '../../../../res/m_colors.dart';
-import '../../../drivers/presentation/widgets/select_driver_screen.dart';
+import '../../../main_screens/drivers/presentation/widgets/select_driver_screen.dart';
 import '../../../main_screens/home/data/orders_entity.dart';
 
 class OrdersItem extends StatelessWidget {
