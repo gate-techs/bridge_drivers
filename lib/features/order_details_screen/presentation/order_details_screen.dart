@@ -73,7 +73,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         if(HiveHelper.getUserData()?.userData?.role=='driversAdmin')
                         DeliveryDetailsWidget(orderDetailsRow: data.delivery),
                         ExpansionTile(
-                          title: Text('${'items'.tr} : (${data.products!.length})',
+                          controller: orderDetailsCubit.expansionTileController,
+                          title: Text('${'items'.tr} : (${data.products?.length??0})',
                             style: TextStyle(
                                 color: MColors.colorPrimary,fontFamily: appFontFamily,fontWeight: FontWeight.bold
                             ),
@@ -82,13 +83,13 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: data.products!.length,
+                                itemCount:data.products?.length,
                                 itemBuilder: (context, index) =>
                                     InkWell(
                                       onTap: (){
                                         Get.to(ProductDetailsScreenInOrder(
-                                          id:  data.products?[index].encryptId??'',
-                                          selectedAttributes:  data.products?[index].selectedAttributes,
+                                          id: data.products?[index].encryptId??'',
+                                          selectedAttributes: data.products?[index].selectedAttributes,
                                           productDetailsRow: data.products![index], productVendorDetailsRow: data.products![index].vendor!,));
                                       },
                                       child: OrderItem(
@@ -99,22 +100,24 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                          if( value == true){
                                            if(  data.products?[index].isDispatched==true && data.products?[index].isShipped==false &&  data.products?[index].isDelivered==false){
                                              orderDetailsCubit.changeOrderStatus(
-                                                 widget.id.toString(),'shipped',data.products?[index].shoppingCartId.toString()??'-1'
-                                             );
+                                                 widget.id.toString(),'shipped',data.products?[index].shoppingCartId.toString()??'-1');
                                              orderDetailsCubit.isRefresh =true;
                                              await orderDetailsCubit.getOrderDetails(widget.id);
+                                             orderDetailsCubit.expansionTileController.collapse();
                                            }else if( data.products?[index].isDispatched==true && data.products?[index].isShipped==true &&  data.products?[index].isDelivered==false){
                                              orderDetailsCubit.changeOrderStatus(
                                                  widget.id.toString(),'delivered',data.products?[index].shoppingCartId.toString()??'-1'
                                              );
                                              orderDetailsCubit.isRefresh =true;
                                              await orderDetailsCubit.getOrderDetails(widget.id);
+                                             orderDetailsCubit.expansionTileController.collapse();
                                            }else{
                                              orderDetailsCubit.changeOrderStatus(
                                                  widget.id.toString(),'dispatched',state.orderDetails.products?[index].shoppingCartId.toString()??'-1'
                                              );
                                              orderDetailsCubit.isRefresh =true;
                                              await orderDetailsCubit.getOrderDetails(widget.id);
+                                             orderDetailsCubit.expansionTileController.collapse();
                                            }
                                          }
                                         },

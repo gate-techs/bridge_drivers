@@ -15,7 +15,6 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   static ProductDetailsCubit get(context) => BlocProvider.of(context);
 
 
-  int counter = 01;
   String chooseAttributePrice = '0.0';
   bool isRefresh = false;
 
