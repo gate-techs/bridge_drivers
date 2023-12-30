@@ -19,11 +19,19 @@ class VendorDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
-        color: MColors.veryLightGray,
-        border: Border.all(width: 0.5,color: MColors.colorPrimary)
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black12,
+              offset: Offset(0, 6),
+              blurRadius: 6,
+              spreadRadius: 0,
+            )
+          ],
+        ),
       child: ExpansionTile(
         iconColor: Colors.grey.withOpacity(0.3),
         tilePadding: const EdgeInsets.all(2),

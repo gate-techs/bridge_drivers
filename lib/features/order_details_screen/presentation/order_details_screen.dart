@@ -92,8 +92,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                           productDetailsRow: data.products![index], productVendorDetailsRow: data.products![index].vendor!,));
                                       },
                                       child: OrderItem(
-                                        orderDetailsRowProducts:
-                                        data.products?[index],
+                                        orderDetailsRowProducts: data.products?[index],
                                         index: index + 1,
                                         isDelivered: (data.orderStatus?.toLowerCase() == 'delivered'),
                                         onChangedCallBack: (value ) async{
@@ -118,7 +117,6 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                              await orderDetailsCubit.getOrderDetails(widget.id);
                                            }
                                          }
-
                                         },
                                       ),
                                     ))
