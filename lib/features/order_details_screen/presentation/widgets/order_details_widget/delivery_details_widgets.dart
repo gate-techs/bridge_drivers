@@ -57,43 +57,70 @@ class DeliveryDetailsWidget extends StatelessWidget {
                   ],
                 ),
                 Gaps.vGap8,
-                Text(
-                  'phone'.tr,
-                  style: TextStyle(
-                    color: MColors.colorSecondaryDark,
-                    fontSize: 14,
-                    fontFamily: appFontFamily,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      orderDetailsRow?.mobile ?? '',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontFamily: appFontFamily,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    InkWell(
-                      onTap: (){
-                        CommonUtils.makePhoneCall(orderDetailsRow?.mobile ?? '');
-                      },
-                      child: ClipOval(
-                        child: Container(
-                            padding: const EdgeInsets.all(10),
-                            color: MColors.colorPrimaryDark,
-                            child: SvgPicture.asset(
-                              ImageUtils.getAssetsPath('ic_call', 'svg', format: 'svg'),
-                              height: 24,
-                              width: 24,
-                            )
-
+                    Row(
+                      children: [
+                        Text(
+                          '${'phone'.tr} : ',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontFamily: appFontFamily,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
+                        Text(
+                          orderDetailsRow?.mobile ?? '',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontFamily: appFontFamily,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          onTap: (){
+                            CommonUtils.makePhoneCall(orderDetailsRow?.mobile ?? '');
+                          },
+                          child: ClipOval(
+                            child: Container(
+                                padding: const EdgeInsets.all(10),
+                                color: MColors.colorPrimaryDark,
+                                child: SvgPicture.asset(
+                                  ImageUtils.getAssetsPath('ic_call', 'svg', format: 'svg'),
+                                  height: 20,
+                                  width: 20,
+                                )
+
+                            ),
+                          ),
+                        ),
+                        Gaps.hGap4,
+                        InkWell(
+                          onTap: (){
+                            CommonUtils.whatsappMessage(orderDetailsRow?.mobile ?? '','Hello');
+                          },
+                          child: ClipOval(
+                            child: Container(
+                                padding: const EdgeInsets.all(10),
+                                color: Colors.green,
+                                child: Image.asset(
+                                  'assets/images/whatsapp.png',
+                                  height: 20,
+                                  width: 20,
+                                )
+
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

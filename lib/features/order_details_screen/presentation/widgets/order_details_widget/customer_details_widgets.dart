@@ -54,49 +54,31 @@ class CustomerDetailsWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              // Row(
-              //   children: [
-              //     Text(
-              //       '${'customerEmail'.tr} :',
-              //       style: TextStyle(
-              //         color: Colors.black,
-              //         fontSize: 14,
-              //         fontFamily: appFontFamily,
-              //         fontWeight: FontWeight.w700,
-              //       ),
-              //     ),
-              //     Text(
-              //       orderDetailsRow?.user?. ?? '',
-              //       style: TextStyle(
-              //         color: Colors.black,
-              //         fontSize: 14,
-              //         fontFamily: appFontFamily,
-              //         fontWeight: FontWeight.w700,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              Gaps.vGap8,
-              Text(
-                'phone'.tr,
-                style: TextStyle(
-                  color: MColors.colorSecondaryDark,
-                  fontSize: 14,
-                  fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    orderDetailsRow?.user?.mobile ?? '',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: appFontFamily,
-                      fontWeight: FontWeight.w700,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        '${'phone'.tr} : ',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontFamily: appFontFamily,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        orderDetailsRow?.user?.mobile ?? '',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontFamily: appFontFamily,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -111,8 +93,8 @@ class CustomerDetailsWidget extends StatelessWidget {
                               color: MColors.colorPrimaryDark,
                               child: SvgPicture.asset(
                                 ImageUtils.getAssetsPath('ic_call', 'svg', format: 'svg'),
-                                height: 24,
-                                width: 24,
+                                height: 20,
+                                width: 20,
                               )
 
                           ),
@@ -128,9 +110,9 @@ class CustomerDetailsWidget extends StatelessWidget {
                               padding: const EdgeInsets.all(10),
                               color: Colors.green,
                               child: Image.asset(
-                            'assets/images/whatsapp.png',
-                                height: 24,
-                                width: 24,
+                                'assets/images/whatsapp.png',
+                                height: 20,
+                                width: 20,
                               )
 
                           ),
@@ -140,16 +122,16 @@ class CustomerDetailsWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Gaps.vGap8,
               Text(
                 'shippingAddress'.tr,
                 style: TextStyle(
-                  color: MColors.colorSecondaryDark,
+                  color: Colors.black,
                   fontSize: 14,
                   fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
+              Gaps.vGap8,
               Row(
                 children: [
                   Text(
@@ -172,6 +154,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                   ),
                 ],
               ),
+              Gaps.vGap8,
               Row(
                 children: [
                   Text(
@@ -194,6 +177,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                   ),
                 ],
               ),
+              Gaps.vGap8,
               Text(
                 orderDetailsRow?.user?.address ?? '',
                 style: TextStyle(

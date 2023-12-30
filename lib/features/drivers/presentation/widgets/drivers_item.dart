@@ -63,22 +63,45 @@ class DriversItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  InkWell(
-                    onTap: (){
-                      CommonUtils.makePhoneCall(driversItemDataRows.mobile ?? '');
-                    },
-                    child: ClipOval(
-                      child: Container(
-                          padding: const EdgeInsets.all(10),
-                          color: MColors.colorPrimaryDark,
-                          child: SvgPicture.asset(
-                            ImageUtils.getAssetsPath('ic_call', 'svg', format: 'svg'),
-                            height: 24,
-                            width: 24,
-                          )
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: (){
+                          CommonUtils.makePhoneCall(driversItemDataRows.mobile ?? '');
+                        },
+                        child: ClipOval(
+                          child: Container(
+                              padding: const EdgeInsets.all(10),
+                              color: MColors.colorPrimaryDark,
+                              child: SvgPicture.asset(
+                                ImageUtils.getAssetsPath('ic_call', 'svg', format: 'svg'),
+                                height: 20,
+                                width: 20,
+                              )
 
+                          ),
+                        ),
                       ),
-                    ),
+                      Gaps.hGap4,
+                      InkWell(
+                        onTap: (){
+                          CommonUtils.whatsappMessage(driversItemDataRows.mobile ?? '','Hello');
+                        },
+                        child: ClipOval(
+                          child: Container(
+                              padding: const EdgeInsets.all(10),
+                              color: Colors.green,
+                              child: Image.asset(
+                                'assets/images/whatsapp.png',
+                                height: 20,
+                                width: 20,
+                              )
+
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   Gaps.vGap8,
                   Text(

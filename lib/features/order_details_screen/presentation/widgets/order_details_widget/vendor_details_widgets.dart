@@ -28,7 +28,6 @@ class VendorDetailsWidget extends StatelessWidget {
         iconColor: Colors.grey.withOpacity(0.3),
         tilePadding: const EdgeInsets.all(2),
         childrenPadding: const EdgeInsets.all(2),
-        collapsedIconColor:  MColors.colorPrimary,backgroundColor: Colors.white,
         title:  Text(
           'vendorDetails'.tr,
           style: TextStyle(

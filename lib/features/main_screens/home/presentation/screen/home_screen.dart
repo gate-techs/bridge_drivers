@@ -27,7 +27,18 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: RefreshIndicator(
                   onRefresh: () async {
+                    mHomeCubit.currentPageIndexNew = 1;
+                    mHomeCubit.isLastPageNew = false;
+                    mHomeCubit.lastPageNew = 0;
+                    mHomeCubit.listTotalNew = 0;
+                    mHomeCubit.ordersListNew.clear();
+                    mHomeCubit.currentPageIndex = 1;
+                    mHomeCubit.isLastPage = false;
+                    mHomeCubit.lastPage = 10;
+                    mHomeCubit.listTotal = 0;
+                    mHomeCubit.ordersList.clear();
                     mHomeCubit.getOrdersCount();
+                    mHomeCubit.getOrders({});
                   },
                   child: SingleChildScrollView(
                     child: Column(

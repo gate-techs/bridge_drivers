@@ -22,6 +22,7 @@ class HomeCubit extends Cubit<HomeState> {
   int lastPageNew = 0;
   int listTotalNew = 0;
 
+  bool isRefresh = false;
 
   List<OrdersDataRows> ordersListNew = [];
 

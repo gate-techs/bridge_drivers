@@ -54,6 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   if (state is ProfileLoaded) {
                     final data = state.profileData;
                     return RefreshIndicator(
+                      backgroundColor: MColors.colorPrimary,
                       onRefresh: () async {
                         profileCubit.getProfile();
                       },
