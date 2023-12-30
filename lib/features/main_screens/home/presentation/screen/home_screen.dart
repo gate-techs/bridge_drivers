@@ -172,8 +172,7 @@ class HomeScreen extends StatelessWidget {
                           },
                           builder: (e, index) => InkWell(
                             onTap: () async{
-                              var res = await Get.to(
-                                      () =>  OrderDetailsScreen(id: e.id.toString(),));
+                              var res = await Get.to(() =>  OrderDetailsScreen(id: e.id.toString(),));
                               if (res['refresh'] == true) {
                                 mHomeCubit.currentPageIndexNew = 1;
                                 mHomeCubit.isLastPageNew = false;
@@ -185,14 +184,28 @@ class HomeScreen extends StatelessWidget {
                                 mHomeCubit.lastPage = 10;
                                 mHomeCubit.listTotal = 0;
                                 mHomeCubit.ordersList.clear();
-
                                 mHomeCubit.getOrdersCount();
                                 mHomeCubit.getOrders({});
                               }
 
                             },
                             child: OrdersItem(
-                              ordersDataRows: e,
+                              ordersDataRows: e, onChangedCallBack: (value ) {
+                              if (value == true) {
+                                mHomeCubit.currentPageIndexNew = 1;
+                                mHomeCubit.isLastPageNew = false;
+                                mHomeCubit.lastPageNew = 0;
+                                mHomeCubit.listTotalNew = 0;
+                                mHomeCubit.ordersListNew.clear();
+                                mHomeCubit.currentPageIndex = 1;
+                                mHomeCubit.isLastPage = false;
+                                mHomeCubit.lastPage = 10;
+                                mHomeCubit.listTotal = 0;
+                                mHomeCubit.ordersList.clear();
+                                mHomeCubit.getOrdersCount();
+                                mHomeCubit.getOrders({});
+                              }
+                            },
                             ),
                           )
                         )

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
+import 'package:kishk_driver/main.dart';
 import 'package:paginated_list/paginated_list.dart';
 import '../../../../../res/gaps.dart';
 import '../../../../res/m_colors.dart';
@@ -11,31 +12,34 @@ import '../../data/drivers_entity.dart';
 import '../cubit/drivers_cubit.dart';
 import 'drivers_item.dart';
 
-class SelectDriverBottomSheet extends StatefulWidget {
-  const SelectDriverBottomSheet({Key? key, required this.orderId,}) : super(key: key);
+class SelectDriverScreen extends StatefulWidget {
+  const SelectDriverScreen({Key? key, required this.orderId,}) : super(key: key);
   final int orderId;
 
 
   @override
-  State<SelectDriverBottomSheet> createState() => _SelectDriverBottomSheetState();
+  State<SelectDriverScreen> createState() => _SelectDriverScreenState();
 }
 
-class _SelectDriverBottomSheetState extends State<SelectDriverBottomSheet> {
+class _SelectDriverScreenState extends State<SelectDriverScreen> {
 
-  String orderStatus = 'pending'.tr;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(16),
-          topLeft: Radius.circular(16),
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: () {
+          Get.back(result: {'refresh': true});
+          Get.back(result: {'refresh': true});
+        }, icon: const Icon(Icons.arrow_back_ios, color: Colors.black,),),
+        title:  Text(
+          'selectDriver'.tr,
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(fontSize: 14, color: Colors.black,fontFamily: appFontFamily,fontWeight: FontWeight.bold),
         ),
-        color: Colors.white,
       ),
-      height: 600,
-      child: BlocProvider(
+      body: BlocProvider(
         create: (context) {
           return DriversCubit()..getDrivers({'paginate':30,'mobile' :true,});
         },
@@ -65,41 +69,6 @@ class _SelectDriverBottomSheetState extends State<SelectDriverBottomSheet> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Gaps.vGap8,
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'drivers'.tr,
-                                        textAlign: TextAlign.center,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      Text(
-                                        'selectDriver'.tr,
-                                        textAlign: TextAlign.center,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(fontSize: 14, color: Colors.black54),
-                                      ),
-                                    ],
-                                  ),
-                                  IconButton(
-                                      onPressed: () {
-                                        Get.back();
-                                      },
-                                      icon: const Icon(
-                                        Icons.close,
-                                        color: Colors.black54,
-                                      ))
-                                ],
-                              ),
-                              Gaps.vGap8,
                               Gaps.vGap10,
                               PaginatedList<DriversDataRows>(
                                   loadingIndicator: const LoadingWidget(),
@@ -144,6 +113,7 @@ class _SelectDriverBottomSheetState extends State<SelectDriverBottomSheet> {
                     'paginate': 30,
                     'page': driversCubit.currentPageIndex,
                   });
+                  Get.back(result: {'refresh': true});
                 },
                 child: Center(
                     child: FailedWidget(

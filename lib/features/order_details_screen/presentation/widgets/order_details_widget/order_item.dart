@@ -14,7 +14,7 @@ class OrderItem extends StatelessWidget {
   final OrderDetailsDataRowProducts? orderDetailsRowProducts;
   final int index;
   final bool isDelivered;
-  final Function() onChangedCallBack;
+  final Function(bool) onChangedCallBack;
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +122,7 @@ class OrderItem extends StatelessWidget {
               (orderDetailsRowProducts?.isDelivered==false)?
               InkWell(
                 onTap:(){
-                  onChangedCallBack.call();
+                  onChangedCallBack.call(true);
                 },
                 child: Container(
                   width: 100,

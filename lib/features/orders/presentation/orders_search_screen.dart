@@ -166,6 +166,14 @@ class _OrdersSearchScreenState extends State<OrdersSearchScreen> {
                                       child:  OrdersItem(
                                         ordersDataRows:
                                         data[index],
+                                          onChangedCallBack: (value ) {
+                                            if (value == true) {
+                                              ordersCubit.currentPageIndex = 1;
+                                              ordersCubit.isLastPage = false;
+                                              ordersCubit.lastPage = 10;
+                                              ordersCubit.listTotal = 0;
+                                              ordersCubit.ordersList.clear();
+                                            }}
                                       ),
                                     );
                                   }),

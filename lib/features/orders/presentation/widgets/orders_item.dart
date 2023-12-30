@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:get/route_manager.dart';
 import 'package:kishk_driver/common_utils/common_utils.dart';
 import 'package:kishk_driver/helpers/hive_helper.dart';
 import '../../../../../main.dart';
 import '../../../../res/gaps.dart';
 import '../../../../res/m_colors.dart';
-import '../../../drivers/presentation/widgets/select_driver_bottom_sheet.dart';
+import '../../../drivers/presentation/widgets/select_driver_screen.dart';
 import '../../../main_screens/home/data/orders_entity.dart';
 
 class OrdersItem extends StatelessWidget {
-  const OrdersItem({super.key, required this.ordersDataRows});
+  const    OrdersItem({super.key, required this.ordersDataRows, required this.onChangedCallBack});
 
   final OrdersDataRows ordersDataRows;
-
+  final Function(bool) onChangedCallBack;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -92,18 +93,12 @@ class OrdersItem extends StatelessWidget {
            if(HiveHelper.getUserData()?.userData?.role=='driversAdmin')
             (ordersDataRows.driver?.id == null)?
              InkWell(
-            onTap: (){
-              showModalBottomSheet(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  backgroundColor: Colors.white,
-                  context: context,
-                  builder: (BuildContext context) {
-                    return SelectDriverBottomSheet(
-                      orderId: ordersDataRows.id??-1,
-                    );
-                  });
+            onTap: ()async{
+              var res = await Get.to(() =>  SelectDriverScreen(orderId: ordersDataRows.id??-1,));
+              if (res['refresh'] == true) {
+                onChangedCallBack.call(true);
+              }
+
             },
             child: Container(
               width: 150,
@@ -139,18 +134,11 @@ class OrdersItem extends StatelessWidget {
               ),
               if(ordersDataRows.orderStatus !='delivered')
               InkWell(
-                  onTap: (){
-                    showModalBottomSheet(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.0),
-                        ),
-                        backgroundColor: Colors.white,
-                        context: context,
-                        builder: (BuildContext context) {
-                          return SelectDriverBottomSheet(
-                            orderId: ordersDataRows.id??-1,
-                          );
-                        });
+                  onTap: ()async{
+                    var res = await Get.to(() =>  SelectDriverScreen(orderId: ordersDataRows.id??-1,));
+                    if (res['refresh'] == true) {
+                      onChangedCallBack.call(true);
+                    }
                   },
                   child: Container(
                     alignment: Alignment.center,

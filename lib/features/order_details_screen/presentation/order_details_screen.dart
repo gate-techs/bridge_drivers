@@ -96,26 +96,28 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                         data.products?[index],
                                         index: index + 1,
                                         isDelivered: (data.orderStatus?.toLowerCase() == 'delivered'),
-                                        onChangedCallBack: ( ) async{
-                                          if(  data.products?[index].isDispatched==true && data.products?[index].isShipped==false &&  data.products?[index].isDelivered==false){
-                                            orderDetailsCubit.changeOrderStatus(
-                                                widget.id.toString(),'shipped',data.products?[index].shoppingCartId.toString()??'-1'
-                                            );
-                                            orderDetailsCubit.isRefresh =true;
-                                           await orderDetailsCubit.getOrderDetails(widget.id);
-                                          }else if( data.products?[index].isDispatched==true && data.products?[index].isShipped==true &&  data.products?[index].isDelivered==false){
-                                            orderDetailsCubit.changeOrderStatus(
-                                                widget.id.toString(),'delivered',data.products?[index].shoppingCartId.toString()??'-1'
-                                            );
-                                            orderDetailsCubit.isRefresh =true;
-                                            await orderDetailsCubit.getOrderDetails(widget.id);
-                                          }else{
-                                            orderDetailsCubit.changeOrderStatus(
-                                                widget.id.toString(),'dispatched',state.orderDetails.products?[index].shoppingCartId.toString()??'-1'
-                                            );
-                                            orderDetailsCubit.isRefresh =true;
-                                            await orderDetailsCubit.getOrderDetails(widget.id);
-                                          }
+                                        onChangedCallBack: (value ) async{
+                                         if( value == true){
+                                           if(  data.products?[index].isDispatched==true && data.products?[index].isShipped==false &&  data.products?[index].isDelivered==false){
+                                             orderDetailsCubit.changeOrderStatus(
+                                                 widget.id.toString(),'shipped',data.products?[index].shoppingCartId.toString()??'-1'
+                                             );
+                                             orderDetailsCubit.isRefresh =true;
+                                             await orderDetailsCubit.getOrderDetails(widget.id);
+                                           }else if( data.products?[index].isDispatched==true && data.products?[index].isShipped==true &&  data.products?[index].isDelivered==false){
+                                             orderDetailsCubit.changeOrderStatus(
+                                                 widget.id.toString(),'delivered',data.products?[index].shoppingCartId.toString()??'-1'
+                                             );
+                                             orderDetailsCubit.isRefresh =true;
+                                             await orderDetailsCubit.getOrderDetails(widget.id);
+                                           }else{
+                                             orderDetailsCubit.changeOrderStatus(
+                                                 widget.id.toString(),'dispatched',state.orderDetails.products?[index].shoppingCartId.toString()??'-1'
+                                             );
+                                             orderDetailsCubit.isRefresh =true;
+                                             await orderDetailsCubit.getOrderDetails(widget.id);
+                                           }
+                                         }
 
                                         },
                                       ),
