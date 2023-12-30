@@ -153,6 +153,7 @@ class OrdersItem extends StatelessWidget {
                         });
                   },
                   child: Container(
+                    alignment: Alignment.center,
                     width: 120,
                     height: 40,
                     margin: const EdgeInsets.all(2),
@@ -161,13 +162,12 @@ class OrdersItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       color: MColors.colorPrimary,
                     ),
-                    child:  Center(
-                      child: Text('editDriver'.tr, style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color:Colors.white
-                      ),),
-                    ),
+                    child:  Text('editDriver'.tr, style:  TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color:Colors.white,
+                      fontFamily: appFontFamily
+                    ),),
                   ),
                 ),
             ],

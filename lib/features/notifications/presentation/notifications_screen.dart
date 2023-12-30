@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:kishk_driver/shared/loading_widget.dart';
 import 'package:paginated_list/paginated_list.dart';
 import 'package:kishk_driver/res/m_colors.dart';
 import 'package:kishk_driver/shared/widgets/app_loading_widget.dart';
@@ -68,7 +69,7 @@ class NotificationsScreen extends StatelessWidget {
             } else if (state is NotificationsError) {
               return const EmptyDataWidget();
             } else {
-              return const AppLoadingWidget();
+              return const LoadingWidget();
             }
           },
         ),

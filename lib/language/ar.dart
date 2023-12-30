@@ -189,4 +189,8 @@ Map<String, String> ar = {
   "drivers": "السائقين",
   "numberOfDrivers": "عدد السائقين",
   "driverDetails": "بيانات السائق",
+  "vendorDetails": "بيانات البائع",
+  "vendorPrice": "سعر البائع",
+  "brandName": "الماركة",
+  "location": "الموقع",
 };

@@ -189,4 +189,8 @@ Map<String, String> en = {
   "drivers": "Drivers",
   "numberOfDrivers": "Number Of Drivers",
   "driverDetails": "Driver Details",
+  "vendorDetails": "Vendor Details",
+  "vendorPrice": "Vendor Price",
+  "brandName": "Brand",
+  "location": "Location",
 };

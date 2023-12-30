@@ -13,6 +13,7 @@ import '../../../../shared/rating_bar.dart';
 import '../../../product_details/presentation/cubit/poduct_details_cubit.dart';
 import '../../../product_details/presentation/widgets/description_widget.dart';
 import '../../data/order_details_entity.dart';
+import '../widgets/order_details_widget/vendor_details_widgets.dart';
 import 'widgets/top_details_part.dart';
 
 
@@ -20,10 +21,11 @@ import 'widgets/top_details_part.dart';
 
 class ProductDetailsScreenInOrder extends StatefulWidget {
   const ProductDetailsScreenInOrder(
-      {Key? key, required this.id,required this.selectedAttributes})
+      {Key? key, required this.id,required this.selectedAttributes,required this.productDetailsRow, required this.productVendorDetailsRow})
       : super(key: key);
   final String id;
-
+  final OrderDetailsDataRowProducts productDetailsRow;
+  final OrderDetailsDataRowProductsVendor productVendorDetailsRow;
 
   final   List<OrderDetailsDataRowProductsSelectedAttributes>? selectedAttributes;
 
@@ -81,7 +83,8 @@ class _ProductDetailsScreenInOrderState extends State<ProductDetailsScreenInOrde
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-
+                              VendorDetailsWidget(productVendorDetailsRow: widget.productVendorDetailsRow),
+                              Gaps.vGap10,
                               Row(
                                 mainAxisAlignment: MainAxisAlignment
                                     .spaceBetween,

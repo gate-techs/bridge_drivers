@@ -193,7 +193,136 @@ class HomeScreen extends StatelessWidget {
               ),
             );
           } else if (state is HomeError) {
-            return const EmptyDataWidget();
+            return Scaffold(
+              body: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    mHomeCubit.getOrdersCount();
+                  },
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${'welcome'.tr} ${HiveHelper.getUserData()?.userData?.username ?? ''}',
+                              style: const TextStyle(
+                                  fontSize: 18, color: Colors.black),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            SvgPicture.asset("assets/icons/emoji.svg")
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Badge(
+                                label: Text(
+                                  mHomeCubit.newOrdersCount,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    height: 2,
+                                  ),
+                                ),
+                                largeSize: 25,
+                                child: InkWell(
+                                  onTap: () {
+                                    Get.to(() => const OrdersScreen(keyX: 'orderStatus', value: 'pending',));
+                                  },
+                                  child: Container(
+                                    width: 150,
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: Colors.white,
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.black12,
+                                            offset: Offset(0, 4),
+                                            blurRadius: 8,
+                                            spreadRadius: 0,
+                                          )
+                                        ]),
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/logo2.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
+                                        Text(
+                                          'new_orders'.tr,
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Badge(
+                                label: Text(
+                                  mHomeCubit.totalOrdersCount,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    height: 2,
+                                  ),
+                                ),
+                                largeSize: 25,
+                                child: InkWell(
+                                  onTap: () {
+                                    Get.to(() => const OrdersScreen(keyX: '', value: '',));
+
+                                  },
+                                  child: Container(
+                                    width: 150,
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: Colors.white,
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.black12,
+                                            offset: Offset(0, 4),
+                                            blurRadius: 8,
+                                            spreadRadius: 0,
+                                          )
+                                        ]),
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/logo2.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
+                                        Text(
+                                          'all_orders'.tr,
+                                          style: const TextStyle(fontSize: 14,
+                                            fontWeight: FontWeight.w600,),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
           } else {
             return const LoadingWidget();
           }

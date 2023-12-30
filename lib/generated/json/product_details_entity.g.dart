@@ -678,6 +678,34 @@ ProductDetailsDataRowVendor $ProductDetailsDataRowVendorFromJson(
   if (policy != null) {
     productDetailsDataRowVendor.policy = policy;
   }
+  final String? name = jsonConvert.convert<String>(json['name']);
+  if (name != null) {
+    productDetailsDataRowVendor.name = name;
+  }
+  final String? mobile = jsonConvert.convert<String>(json['mobile']);
+  if (mobile != null) {
+    productDetailsDataRowVendor.mobile = mobile;
+  }
+  final String? province = jsonConvert.convert<String>(json['province']);
+  if (province != null) {
+    productDetailsDataRowVendor.province = province;
+  }
+  final String? city = jsonConvert.convert<String>(json['city']);
+  if (city != null) {
+    productDetailsDataRowVendor.city = city;
+  }
+  final String? location = jsonConvert.convert<String>(json['location']);
+  if (location != null) {
+    productDetailsDataRowVendor.location = location;
+  }
+  final String? title = jsonConvert.convert<String>(json['title']);
+  if (title != null) {
+    productDetailsDataRowVendor.title = title;
+  }
+  final String? body = jsonConvert.convert<String>(json['body']);
+  if (body != null) {
+    productDetailsDataRowVendor.body = body;
+  }
   return productDetailsDataRowVendor;
 }
 
@@ -686,6 +714,13 @@ Map<String, dynamic> $ProductDetailsDataRowVendorToJson(
   final Map<String, dynamic> data = <String, dynamic>{};
   data['isRefundable'] = entity.isRefundable;
   data['policy'] = entity.policy;
+  data['name'] = entity.name;
+  data['mobile'] = entity.mobile;
+  data['province'] = entity.province;
+  data['city'] = entity.city;
+  data['location'] = entity.location;
+  data['title'] = entity.title;
+  data['body'] = entity.body;
   return data;
 }
 
@@ -693,10 +728,24 @@ extension ProductDetailsDataRowVendorExtension on ProductDetailsDataRowVendor {
   ProductDetailsDataRowVendor copyWith({
     bool? isRefundable,
     String? policy,
+    String? name,
+    String? mobile,
+    String? province,
+    String? city,
+    String? location,
+    String? title,
+    String? body,
   }) {
     return ProductDetailsDataRowVendor()
       ..isRefundable = isRefundable ?? this.isRefundable
-      ..policy = policy ?? this.policy;
+      ..policy = policy ?? this.policy
+      ..name = name ?? this.name
+      ..mobile = mobile ?? this.mobile
+      ..province = province ?? this.province
+      ..city = city ?? this.city
+      ..location = location ?? this.location
+      ..title = title ?? this.title
+      ..body = body ?? this.body;
   }
 }
 

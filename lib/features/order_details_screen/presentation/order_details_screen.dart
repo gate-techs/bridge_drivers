@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/product_details_in_order/product_details_screen_in_order.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/widgets/order_details_widget/delivery_details_widgets.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/widgets/order_details_widget/order_price_item.dart';
+import '../../../helpers/hive_helper.dart';
 import '../../../main.dart';
 import '../../../res/m_colors.dart';
 import '../../../shared/error_widget.dart';
@@ -55,67 +56,78 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
             OrderDetailsCubit orderDetailsCubit = OrderDetailsCubit();
             if (state is OrderDetailsLoaded) {
               final data = state.orderDetails;
-              return SingleChildScrollView(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      OrderDetailsWidget(
-                        orderDetailsRow: data,
-                      ),
-                      CustomerDetailsWidget(orderDetailsRow: data),
-                      DeliveryDetailsWidget(orderDetailsRow: data.delivery),
-                      ExpansionTile(
-                        title: Text('${'items'.tr} : (${data.products!.length})',
-                          style: TextStyle(
-                              color: MColors.colorPrimary,fontFamily: appFontFamily,fontWeight: FontWeight.bold
-                          ),
+              return RefreshIndicator(
+                backgroundColor: MColors.colorPrimaryLight,
+                onRefresh: () async {
+                  orderDetailsCubit.isRefresh = true;
+                  orderDetailsCubit.getOrderDetails(widget.id);
+                },
+                child: SingleChildScrollView(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        OrderDetailsWidget(
+                          orderDetailsRow: data,
                         ),
-                        children:[
-                          ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: data.products!.length,
-                              itemBuilder: (context, index) =>
-                                  InkWell(
-                                    onTap: (){
-                                      Get.to(ProductDetailsScreenInOrder(id:  data.products?[index].encryptId??'', selectedAttributes:  data.products?[index].selectedAttributes,));
-                                    },
-                                    child: OrderItem(
-                                      orderDetailsRowProducts:
-                                      data.products?[index],
-                                      index: index + 1,
-                                      isDelivered: (data.orderStatus?.toLowerCase() == 'delivered'),
-                                      onChangedCallBack: ( ) async{
-                                        if(  data.products?[index].isDispatched==true && data.products?[index].isShipped==false &&  data.products?[index].isDelivered==false){
-                                          orderDetailsCubit.changeOrderStatus(
-                                              widget.id.toString(),'shipped',data.products?[index].shoppingCartId.toString()??'-1'
-                                          );
-                                          orderDetailsCubit.isRefresh =true;
-                                         await orderDetailsCubit.getOrderDetails(widget.id);
-                                        }else if( data.products?[index].isDispatched==true && data.products?[index].isShipped==true &&  data.products?[index].isDelivered==false){
-                                          orderDetailsCubit.changeOrderStatus(
-                                              widget.id.toString(),'delivered',data.products?[index].shoppingCartId.toString()??'-1'
-                                          );
-                                          orderDetailsCubit.isRefresh =true;
-                                          await orderDetailsCubit.getOrderDetails(widget.id);
-                                        }else{
-                                          orderDetailsCubit.changeOrderStatus(
-                                              widget.id.toString(),'dispatched',state.orderDetails.products?[index].shoppingCartId.toString()??'-1'
-                                          );
-                                          orderDetailsCubit.isRefresh =true;
-                                          await orderDetailsCubit.getOrderDetails(widget.id);
-                                        }
-
+                        CustomerDetailsWidget(orderDetailsRow: data),
+                        if(HiveHelper.getUserData()?.userData?.role=='driversAdmin')
+                        DeliveryDetailsWidget(orderDetailsRow: data.delivery),
+                        ExpansionTile(
+                          title: Text('${'items'.tr} : (${data.products!.length})',
+                            style: TextStyle(
+                                color: MColors.colorPrimary,fontFamily: appFontFamily,fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          children:[
+                            ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: data.products!.length,
+                                itemBuilder: (context, index) =>
+                                    InkWell(
+                                      onTap: (){
+                                        Get.to(ProductDetailsScreenInOrder(
+                                          id:  data.products?[index].encryptId??'',
+                                          selectedAttributes:  data.products?[index].selectedAttributes,
+                                          productDetailsRow: data.products![index], productVendorDetailsRow: data.products![index].vendor!,));
                                       },
-                                    ),
-                                  ))
-                        ] ,
-                      ),
-                      OrderPriceItem(orderDetailsRow: data),
+                                      child: OrderItem(
+                                        orderDetailsRowProducts:
+                                        data.products?[index],
+                                        index: index + 1,
+                                        isDelivered: (data.orderStatus?.toLowerCase() == 'delivered'),
+                                        onChangedCallBack: ( ) async{
+                                          if(  data.products?[index].isDispatched==true && data.products?[index].isShipped==false &&  data.products?[index].isDelivered==false){
+                                            orderDetailsCubit.changeOrderStatus(
+                                                widget.id.toString(),'shipped',data.products?[index].shoppingCartId.toString()??'-1'
+                                            );
+                                            orderDetailsCubit.isRefresh =true;
+                                           await orderDetailsCubit.getOrderDetails(widget.id);
+                                          }else if( data.products?[index].isDispatched==true && data.products?[index].isShipped==true &&  data.products?[index].isDelivered==false){
+                                            orderDetailsCubit.changeOrderStatus(
+                                                widget.id.toString(),'delivered',data.products?[index].shoppingCartId.toString()??'-1'
+                                            );
+                                            orderDetailsCubit.isRefresh =true;
+                                            await orderDetailsCubit.getOrderDetails(widget.id);
+                                          }else{
+                                            orderDetailsCubit.changeOrderStatus(
+                                                widget.id.toString(),'dispatched',state.orderDetails.products?[index].shoppingCartId.toString()??'-1'
+                                            );
+                                            orderDetailsCubit.isRefresh =true;
+                                            await orderDetailsCubit.getOrderDetails(widget.id);
+                                          }
+
+                                        },
+                                      ),
+                                    ))
+                          ] ,
+                        ),
+                        OrderPriceItem(orderDetailsRow: data),
 
 
-                    ],
-              ));
+                      ],
+                )),
+              );
             } else if (state is OrderDetailsFailed) {
               return FailedWidget(
                 failedMessage: state.message,

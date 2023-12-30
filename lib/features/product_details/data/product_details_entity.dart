@@ -270,6 +270,13 @@ class ProductDetailsDataRowSub2Category {
 class ProductDetailsDataRowVendor {
 	bool? isRefundable;
 	String? policy;
+	String? name;
+	String? mobile;
+	String? province;
+	String? city;
+	String? location;
+	String? title;
+	String? body;
 
 	ProductDetailsDataRowVendor();
 

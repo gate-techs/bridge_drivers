@@ -42,7 +42,7 @@ class ImageUtils {
   static const String svgNoFav = 'assets/svg/ic_no_fav.svg';
   static const String svgNoCart = 'assets/svg/ic_no_cart.svg';
   static const String svgEmail = 'assets/svg/ic_email.svg';
-  static const String svgWhatsaap= 'assets/svg/ic_whatsapp.svg';
+  static const String svgWhatsaap= 'assets/images/ic_whatsapp.png';
   static const String svgKwait= 'assets/svg/ic_kuwait.svg';
   static const String svgUK= 'assets/svg/ic_united_kingdom.svg';
 

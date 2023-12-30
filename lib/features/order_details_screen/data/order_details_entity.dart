@@ -312,17 +312,33 @@ class OrderDetailsDataRowProductsMedia {
 class OrderDetailsDataRowProductsVendor {
 	int? id;
 	String? name;
-
+	String? mobile;
+	String? province;
+	String? city;
+	String? location;
+	String? title;
+	String? body;
 	OrderDetailsDataRowProductsVendor();
 
 	factory OrderDetailsDataRowProductsVendor.fromJson(Map<String, dynamic> json) => $OrderDetailsDataRowProductsVendorFromJson(json);
 
 	Map<String, dynamic> toJson() => $OrderDetailsDataRowProductsVendorToJson(this);
 
-	OrderDetailsDataRowProductsVendor copyWith({int? id, String? name}) {
+	OrderDetailsDataRowProductsVendor copyWith({int? id, String? name,	String? mobile,
+	String? province,
+	String? city,
+	String? location,
+	String? title,
+	String? body}) {
 		return OrderDetailsDataRowProductsVendor()
 			..id= id ?? this.id
-			..name= name ?? this.name;
+			..name= name ?? this.name
+		..mobile = mobile ?? this.mobile
+		..province = province ?? this.province
+		..city = city ?? this.city
+		..location = location ?? this.location
+		..title = title ?? this.title
+		..body = body ?? this.body;
 	}
 
 	@override

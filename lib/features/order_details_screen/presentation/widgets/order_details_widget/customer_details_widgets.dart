@@ -98,22 +98,45 @@ class CustomerDetailsWidget extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  InkWell(
-                    onTap: (){
-                      CommonUtils.makePhoneCall(orderDetailsRow?.user?.mobile ?? '');
-                    },
-                    child: ClipOval(
-                      child: Container(
-                          padding: const EdgeInsets.all(10),
-                          color: MColors.colorPrimaryDark,
-                          child: SvgPicture.asset(
-                            ImageUtils.getAssetsPath('ic_call', 'svg', format: 'svg'),
-                            height: 24,
-                            width: 24,
-                          )
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: (){
+                          CommonUtils.makePhoneCall(orderDetailsRow?.user?.mobile ?? '');
+                        },
+                        child: ClipOval(
+                          child: Container(
+                              padding: const EdgeInsets.all(10),
+                              color: MColors.colorPrimaryDark,
+                              child: SvgPicture.asset(
+                                ImageUtils.getAssetsPath('ic_call', 'svg', format: 'svg'),
+                                height: 24,
+                                width: 24,
+                              )
 
+                          ),
+                        ),
                       ),
-                    ),
+                      Gaps.hGap4,
+                      InkWell(
+                        onTap: (){
+                          CommonUtils.whatsappMessage(orderDetailsRow?.user?.mobile ?? '','Hello');
+                        },
+                        child: ClipOval(
+                          child: Container(
+                              padding: const EdgeInsets.all(10),
+                              color: Colors.green,
+                              child: Image.asset(
+                            'assets/images/whatsapp.png',
+                                height: 24,
+                                width: 24,
+                              )
+
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

@@ -77,7 +77,7 @@ class HiveHelper {
   static String getAppLanguage() {
     return Hive.box(keyBoxAppLanguage).isNotEmpty
         ? Hive.box(keyBoxAppLanguage).get(keyBoxAppLanguage)
-        : 'ar';
+        : 'en';
   }
   static bool getLoginState() {
     return Hive.box(keyAppLogin).isNotEmpty
