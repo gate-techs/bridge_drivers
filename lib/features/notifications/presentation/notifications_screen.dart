@@ -61,8 +61,7 @@ class NotificationsScreen extends StatelessWidget {
                             pageIndex: ++mNotificationsCubit.currentPageIndex);
                       }
                     },
-                    builder: (e, index) =>
-                        NotificationsListItem(data: state.mDataList[index]),
+                    builder: (e, index) => NotificationsListItem(data: state.mDataList[index]),
                   ),
                 ),
               );

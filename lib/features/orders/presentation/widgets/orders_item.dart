@@ -77,7 +77,7 @@ class OrdersItem extends StatelessWidget {
                   (ordersDataRows.orderStatus??"").tr,
                     style: TextStyle(
                       fontSize: 14,
-                      color:ordersDataRows.orderStatus=='pending'?Colors.red:MColors.colorPrimary,
+                      color:ordersDataRows.orderStatus=='pending'?Colors.red:ordersDataRows.orderStatus=='delivered'?Colors.green:MColors.colorPrimary,
                       fontFamily: appFontFamily,
                       fontWeight: FontWeight.bold,
                     ),
