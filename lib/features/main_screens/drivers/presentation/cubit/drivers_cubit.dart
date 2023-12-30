@@ -1,10 +1,9 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
-import 'package:meta/meta.dart';
+
 import '../../../../../common_utils/common_utils.dart';
 import '../../data/drivers_entity.dart';
 import '../../domain/assign_driver_repository.dart';
