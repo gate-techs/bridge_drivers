@@ -48,15 +48,12 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
 
   Future<void> changeOrderStatus(String orderId, String status, String shoppingCartId,) async {
     try {
-        EasyLoading.show();
         final mResponse = await changeOrderStatusRepository.changeOrderStatus(status,shoppingCartId);
         mResponse.fold((left) async {
-          await EasyLoading.dismiss();
           CommonUtils.showToastMessage(left);
         },
         (right) async {
           isRefresh =true;
-          await EasyLoading.dismiss();
           CommonUtils.showToastMessage(right);
         });
      } catch (e) {

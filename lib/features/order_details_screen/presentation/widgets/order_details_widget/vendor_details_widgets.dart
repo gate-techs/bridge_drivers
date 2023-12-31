@@ -32,204 +32,207 @@ class VendorDetailsWidget extends StatelessWidget {
             )
           ],
         ),
-      child: ExpansionTile(
-        iconColor: Colors.grey.withOpacity(0.3),
-        tilePadding: const EdgeInsets.all(2),
-        childrenPadding: const EdgeInsets.all(2),
-        title:  Text(
-          'vendorDetails'.tr,
-          style: TextStyle(
-            color: MColors.colorPrimary,
-            fontSize: 14,
-            fontFamily: appFontFamily,
-            fontWeight: FontWeight.bold,
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          iconColor: Colors.grey.withOpacity(0.3),
+          tilePadding: const EdgeInsets.all(2),
+          childrenPadding: const EdgeInsets.all(2),
+          title:  Text(
+            'vendorDetails'.tr,
+            style: TextStyle(
+              color: MColors.colorPrimary,
+              fontSize: 14,
+              fontFamily: appFontFamily,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Text(
-                   '${'name'.tr} : ',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: appFontFamily,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    productVendorDetailsRow?.name ?? '',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: appFontFamily,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        '${'phone'.tr} : ',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontFamily: appFontFamily,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        productVendorDetailsRow?.mobile ?? '',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontFamily: appFontFamily,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      InkWell(
-                        onTap: (){
-                          CommonUtils.makePhoneCall(productVendorDetailsRow?.mobile ?? '');
-                        },
-                        child: ClipOval(
-                          child: Container(
-                              padding: const EdgeInsets.all(10),
-                              color: MColors.colorPrimaryDark,
-                              child: SvgPicture.asset(
-                                ImageUtils.getAssetsPath('ic_call', 'svg', format: 'svg'),
-                                height: 20,
-                                width: 20,
-                              )
-
-                          ),
-                        ),
-                      ),
-                      Gaps.hGap4,
-                      InkWell(
-                        onTap: (){
-                          CommonUtils.whatsappMessage(productVendorDetailsRow?.mobile ?? '','Hello');
-                        },
-                        child: ClipOval(
-                          child: Container(
-                              padding: const EdgeInsets.all(10),
-                              color: Colors.green,
-                              child: Image.asset(
-                            'assets/images/whatsapp.png',
-                                height: 20,
-                                width: 20,
-                              )
-
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Text(
-                'shippingAddress'.tr,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontFamily: appFontFamily,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Gaps.vGap8,
-              Row(
-                children: [
-                  Text(
-                    '${'location'.tr} : ',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: appFontFamily,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  InkWell(
-                    onTap:() async {
-                      final Uri launchUri = Uri.parse(Platform.isIOS
-                          ?  productVendorDetailsRow?.location ?? ''
-                          :  productVendorDetailsRow?.location ?? '');
-                      await launchUrl(launchUri);
-                    },
-                    child: Text(
-                      productVendorDetailsRow?.location ?? '',
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                     '${'name'.tr} : ',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.black,
                         fontSize: 14,
                         fontFamily: appFontFamily,
                         fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline,
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Gaps.vGap8,
-              Row(
-                children: [
-                  Text(
-                    '${'city'.tr} : ',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: appFontFamily,
-                      fontWeight: FontWeight.bold,
+                    Text(
+                      productVendorDetailsRow?.name ?? '',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontFamily: appFontFamily,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  Text(
-                    productVendorDetailsRow?.city ?? '',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: appFontFamily,
-                      fontWeight: FontWeight.bold,
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          '${'phone'.tr} : ',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontFamily: appFontFamily,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          productVendorDetailsRow?.mobile ?? '',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontFamily: appFontFamily,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-              Gaps.vGap8,
-              Row(
-                children: [
-                  Text(
-                    '${'province'.tr} : ',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: appFontFamily,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    productVendorDetailsRow?.province ?? '',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: appFontFamily,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              Gaps.vGap10,
-            ],
-          ),
-        ],
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          onTap: (){
+                            CommonUtils.makePhoneCall(productVendorDetailsRow?.mobile ?? '');
+                          },
+                          child: ClipOval(
+                            child: Container(
+                                padding: const EdgeInsets.all(10),
+                                color: MColors.colorPrimaryDark,
+                                child: SvgPicture.asset(
+                                  ImageUtils.getAssetsPath('ic_call', 'svg', format: 'svg'),
+                                  height: 20,
+                                  width: 20,
+                                )
 
+                            ),
+                          ),
+                        ),
+                        Gaps.hGap4,
+                        InkWell(
+                          onTap: (){
+                            CommonUtils.whatsappMessage(productVendorDetailsRow?.mobile ?? '','Hello');
+                          },
+                          child: ClipOval(
+                            child: Container(
+                                padding: const EdgeInsets.all(10),
+                                color: Colors.green,
+                                child: Image.asset(
+                              'assets/images/whatsapp.png',
+                                  height: 20,
+                                  width: 20,
+                                )
+
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Text(
+                  'shippingAddress'.tr,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: appFontFamily,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Gaps.vGap8,
+                Row(
+                  children: [
+                    Text(
+                      '${'location'.tr} : ',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontFamily: appFontFamily,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    InkWell(
+                      onTap:() async {
+                        final Uri launchUri = Uri.parse(Platform.isIOS
+                            ?  productVendorDetailsRow?.location ?? ''
+                            :  productVendorDetailsRow?.location ?? '');
+                        await launchUrl(launchUri);
+                      },
+                      child: Text(
+                        productVendorDetailsRow?.location ?? '',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 14,
+                          fontFamily: appFontFamily,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Gaps.vGap8,
+                Row(
+                  children: [
+                    Text(
+                      '${'city'.tr} : ',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontFamily: appFontFamily,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      productVendorDetailsRow?.city ?? '',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontFamily: appFontFamily,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                Gaps.vGap8,
+                Row(
+                  children: [
+                    Text(
+                      '${'province'.tr} : ',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontFamily: appFontFamily,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      productVendorDetailsRow?.province ?? '',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontFamily: appFontFamily,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                Gaps.vGap10,
+              ],
+            ),
+          ],
+
+        ),
       ),
     );
   }

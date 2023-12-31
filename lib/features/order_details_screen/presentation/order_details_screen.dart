@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/product_details_in_order/product_details_screen_in_order.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/widgets/order_details_widget/delivery_details_widgets.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/widgets/order_details_widget/order_price_item.dart';
+import '../../../common_utils/log_utils.dart';
 import '../../../helpers/hive_helper.dart';
 import '../../../main.dart';
 import '../../../res/m_colors.dart';
@@ -51,9 +52,11 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
       body: BlocProvider(
         create: (context) => OrderDetailsCubit()..getOrderDetails(widget.id),
         child: BlocConsumer<OrderDetailsCubit, OrderDetailsState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            Log.e(state.toString());
+          },
           builder: (context, state) {
-            OrderDetailsCubit orderDetailsCubit = OrderDetailsCubit();
+            OrderDetailsCubit orderDetailsCubit = context.read<OrderDetailsCubit>();
             if (state is OrderDetailsLoaded) {
               final data = state.orderDetails;
               return RefreshIndicator(
@@ -103,21 +106,18 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                                  widget.id.toString(),'shipped',data.products?[index].shoppingCartId.toString()??'-1');
                                              orderDetailsCubit.isRefresh =true;
                                              await orderDetailsCubit.getOrderDetails(widget.id);
-                                             orderDetailsCubit.expansionTileController.collapse();
                                            }else if( data.products?[index].isDispatched==true && data.products?[index].isShipped==true &&  data.products?[index].isDelivered==false){
                                              orderDetailsCubit.changeOrderStatus(
                                                  widget.id.toString(),'delivered',data.products?[index].shoppingCartId.toString()??'-1'
                                              );
                                              orderDetailsCubit.isRefresh =true;
                                              await orderDetailsCubit.getOrderDetails(widget.id);
-                                             orderDetailsCubit.expansionTileController.collapse();
                                            }else{
                                              orderDetailsCubit.changeOrderStatus(
                                                  widget.id.toString(),'dispatched',state.orderDetails.products?[index].shoppingCartId.toString()??'-1'
                                              );
                                              orderDetailsCubit.isRefresh =true;
                                              await orderDetailsCubit.getOrderDetails(widget.id);
-                                             orderDetailsCubit.expansionTileController.collapse();
                                            }
                                          }
                                         },
