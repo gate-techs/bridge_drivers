@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                             const SizedBox(
                               width: 5,
                             ),
-                            SvgPicture.asset("assets/icons/emoji.svg")
+
                           ],
                         ),
                         Padding(
@@ -239,7 +239,7 @@ class HomeScreen extends StatelessWidget {
                             const SizedBox(
                               width: 5,
                             ),
-                            SvgPicture.asset("assets/icons/emoji.svg")
+
                           ],
                         ),
                         Padding(
