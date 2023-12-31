@@ -141,6 +141,7 @@ flutter:
     - assets/svg/
     - assets/gif/
     - assets/lottie/
+    - shorebird.yaml
 
 
   fonts:
