@@ -104,6 +104,7 @@ dependencies:
   bloc_concurrency: ^0.2.3
   stream_transform: ^2.1.0
   injectable: ^2.3.2
+  phlox_animations: ^2.1.1
 
 dev_dependencies:
   flutter_test:

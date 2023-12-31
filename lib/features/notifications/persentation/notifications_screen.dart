@@ -5,11 +5,8 @@ import 'package:get/get.dart';
 import 'package:kishk_driver/features/notifications/persentation/widgets/no_notifcations_yet_widget.dart';
 import 'package:kishk_driver/features/notifications/persentation/widgets/notifcation_item.dart';
 import 'package:paginated_list/paginated_list.dart';
-
-import '../../../common_utils/common_utils.dart';
 import '../../../main.dart';
 import '../../../res/m_colors.dart';
-
 import '../../../shared/loading_widget.dart';
 import '../../order_details_screen/presentation/order_details_screen.dart';
 import '../data/notifications_entity.dart';

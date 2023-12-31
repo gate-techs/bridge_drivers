@@ -9,7 +9,6 @@ import '../../helpers/hive_helper.dart';
 import '../auth/login/presentation/view/login_screen.dart';
 import '../notifications/persentation/notifications_screen.dart';
 import 'cubit/main_cubit.dart';
-import 'domain/notifications_badge_count_repository.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key, });
