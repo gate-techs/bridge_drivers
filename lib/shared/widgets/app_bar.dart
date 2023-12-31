@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:kishk_driver/res/m_colors.dart';
 
 import '../../common_utils/image_utils.dart';
-import '../../features/notifications/presentation/notifications_screen.dart';
+import '../../features/notifications/persentation/notifications_screen.dart';
 
 //optional parameters for cart and favorites screen to change the icons
 

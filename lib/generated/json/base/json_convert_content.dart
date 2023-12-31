@@ -10,13 +10,13 @@ import 'package:kishk_driver/features/contact_us/data/contact_us_entity.dart';
 import 'package:kishk_driver/features/contact_us/data/contact_us_erorr_entity.dart';
 import 'package:kishk_driver/features/driver_details/data/driver_details_entity.dart';
 import 'package:kishk_driver/features/main/data/badge_count_entity.dart';
+import 'package:kishk_driver/features/main_screens/drivers/data/drivers_entity.dart';
 import 'package:kishk_driver/features/main_screens/home/data/orders_entity.dart';
 import 'package:kishk_driver/features/main_screens/profile/data/app_pages_entity.dart';
 import 'package:kishk_driver/features/main_screens/profile/data/profile_entity.dart';
+import 'package:kishk_driver/features/notifications/data/notifications_entity.dart';
 import 'package:kishk_driver/features/order_details_screen/data/order_details_entity.dart';
 import 'package:kishk_driver/features/product_details/data/product_details_entity.dart';
-
-import '../../../features/main_screens/drivers/data/drivers_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 
@@ -204,6 +204,14 @@ class JsonConvert {
       return data.map<DriverDetailsDataPaginate>((Map<String, dynamic> e) =>
           DriverDetailsDataPaginate.fromJson(e)).toList() as M;
     }
+    if (<BadgeCountEntity>[] is M) {
+      return data.map<BadgeCountEntity>((Map<String, dynamic> e) =>
+          BadgeCountEntity.fromJson(e)).toList() as M;
+    }
+    if (<BadgeCountData>[] is M) {
+      return data.map<BadgeCountData>((Map<String, dynamic> e) =>
+          BadgeCountData.fromJson(e)).toList() as M;
+    }
     if (<DriversEntity>[] is M) {
       return data.map<DriversEntity>((Map<String, dynamic> e) =>
           DriversEntity.fromJson(e)).toList() as M;
@@ -235,14 +243,6 @@ class JsonConvert {
     if (<DriversDataPaginate>[] is M) {
       return data.map<DriversDataPaginate>((Map<String, dynamic> e) =>
           DriversDataPaginate.fromJson(e)).toList() as M;
-    }
-    if (<BadgeCountEntity>[] is M) {
-      return data.map<BadgeCountEntity>((Map<String, dynamic> e) =>
-          BadgeCountEntity.fromJson(e)).toList() as M;
-    }
-    if (<BadgeCountData>[] is M) {
-      return data.map<BadgeCountData>((Map<String, dynamic> e) =>
-          BadgeCountData.fromJson(e)).toList() as M;
     }
     if (<OrdersEntity>[] is M) {
       return data.map<OrdersEntity>((Map<String, dynamic> e) =>
@@ -307,6 +307,26 @@ class JsonConvert {
     if (<ProfileData>[] is M) {
       return data.map<ProfileData>((Map<String, dynamic> e) =>
           ProfileData.fromJson(e)).toList() as M;
+    }
+    if (<NotificationsEntity>[] is M) {
+      return data.map<NotificationsEntity>((Map<String, dynamic> e) =>
+          NotificationsEntity.fromJson(e)).toList() as M;
+    }
+    if (<NotificationsData>[] is M) {
+      return data.map<NotificationsData>((Map<String, dynamic> e) =>
+          NotificationsData.fromJson(e)).toList() as M;
+    }
+    if (<NotificationsDataRows>[] is M) {
+      return data.map<NotificationsDataRows>((Map<String, dynamic> e) =>
+          NotificationsDataRows.fromJson(e)).toList() as M;
+    }
+    if (<NotificationsDataRowsMedia>[] is M) {
+      return data.map<NotificationsDataRowsMedia>((Map<String, dynamic> e) =>
+          NotificationsDataRowsMedia.fromJson(e)).toList() as M;
+    }
+    if (<NotificationsDataPaginate>[] is M) {
+      return data.map<NotificationsDataPaginate>((Map<String, dynamic> e) =>
+          NotificationsDataPaginate.fromJson(e)).toList() as M;
     }
     if (<OrderDetailsEntity>[] is M) {
       return data.map<OrderDetailsEntity>((Map<String, dynamic> e) =>
@@ -496,6 +516,8 @@ class JsonConvertClassCollection {
     (DriverDetailsDataRowsDriver).toString(): DriverDetailsDataRowsDriver
         .fromJson,
     (DriverDetailsDataPaginate).toString(): DriverDetailsDataPaginate.fromJson,
+    (BadgeCountEntity).toString(): BadgeCountEntity.fromJson,
+    (BadgeCountData).toString(): BadgeCountData.fromJson,
     (DriversEntity).toString(): DriversEntity.fromJson,
     (DriversData).toString(): DriversData.fromJson,
     (DriversDataRows).toString(): DriversDataRows.fromJson,
@@ -506,8 +528,6 @@ class JsonConvertClassCollection {
     (DriversDataRowsOrdersDriver).toString(): DriversDataRowsOrdersDriver
         .fromJson,
     (DriversDataPaginate).toString(): DriversDataPaginate.fromJson,
-    (BadgeCountEntity).toString(): BadgeCountEntity.fromJson,
-    (BadgeCountData).toString(): BadgeCountData.fromJson,
     (OrdersEntity).toString(): OrdersEntity.fromJson,
     (OrdersData).toString(): OrdersData.fromJson,
     (OrdersDataRows).toString(): OrdersDataRows.fromJson,
@@ -524,6 +544,12 @@ class JsonConvertClassCollection {
     (AppPagesDataPermissions).toString(): AppPagesDataPermissions.fromJson,
     (ProfileEntity).toString(): ProfileEntity.fromJson,
     (ProfileData).toString(): ProfileData.fromJson,
+    (NotificationsEntity).toString(): NotificationsEntity.fromJson,
+    (NotificationsData).toString(): NotificationsData.fromJson,
+    (NotificationsDataRows).toString(): NotificationsDataRows.fromJson,
+    (NotificationsDataRowsMedia).toString(): NotificationsDataRowsMedia
+        .fromJson,
+    (NotificationsDataPaginate).toString(): NotificationsDataPaginate.fromJson,
     (OrderDetailsEntity).toString(): OrderDetailsEntity.fromJson,
     (OrderDetailsData).toString(): OrderDetailsData.fromJson,
     (OrderDetailsDataRow).toString(): OrderDetailsDataRow.fromJson,

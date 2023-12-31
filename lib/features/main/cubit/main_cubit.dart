@@ -11,6 +11,8 @@ import '../../main_screens/drivers/presentation/drivers_screen.dart';
 import '../../main_screens/home/presentation/screen/home_screen.dart';
 import '../../main_screens/profile/presentation/profile_screen.dart';
 import '../../orders/presentation/orders_search_screen.dart';
+import '../../orders/presentation/search_bloc/search_bloc.dart';
+import '../domain/notifications_badge_count_repository.dart';
 
 
 part 'main_state.dart';
@@ -19,6 +21,36 @@ class MainCubit extends Cubit<MainState> {
   MainCubit() : super(MainInitial());
 
   static MainCubit get(BuildContext context) => BlocProvider.of(context);
+
+
+
+  String countNotifications = '0';
+
+
+  void getCount() async {
+    getNotificationsCount();
+  }
+
+  NotificationBadgeCountRepository notificationBadgeCountRepository = NotificationBadgeCountRepository();
+
+
+  void getNotificationsCount() async {
+    final resul =
+    await notificationBadgeCountRepository.getNotificationBadgeCount();
+    resul.fold((l) {
+      countNotifications = '0';
+    }, (r) {
+      if (r.data == null) {
+        countNotifications = '0';
+      } else {
+        countNotifications = r.data?.badgeCount?.toString() ?? '0';
+      }
+      emit(MainInitial());
+    });
+  }
+
+
+
 
   int currentIndex = 0;
   void updateIndex(int index) {
@@ -32,7 +64,10 @@ class MainCubit extends Cubit<MainState> {
   List<Widget> buildScreens() {
     return [
       const HomeScreen(),
-      const OrdersSearchScreen(),
+      BlocProvider(
+        create: (context) =>OrdersSearchBloc(),
+        child:       const OrdersSearchScreen(),),
+
       if(HiveHelper.getUserData()?.userData?.role=='driversAdmin')
       const DriversScreen(),
       const ProfileScreen(),

@@ -1,6 +1,5 @@
 import 'package:kishk_driver/generated/json/base/json_convert_content.dart';
-
-import '../../features/main_screens/drivers/data/drivers_entity.dart';
+import 'package:kishk_driver/features/main_screens/drivers/data/drivers_entity.dart';
 
 DriversEntity $DriversEntityFromJson(Map<String, dynamic> json) {
   final DriversEntity driversEntity = DriversEntity();

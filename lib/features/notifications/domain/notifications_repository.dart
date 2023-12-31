@@ -12,7 +12,8 @@ import '../../../../../network/dio/network_call.dart';
 import '../../../../../network/errors/exceptions.dart';
 import '../../../../../network/urls/apis.dart';
 import '../data/notification_badge_count.dart';
-import '../data/notifications_response.dart';
+import '../data/notifications_entity.dart';
+
 
 class NotificationsRepository {
   Future<Either<int, int>> getNotificationsCount() async {
@@ -36,31 +37,30 @@ class NotificationsRepository {
     }
   }
 
-  Future<Either<String, List<NotificationsDataRows>>> getNotificationsData(
-      {int pageIndex = 1, int paginate = 10}) async {
+
+
+
+  Future<Either<String, NotificationsEntity>> getNotifications(
+      Map<String, dynamic> prams) async {
     late Response response;
+    response = await instance<NetworkCall>().request(
+        Apis.getNotificationsData,
+        queryParameters: prams,
+        options: Options(method: Method.get.name, headers: {
+          HttpHeaders.authorizationHeader: 'Bearer ${HiveHelper
+              .getUserToken()}',
+        }));
 
-    try {
-      response = await instance<NetworkCall>().request(
-          Apis.getNotificationsData,
-          queryParameters: {
-            'paginate': paginate,
-            'page': pageIndex,
-          },
-          options: Options(method: Method.get.name, headers: {
-            HttpHeaders.authorizationHeader:
-                'Bearer ${HiveHelper.getUserToken()}'
-          }));
-
-      NotificationsResponse mNotificationsResponse =
-          NotificationsResponse.fromJson(jsonDecode(response.data));
-      if (response.statusCode == 200 && mNotificationsResponse.data != null) {
-        return Right(mNotificationsResponse.data!.rows!);
-      } else {
-        return Left("empty_data".tr);
-      }
-    } on SocketException {
-      throw UnauthenticatedException('');
+    if (response.statusCode == 200) {
+      return Right(NotificationsEntity.fromJson(jsonDecode(response.data)));
+    } else {
+      return left(
+          jsonDecode(response.data)['data']['message'] ?? 'empty_data'.tr);
     }
   }
+
+
+
+
+
 }

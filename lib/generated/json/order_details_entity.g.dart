@@ -680,6 +680,30 @@ OrderDetailsDataRowProductsVendor $OrderDetailsDataRowProductsVendorFromJson(
   if (name != null) {
     orderDetailsDataRowProductsVendor.name = name;
   }
+  final String? mobile = jsonConvert.convert<String>(json['mobile']);
+  if (mobile != null) {
+    orderDetailsDataRowProductsVendor.mobile = mobile;
+  }
+  final String? province = jsonConvert.convert<String>(json['province']);
+  if (province != null) {
+    orderDetailsDataRowProductsVendor.province = province;
+  }
+  final String? city = jsonConvert.convert<String>(json['city']);
+  if (city != null) {
+    orderDetailsDataRowProductsVendor.city = city;
+  }
+  final String? location = jsonConvert.convert<String>(json['location']);
+  if (location != null) {
+    orderDetailsDataRowProductsVendor.location = location;
+  }
+  final String? title = jsonConvert.convert<String>(json['title']);
+  if (title != null) {
+    orderDetailsDataRowProductsVendor.title = title;
+  }
+  final String? body = jsonConvert.convert<String>(json['body']);
+  if (body != null) {
+    orderDetailsDataRowProductsVendor.body = body;
+  }
   return orderDetailsDataRowProductsVendor;
 }
 
@@ -688,6 +712,12 @@ Map<String, dynamic> $OrderDetailsDataRowProductsVendorToJson(
   final Map<String, dynamic> data = <String, dynamic>{};
   data['id'] = entity.id;
   data['name'] = entity.name;
+  data['mobile'] = entity.mobile;
+  data['province'] = entity.province;
+  data['city'] = entity.city;
+  data['location'] = entity.location;
+  data['title'] = entity.title;
+  data['body'] = entity.body;
   return data;
 }
 
@@ -695,10 +725,22 @@ extension OrderDetailsDataRowProductsVendorExtension on OrderDetailsDataRowProdu
   OrderDetailsDataRowProductsVendor copyWith({
     int? id,
     String? name,
+    String? mobile,
+    String? province,
+    String? city,
+    String? location,
+    String? title,
+    String? body,
   }) {
     return OrderDetailsDataRowProductsVendor()
       ..id = id ?? this.id
-      ..name = name ?? this.name;
+      ..name = name ?? this.name
+      ..mobile = mobile ?? this.mobile
+      ..province = province ?? this.province
+      ..city = city ?? this.city
+      ..location = location ?? this.location
+      ..title = title ?? this.title
+      ..body = body ?? this.body;
   }
 }
 

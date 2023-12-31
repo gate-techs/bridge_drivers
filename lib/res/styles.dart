@@ -51,7 +51,7 @@ class MStyles {
   static TextStyle bottomNavStyle=  TextStyle(
     color: MColors.colorPrimary,
     fontSize: 13,
-    fontFamily: 'NotoKufiArabic',
+    fontFamily: appFontFamily,
   );
 
 

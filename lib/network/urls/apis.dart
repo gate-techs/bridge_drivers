@@ -14,7 +14,7 @@ class Apis {
   static const String getCountryCodeData = "countries";
   static String getVendorDetails = "appSettings";
   static const String getProfileApiCall = "auth/me";
-  static const String getNotificationsBadgeCount = "backend/notifications/badgeCount";
+  static const String getNotificationsBadgeCount = "notifications/badgeCount";
   static String getAppPages = "backend/pages";
   static const String doLoginApiCall = "backend/auth/login";
   static const String sendFcmToken = "fcmToken";
@@ -25,6 +25,7 @@ class Apis {
   static const String getAboutApiCall = "pages/aboutus";
 
   static const String getNotificationsData = "notifications";
+  static const String seeNotifications = "notifications/read";
   static const String getBadgeCountData = "notifications/badgeCount";
 
   static const String getTotalCardsData = "reports/total-cards";

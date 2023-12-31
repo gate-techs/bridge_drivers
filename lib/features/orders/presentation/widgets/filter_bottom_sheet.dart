@@ -3,6 +3,7 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:kishk_driver/features/orders/presentation/orders_screen.dart';
 import '../../../../../res/gaps.dart';
+import '../../../../main.dart';
 import '../../../../res/m_colors.dart';
 
 class FilterBottomSheet extends StatefulWidget {
@@ -85,9 +86,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                         });
                       },
                     ),
-                    Text('pending'.tr, style: const TextStyle(
+                    Text('pending'.tr, style:  TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      fontFamily: appFontFamily,
                     ),),
                   ],
                 ),
@@ -103,9 +105,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                         });
                       },
                     ),
-                    Text('dispatched'.tr, style: const TextStyle(
+                    Text('dispatched'.tr, style:  TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      fontFamily: appFontFamily,
                     ),),
                   ],
                 ),
@@ -121,9 +124,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                         });
                       },
                     ),
-                    Text('shipped'.tr, style: const TextStyle(
+                    Text('shipped'.tr, style:  TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      fontFamily: appFontFamily,
                     ),),
                   ],
                 ),
@@ -139,9 +143,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                         });
                       },
                     ),
-                    Text('delivered'.tr, style: const TextStyle(
+                    Text('delivered'.tr, style:  TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      fontFamily: appFontFamily,
                     ),),
                   ],
                 ),
@@ -170,10 +175,11 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                           color: MColors.colorPrimary,
                         ),
                         child:  Center(
-                          child: Text('apply'.tr, style: const TextStyle(
+                          child: Text('apply'.tr, style:  TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            color:Colors.white
+                            color:Colors.white,
+                            fontFamily: appFontFamily,
                           ),),
                         ),
                       ),
@@ -196,7 +202,8 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                           child: Text('cancel'.tr, style:  TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color:MColors.colorPrimary
+                              color:MColors.colorPrimary,
+                            fontFamily: appFontFamily,
                           ),),
                         ),
                       ),

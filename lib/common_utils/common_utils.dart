@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:kishk_driver/res/m_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../country_code/data/country_code_entity.dart';
+import '../features/order_details_screen/presentation/order_details_screen.dart';
 import '../helpers/hive_helper.dart';
 import 'image_utils.dart';
 
@@ -49,8 +50,7 @@ class CommonUtils {
       animationDuration: const Duration(milliseconds: 1000),
       autoDismiss: true,
     ).show(Get.context!);
-
-    // Get.snackbar(title ?? "", message ?? "",
+// Get.snackbar(title ?? "", message ?? "",
     //     snackPosition: SnackPosition.TOP,
     //     backgroundColor:
     //         CommonUtils.getStatusTypeBGColorFromString(status ?? ""),
@@ -83,7 +83,25 @@ class CommonUtils {
     //     ]);
     // Get.closeCurrentSnackbar();
   }
+  static gotToDestination(String modelType, String modelId,
+      {bool? fromOnBoarding = false}) {
+    if (modelType.isNotEmpty && modelId.isNotEmpty) {
+      switch (modelType) {
 
+        case 'orders':
+          Get.offAll(OrderDetailsScreen(
+            id: modelId,
+          ));
+
+          break;
+        default:
+          Get.offAll(OrderDetailsScreen(
+            id: modelId,
+          ));
+          break;
+      }
+    }
+  }
 
   static Widget getStatusTypeIconFromString(String status) {
     switch (status) {
