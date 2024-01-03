@@ -159,7 +159,7 @@ Map<String, String> en = {
   "customer": "Customer",
   'customerName,':'Customer Name',
   'deliveryName,':'Delivery Name',
-  'dispatched': 'dispatched',
+  'dispatched': 'Dispatched',
   'subTotal': 'Sub Total',
   'tax': 'Tax',
   'discount': 'Discount',
@@ -193,4 +193,6 @@ Map<String, String> en = {
   "vendorPrice": "Vendor Price",
   "brandName": "Brand",
   "location": "Location",
+  "assignDriver": "Assign Driver",
+  "reAssignDriver": "Reassign Driver",
 };

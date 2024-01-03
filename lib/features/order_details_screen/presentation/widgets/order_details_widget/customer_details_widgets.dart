@@ -54,7 +54,7 @@ class CustomerDetailsWidget extends StatelessWidget {
                   ),
                 ],
               ),
-
+              if(orderDetailsRow!.user!.mobile != null)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

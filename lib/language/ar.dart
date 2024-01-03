@@ -193,4 +193,6 @@ Map<String, String> ar = {
   "vendorPrice": "سعر البائع",
   "brandName": "الماركة",
   "location": "الموقع",
+  "assignDriver": "تعيين سائق",
+  "reAssignDriver": "إعادة تعيين السائق",
 };

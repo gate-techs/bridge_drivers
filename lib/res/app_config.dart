@@ -64,7 +64,7 @@ class AppConfig {
     String remoteConfigBaseUrl = remoteConfig.getString("BaseUrl");
     String remoteConfigAppId = remoteConfig.getString("AppId");
     //Todo
-    if (remoteConfigBaseUrl.isNotEmpty) appCurrentBaseUrl = remoteConfigBaseUrl;
+    // if (remoteConfigBaseUrl.isNotEmpty) appCurrentBaseUrl = remoteConfigBaseUrl;
     if (remoteConfigAppId.isNotEmpty) appCurrentAppId = remoteConfigAppId;
 
     Log.e('remoteConfigBaseUrl=>$appCurrentBaseUrl remoteConfigAppId=>$appCurrentAppId ');

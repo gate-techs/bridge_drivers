@@ -110,10 +110,10 @@ class OrdersItem extends StatelessWidget {
                 color: MColors.colorPrimary,
               ),
               child:  Center(
-                child: Text('selectDriver'.tr, style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color:Colors.white
+                child: Text('assignDriver'.tr, style:  TextStyle(
+                    fontSize: 12,
+                    color:Colors.white,
+                  fontFamily: appFontFamily,
                 ),),
               ),
             ),
@@ -126,9 +126,8 @@ class OrdersItem extends StatelessWidget {
                   '${'driverName'.tr } : ${ ordersDataRows.driver?.name ?? ' '}',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 14,
+                    fontSize: 12,
                     fontFamily: appFontFamily,
-                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
@@ -150,9 +149,8 @@ class OrdersItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       color: MColors.colorPrimary,
                     ),
-                    child:  Text('editDriver'.tr, style:  TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                    child:  Text('reAssignDriver'.tr, style:  TextStyle(
+                        fontSize: 12,
                         color:Colors.white,
                       fontFamily: appFontFamily
                     ),),
