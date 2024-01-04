@@ -195,4 +195,6 @@ Map<String, String> en = {
   "location": "Location",
   "assignDriver": "Assign Driver",
   "reAssignDriver": "Reassign Driver",
+  "landmarks": "Landmarks",
+  'searchDrivers': 'Search For Drivers',
 };

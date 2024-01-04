@@ -6,7 +6,7 @@ import '../../../../../common_utils/image_utils.dart';
 import '../../../../../main.dart';
 import '../../../../../res/gaps.dart';
 import '../../../../../res/m_colors.dart';
-import '../../data/drivers_entity.dart';
+import 'package:kishk_driver/features/main_screens/drivers/data/drivers_entity.dart';
 
 class DriversItem extends StatelessWidget {
   const DriversItem({super.key, required this.driversItemDataRows});

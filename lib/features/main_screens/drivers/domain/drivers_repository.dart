@@ -9,7 +9,7 @@ import '../../../../../helpers/hive_helper.dart';
 import '../../../../../network/dio/enum.dart';
 import '../../../../../network/dio/network_call.dart';
 import '../../../../../network/urls/apis.dart';
-import '../data/drivers_entity.dart';
+import 'package:kishk_driver/features/main_screens/drivers/data/drivers_entity.dart';
 
 class DriversRepository {
 

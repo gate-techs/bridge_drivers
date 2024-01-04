@@ -195,4 +195,7 @@ Map<String, String> ar = {
   "location": "الموقع",
   "assignDriver": "تعيين سائق",
   "reAssignDriver": "إعادة تعيين السائق",
+  "landmarks": "تفاصيل اخرى",
+  'searchDrivers': 'إبحث عن سائق',
+
 };

@@ -178,25 +178,38 @@ class CustomerDetailsWidget extends StatelessWidget {
                 ],
               ),
               Gaps.vGap8,
-              Text(
-                orderDetailsRow?.user?.address ?? '',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontFamily: appFontFamily,
-                  fontWeight: FontWeight.w700,
-                ),
+              Row(
+                children: [
+                  Gaps.vGap8,
+                  Text(
+                    '${'landmarks'.tr} : ',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontFamily: appFontFamily,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Text(
+                    orderDetailsRow?.user?.address ?? '',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontFamily: appFontFamily,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
               ),
               Gaps.vGap8,
-
               if(orderDetailsRow?.userNote !=null)
-                Column(
+                Row(
                   children: [
                     Gaps.vGap8,
                     Text(
                       '${'orderNote'.tr} : ',
                       style: TextStyle(
-                        color: MColors.colorSecondaryDark,
+                        color: Colors.black,
                         fontSize: 14,
                         fontFamily: appFontFamily,
                         fontWeight: FontWeight.w700,

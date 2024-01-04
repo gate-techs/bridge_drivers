@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
+import 'package:kishk_driver/features/main_screens/drivers/presentation/drivers_search_screen.dart';
+import 'package:kishk_driver/features/main_screens/drivers/presentation/search_bloc/search_bloc.dart';
 import 'package:kishk_driver/features/main_screens/drivers/presentation/widgets/drivers_item.dart';
 import 'package:paginated_list/paginated_list.dart';
+import '../../../../main.dart';
 import '../../../../res/gaps.dart';
 import '../../../../res/m_colors.dart';
+import '../../../../res/styles.dart';
 import '../../../../shared/error_widget.dart';
 import '../../../../shared/loading_widget.dart';
 import '../../../../shared/result_widget/result_widget.dart';
@@ -31,6 +36,56 @@ class DriversScreen extends StatelessWidget {
             return SafeArea(
               child: Scaffold(
                 backgroundColor: MColors.screensBackgroundColor,
+                appBar: AppBar(
+                  title:Text('drivers'.tr, style:  TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: appFontFamily,
+                    color: Colors.black,
+                  ),),
+                  centerTitle: true,
+                  bottom: PreferredSize(
+                    preferredSize: const Size(0, 50),
+                    child: Center(
+                      child: Container(
+                        height: 40,
+                        margin: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: MColors.veryLightGray,
+                        ),
+                        child: TextFormField(
+                          readOnly: true,
+                          cursorColor: MColors.colorPrimary,
+                          autofocus: true,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Color(0xff212121),
+                          ),
+                          decoration: MStyles.textFieldStyle(
+                              "searchDrivers".tr,
+                              const Icon(TablerIcons.search, color: Colors.black),
+                              null),
+                    onTap: () async{
+                      var res = await Get.to(
+                      () => BlocProvider(
+                        create: (context) =>DriversSearchBloc(),
+                        child:const DriversSearchScreen(),),
+                  );
+                      if (res['refresh'] == true) {
+                      driversCubit.currentPageIndex = 1;
+                      driversCubit.isLastPage = false;
+                      driversCubit.lastPage = 10;
+                      driversCubit.listTotal = 0;
+                      driversCubit.driversList.clear();
+                      driversCubit.getDrivers({'mobile' :true,});
+                      }
+                      },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
                 body: RefreshIndicator(
                     backgroundColor: MColors.colorPrimaryLight,
                     onRefresh: () async {

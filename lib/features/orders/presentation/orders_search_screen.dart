@@ -34,7 +34,6 @@ class _OrdersSearchScreenState extends State<OrdersSearchScreen> {
     return BlocBuilder< OrdersSearchBloc,  OrdersSearchState>(
       builder: (context, state) {
         ordersCubit = context.read<OrdersSearchBloc>();
-
         return Scaffold(
           appBar: AppBar (
             titleSpacing: 0.0,

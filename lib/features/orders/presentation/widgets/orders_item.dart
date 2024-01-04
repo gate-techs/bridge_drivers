@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:kishk_driver/common_utils/common_utils.dart';
+import 'package:kishk_driver/features/order_details_screen/presentation/order_details_screen.dart';
 import 'package:kishk_driver/helpers/hive_helper.dart';
 import '../../../../../main.dart';
 import '../../../../res/gaps.dart';
@@ -92,36 +93,66 @@ class OrdersItem extends StatelessWidget {
           const Divider(),
            if(HiveHelper.getUserData()?.userData?.role=='driversAdmin')
             (ordersDataRows.driver?.id == null)?
-             InkWell(
-            onTap: ()async{
-              var res = await Get.to(() =>  SelectDriverScreen(orderId: ordersDataRows.id??-1,));
-              if (res['refresh'] == true) {
-                onChangedCallBack.call(true);
-              }
+             Row(
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               children: [
+                 InkWell(
+                             onTap: ()async{
+                  var res = await Get.to(() =>  SelectDriverScreen(orderId: ordersDataRows.id??-1,));
+                  if (res['refresh'] == true) {
+                    onChangedCallBack.call(true);
+                  }
 
-            },
-            child: Container(
-              width: 150,
-              height: 40,
-              margin: const EdgeInsets.all(2),
-              padding: const EdgeInsets.all(2),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: MColors.colorPrimary,
-              ),
-              child:  Center(
-                child: Text('assignDriver'.tr, style:  TextStyle(
-                    fontSize: 12,
-                    color:Colors.white,
-                  fontFamily: appFontFamily,
-                ),),
-              ),
-            ),
-          ):Row(
+                             },
+                             child: Container(
+                  width: 100,
+                  height: 40,
+                  margin: const EdgeInsets.all(2),
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: MColors.colorPrimary,
+                  ),
+                  child:  Center(
+                    child: Text('assignDriver'.tr, style:  TextStyle(
+                        fontSize: 12,
+                        color:Colors.white,
+                      fontFamily: appFontFamily,
+                    ),),
+                  ),
+                             ),
+                           ),
+                 InkWell(
+                   onTap: ()async{
+                     var res = await Get.to(() =>  OrderDetailsScreen(id: ordersDataRows.id.toString(),));
+                     if (res['refresh'] == true) {
+                       onChangedCallBack.call(true);
+                     }
+                   },
+                   child: Container(
+                     alignment: Alignment.center,
+                     width: 40,
+                     height: 40,
+                     margin: const EdgeInsets.all(2),
+                     padding: const EdgeInsets.all(2),
+                     decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(10),
+                       color: MColors.colorPrimary,
+                     ),
+                     child: const Icon(Icons.arrow_forward_ios,color: Colors.white,),
+                     // Text('reAssignDriver'.tr, style:  TextStyle(
+                     //     fontSize: 12,
+                     //     color:Colors.white,
+                     //     fontFamily: appFontFamily
+                     // ),),
+                   ),
+                 ),
+               ],
+             ):Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: CommonUtils.getISTablet(context)?380:190,
+                width: CommonUtils.getISTablet(context)?380:170,
                 child: Text(
                   '${'driverName'.tr } : ${ ordersDataRows.driver?.name ?? ' '}',
                   style: TextStyle(
@@ -141,7 +172,7 @@ class OrdersItem extends StatelessWidget {
                   },
                   child: Container(
                     alignment: Alignment.center,
-                    width: 120,
+                    width: 100,
                     height: 40,
                     margin: const EdgeInsets.all(2),
                     padding: const EdgeInsets.all(2),
@@ -156,6 +187,31 @@ class OrdersItem extends StatelessWidget {
                     ),),
                   ),
                 ),
+              InkWell(
+                onTap: ()async{
+                  var res = await Get.to(() =>  OrderDetailsScreen(id: ordersDataRows.id.toString(),));
+                  if (res['refresh'] == true) {
+                    onChangedCallBack.call(true);
+                  }
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 40,
+                  height: 40,
+                  margin: const EdgeInsets.all(2),
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: MColors.colorPrimary,
+                  ),
+                  child: const Icon(Icons.arrow_forward_ios,color: Colors.white,),
+                  // Text('reAssignDriver'.tr, style:  TextStyle(
+                  //     fontSize: 12,
+                  //     color:Colors.white,
+                  //     fontFamily: appFontFamily
+                  // ),),
+                ),
+              ),
             ],
           ),
         ],
