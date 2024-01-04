@@ -197,5 +197,6 @@ Map<String, String> ar = {
   "reAssignDriver": "إعادة تعيين السائق",
   "landmarks": "تفاصيل اخرى",
   'searchDrivers': 'إبحث عن سائق',
-
+  'newerVersion': 'تحديث متاح',
+  'updateVersionMessage': 'يوجد تحديث متاح من التطبيق \n  برجاء قم بالتحميل',
 };

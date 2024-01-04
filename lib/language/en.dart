@@ -197,4 +197,6 @@ Map<String, String> en = {
   "reAssignDriver": "Reassign Driver",
   "landmarks": "Landmarks",
   'searchDrivers': 'Search For Drivers',
+  'newerVersion': 'New version',
+  'updateVersionMessage': 'There is a new version of the application \n Please download',
 };
