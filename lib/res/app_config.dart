@@ -61,12 +61,12 @@ class AppConfig {
     await remoteConfig.fetch();
     await remoteConfig.activate();
 
-    String remoteConfigBaseUrl = remoteConfig.getString("BaseUrl");
+    String remoteConfigBaseUrl = remoteConfig.getString("BaseUrlDrivers");
     String remoteConfigAppId = remoteConfig.getString("AppId");
     //Todo
-    // if (remoteConfigBaseUrl.isNotEmpty) appCurrentBaseUrl = remoteConfigBaseUrl;
+    if (remoteConfigBaseUrl.isNotEmpty) appCurrentBaseUrl = remoteConfigBaseUrl;
     if (remoteConfigAppId.isNotEmpty) appCurrentAppId = remoteConfigAppId;
 
-    Log.e('remoteConfigBaseUrl=>$appCurrentBaseUrl remoteConfigAppId=>$appCurrentAppId ');
+    Log.e('remoteConfigBaseUrlDrivers=>$appCurrentBaseUrl remoteConfigAppId=>$appCurrentAppId ');
   }
 }
