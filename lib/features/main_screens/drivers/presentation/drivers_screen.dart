@@ -70,7 +70,7 @@ class DriversScreen extends StatelessWidget {
                       var res = await Get.to(
                       () => BlocProvider(
                         create: (context) =>DriversSearchBloc(),
-                        child:const DriversSearchScreen(),),
+                        child:  const DriversSearchScreen(fromAssignDrivers: false,orderId:null),),
                   );
                       if (res['refresh'] == true) {
                       driversCubit.currentPageIndex = 1;

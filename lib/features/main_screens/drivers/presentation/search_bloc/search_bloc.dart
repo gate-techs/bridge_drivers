@@ -4,9 +4,12 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kishk_driver/common_utils/common_utils.dart';
 import 'package:kishk_driver/features/main_screens/drivers/data/drivers_entity.dart';
+import 'package:kishk_driver/features/main_screens/drivers/domain/assign_driver_repository.dart';
 import 'package:stream_transform/stream_transform.dart';
 import '../../domain/drivers_repository.dart';
 
@@ -54,4 +57,32 @@ class DriversSearchBloc extends Bloc<DriversSearchEvent, DriversSearchState> {
           status: SearchStates.failed, errorMessage: 'empty_data'.tr));
     }
   }
+
+
+  AssignDriverRepository assignDriverRepository= AssignDriverRepository();
+
+
+  Future<void> assignDriver(int orderId, int driverId) async {
+    try {
+      EasyLoading.show();
+      final mResponse = await assignDriverRepository.assignDriver(orderId, driverId);
+      mResponse.fold((left) async {
+        await EasyLoading.dismiss();
+        CommonUtils.showToastMessage(left);
+      }, (right) async {
+        await EasyLoading.dismiss();
+        CommonUtils.showToastMessage(right);
+        Get.back(result: {'refresh': true});
+        Get.back(result: {'refresh': true});
+        Get.back(result: {'refresh': true});
+      });
+    } catch (e) {
+      await EasyLoading.dismiss();
+      CommonUtils.showToastMessage(e.toString(), status: 'rejected');
+    }
+  }
+
+
+
+
 }

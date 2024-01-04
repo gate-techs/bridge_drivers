@@ -16,9 +16,9 @@ import '../../../../res/m_colors.dart';
 import '../../../../shared/loading_widget.dart';
 
 class DriversSearchScreen extends StatefulWidget {
-  const DriversSearchScreen({
-    Key? key,
-  }) : super(key: key);
+  const DriversSearchScreen({Key? key, required this.fromAssignDrivers,  this.orderId,}) : super(key: key);
+  final bool fromAssignDrivers;
+  final int? orderId;
 
   @override
   State<DriversSearchScreen> createState() => _DriversSearchScreenState();
@@ -116,9 +116,12 @@ class _DriversSearchScreenState extends State<DriversSearchScreen> {
                                 fromX: 500,
                                 child: InkWell(
                                   onTap: () async{
-                                var res = await Get.to(() =>  DriverDetailsScreen(dataRows: data[index]!,));
-                                if (res['refresh'] == true) {
-                                }
+                                    if(widget.fromAssignDrivers == true){
+                                      driversCubit.assignDriver(widget.orderId??-1,data[index]?.id??-1);
+                                    }else{
+                                      var res = await Get.to(() =>  DriverDetailsScreen(dataRows: data[index]!,));
+                                      if (res['refresh'] == true) {}
+                                    }
                               },
                               child: DriversItem(
                               driversItemDataRows: data[index]!,
