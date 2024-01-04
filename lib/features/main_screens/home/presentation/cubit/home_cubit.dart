@@ -1,9 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:get/route_manager.dart';
+import 'package:kishk_driver/common_utils/log_utils.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../../../../common_utils/app_constants.dart';
+import '../../../../../shared/update_dialog/update_dailog.dart';
 import '../../data/orders_entity.dart';
 import '../../domain/orders_repository.dart';
-
+import 'package:app_version_update/app_version_update.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -91,6 +97,28 @@ class HomeCubit extends Cubit<HomeState> {
           totalOrdersCount = (r.data?.paginate?.total??'0').toString();
           emit(HomeLoaded(ordersList));
         }
+      }
+    });
+  }
+
+
+  void verifyVersion(BuildContext context) async {
+    await AppVersionUpdate.checkForUpdates(
+        appleId: appCurrentAppStoreId, playStoreId: appCurrentGooglePlayId)
+        .then((data) async {
+      Log.w('canUpdate=${data.canUpdate} storeUrl=${data.storeUrl} platform=${data.platform} storeVersion=${data.storeVersion}  ');
+      if (data.canUpdate!) {
+        Get.defaultDialog(
+          title: "",
+          barrierDismissible: false,
+          content: UpdateDialog(
+            onTap: () async {
+              if (await canLaunchUrl(Uri.parse(data.storeUrl ?? ''))) {
+                await launchUrl(Uri.parse(data.storeUrl ?? ''));
+              }
+            },
+          ),
+        );
       }
     });
   }

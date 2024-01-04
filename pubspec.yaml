@@ -35,7 +35,7 @@ dependencies:
     sdk: flutter
 
 
-
+  app_version_update: ^4.0.1
   webview_flutter_plus: ^0.3.0+2
 
   responsive_framework: ^1.0.0
