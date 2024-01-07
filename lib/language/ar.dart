@@ -198,5 +198,6 @@ Map<String, String> ar = {
   "landmarks": "تفاصيل اخرى",
   'searchDrivers': 'إبحث عن سائق',
   'newerVersion': 'تحديث متاح',
+  'invoice': 'الفاتورة',
   'updateVersionMessage': 'يوجد تحديث متاح من التطبيق \n  برجاء قم بالتحميل',
 };

@@ -9,6 +9,7 @@ import 'package:kishk_driver/features/about/data/about_entity.dart';
 import 'package:kishk_driver/features/contact_us/data/contact_us_entity.dart';
 import 'package:kishk_driver/features/contact_us/data/contact_us_erorr_entity.dart';
 import 'package:kishk_driver/features/driver_details/data/driver_details_entity.dart';
+import 'package:kishk_driver/features/invoice_screen/data/invoice_entity.dart';
 import 'package:kishk_driver/features/main/data/badge_count_entity.dart';
 import 'package:kishk_driver/features/main_screens/drivers/data/drivers_entity.dart';
 import 'package:kishk_driver/features/main_screens/home/data/orders_entity.dart';
@@ -203,6 +204,14 @@ class JsonConvert {
     if (<DriverDetailsDataPaginate>[] is M) {
       return data.map<DriverDetailsDataPaginate>((Map<String, dynamic> e) =>
           DriverDetailsDataPaginate.fromJson(e)).toList() as M;
+    }
+    if (<InvoiceEntity>[] is M) {
+      return data.map<InvoiceEntity>((Map<String, dynamic> e) =>
+          InvoiceEntity.fromJson(e)).toList() as M;
+    }
+    if (<InvoiceData>[] is M) {
+      return data.map<InvoiceData>((Map<String, dynamic> e) =>
+          InvoiceData.fromJson(e)).toList() as M;
     }
     if (<BadgeCountEntity>[] is M) {
       return data.map<BadgeCountEntity>((Map<String, dynamic> e) =>
@@ -516,6 +525,8 @@ class JsonConvertClassCollection {
     (DriverDetailsDataRowsDriver).toString(): DriverDetailsDataRowsDriver
         .fromJson,
     (DriverDetailsDataPaginate).toString(): DriverDetailsDataPaginate.fromJson,
+    (InvoiceEntity).toString(): InvoiceEntity.fromJson,
+    (InvoiceData).toString(): InvoiceData.fromJson,
     (BadgeCountEntity).toString(): BadgeCountEntity.fromJson,
     (BadgeCountData).toString(): BadgeCountData.fromJson,
     (DriversEntity).toString(): DriversEntity.fromJson,

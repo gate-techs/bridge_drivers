@@ -198,5 +198,6 @@ Map<String, String> en = {
   "landmarks": "Landmarks",
   'searchDrivers': 'Search For Drivers',
   'newerVersion': 'New version',
+  'invoice': 'Invoice',
   'updateVersionMessage': 'There is a new version of the application \n Please download',
 };
