@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
 import 'package:kishk_driver/features/invoice_screen/presentation/invoice_screen.dart';
 import 'package:kishk_driver/features/order_details_screen/presentation/product_details_in_order/product_details_screen_in_order.dart';
@@ -135,32 +136,39 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             Log.e('id:0    ${data.encryptId}');
                             Get.to(InvoiceScreen(id: data.encryptId??''));
                           },
-                          child: Container(
-                            width: double.infinity,
-                            height: 50,
-                            margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 4),
-                            padding:
-                            const EdgeInsets.symmetric(horizontal: 20),
-                            decoration: BoxDecoration(
-                                color: MColors.colorPrimary,
-                                borderRadius: BorderRadius.circular(66)),
-                            child: Center(
-                              child: Text(
-                                'invoice'.tr,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontFamily: appFontFamily,
-                                  fontWeight: FontWeight.w700,
-                                  shadows: [
-                                    BoxShadow(
-                                      color: MColors.colorPrimary,
-                                      offset: const Offset(4, 8),
-                                      blurRadius: 24,
-                                      spreadRadius: 0,
+                          child: Center(
+                            child: Container(
+                              width: 250,
+                              height: 50,
+                              margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 4),
+                              padding:
+                              const EdgeInsets.symmetric(horizontal: 20),
+                              decoration: BoxDecoration(
+                                  color: MColors.colorPrimary,
+                                  borderRadius: BorderRadius.circular(16)),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(TablerIcons.printer,color: Colors.white,),
+                                  Gaps.hGap8,
+                                  Text(
+                                    'printReceipt'.tr,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontFamily: appFontFamily,
+                                      fontWeight: FontWeight.w700,
+                                      shadows: [
+                                        BoxShadow(
+                                          color: MColors.colorPrimary,
+                                          offset: const Offset(4, 8),
+                                          blurRadius: 24,
+                                          spreadRadius: 0,
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),

@@ -236,6 +236,7 @@ class CommonUtils {
     );
   }
 
+
   // static void showLoadingDialog() {
   //   showGeneralDialog(
   //     context: Get.context!,

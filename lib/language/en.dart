@@ -199,5 +199,6 @@ Map<String, String> en = {
   'searchDrivers': 'Search For Drivers',
   'newerVersion': 'New version',
   'invoice': 'Invoice',
+  'printReceipt': 'Print Receipt',
   'updateVersionMessage': 'There is a new version of the application \n Please download',
 };

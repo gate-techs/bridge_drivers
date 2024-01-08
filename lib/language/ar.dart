@@ -199,5 +199,6 @@ Map<String, String> ar = {
   'searchDrivers': 'إبحث عن سائق',
   'newerVersion': 'تحديث متاح',
   'invoice': 'الفاتورة',
+  'printReceipt': 'طباعة الفاتورة',
   'updateVersionMessage': 'يوجد تحديث متاح من التطبيق \n  برجاء قم بالتحميل',
 };

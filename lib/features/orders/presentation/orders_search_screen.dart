@@ -53,67 +53,69 @@ class _OrdersSearchScreenState extends State<OrdersSearchScreen> {
               child: Center(
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 40,
-                          width: CommonUtils.getISTablet(context)?500:300,
-                          margin: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: MColors.veryLightGray,
-                          ),
-                          child: TextFormField(
-                            cursorColor: MColors.colorPrimary,
-                            autofocus: true,
-                            onChanged: (value) {
-                              if (value.length > 2) {
-                                ordersCubit.add(GetOrdersDataEvent(data: {
-                                  'search': value,
-                                  'paginate': 20,
-                                  'mobile': true,
-                                }));
-                              }
-                            },
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Color(0xff212121),
-                            ),
-                            decoration: MStyles.textFieldStyle(
-                                "searchOrder".tr,
-                                const Icon(TablerIcons.search, color: Colors.black),
-                                null),
-                          ),
-                        ),
-                        InkWell(onTap: (){
-                          showModalBottomSheet(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16.0),
-                              ),
-                              backgroundColor: Colors.white,
-                              context: context,
-                              builder: (BuildContext context) {
-                                return FilterBottomSheet(
-                                  callBack: () {
-
-                                  },
-                                );
-                              });
-                        },
-                          child: Container(
-                            width: 40,
+                    Center(
+                      child: Row(
+                        children: [
+                          Container(
                             height: 40,
-                            margin: const EdgeInsets.all(2),
-                            padding: const EdgeInsets.all(2),
+                            width: CommonUtils.getISTablet(context)?500:300,
+                            margin: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: MColors.colorPrimary,
+                              color: MColors.veryLightGray,
                             ),
-                            child: const Icon(TablerIcons.filter, size: 24,color: Colors.white,),
+                            child: TextFormField(
+                              cursorColor: MColors.colorPrimary,
+                              autofocus: true,
+                              onChanged: (value) {
+                                if (value.length > 2) {
+                                  ordersCubit.add(GetOrdersDataEvent(data: {
+                                    'search': value,
+                                    'paginate': 20,
+                                    'mobile': true,
+                                  }));
+                                }
+                              },
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Color(0xff212121),
+                              ),
+                              decoration: MStyles.textFieldStyle(
+                                  "searchOrder".tr,
+                                  const Icon(TablerIcons.search, color: Colors.black),
+                                  null),
+                            ),
                           ),
-                        )
+                          InkWell(onTap: (){
+                            showModalBottomSheet(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16.0),
+                                ),
+                                backgroundColor: Colors.white,
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return FilterBottomSheet(
+                                    callBack: () {
 
-                      ],
+                                    },
+                                  );
+                                });
+                          },
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              margin: const EdgeInsets.all(2),
+                              padding: const EdgeInsets.all(2),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: MColors.colorPrimary,
+                              ),
+                              child: const Icon(TablerIcons.filter, size: 24,color: Colors.white,),
+                            ),
+                          )
+
+                        ],
+                      ),
                     ),
                   ],
                 ),
