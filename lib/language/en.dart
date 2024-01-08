@@ -7,7 +7,7 @@ Map<String, String> en = {
   "brands_page": "Brands",
   "profile_page": "Profile",
   "new_in": "New In",
-  "items": "items",
+  "items": "Items",
   "featured_stores": "FEATURED STORES",
   "most_popular": "Most Popular",
   "sort": "Sort",
