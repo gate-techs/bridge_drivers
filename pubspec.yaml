@@ -67,7 +67,7 @@ dependencies:
   dio: ^5.1.2
   dartz: ^0.10.1
 
-  advance_pdf_viewer: ^2.0.0
+  advance_pdf_viewer2: ^2.0.5+1
   printing: ^5.6.1
   pdf: ^3.10.7
   path_provider: ^2.0.12

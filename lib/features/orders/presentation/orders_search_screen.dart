@@ -55,6 +55,7 @@ class _OrdersSearchScreenState extends State<OrdersSearchScreen> {
                   children: [
                     Center(
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
                             height: 40,

@@ -1,3 +1,4 @@
+import 'package:advance_pdf_viewer2/advance_pdf_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
@@ -8,7 +9,6 @@ import 'package:kishk_driver/shared/loading_widget.dart';
 import '../../../main.dart';
 import '../../../shared/error_widget.dart';
 import 'cubit/invoice_cubit.dart';
-import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
 
 
 class InvoiceScreen extends StatelessWidget {
@@ -50,7 +50,7 @@ class InvoiceScreen extends StatelessWidget {
                 icon: const Icon(TablerIcons.printer,color: Colors.black,)),
                   IconButton(
                       onPressed: (){
-                        invoiceCubit.shareInvoice(data.path??'');
+                        invoiceCubit.shareUint8List(data.path??'');
                       },
                       icon: const Icon(TablerIcons.share,color: Colors.black,)),
                 ],
