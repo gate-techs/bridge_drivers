@@ -63,7 +63,7 @@ class InvoiceScreen extends StatelessWidget {
                   onPressed: () =>  Get.back(result: {'refresh': true}),
                 ),
               ),
-              body:PDFViewer(document:invoiceCubit.document,showPicker: false,),
+              body:PDFViewer(document:invoiceCubit.document,showPicker: false,progressIndicator: const LoadingWidget(),),
             );
           } else if (state is InvoiceFailed) {
             return FailedWidget(
